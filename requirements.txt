@@ -1,6 +1,5 @@
 sentence-transformers
 langchain
-langchain-nvidia-ai-endpoints
 langchain-community
 langchain-core
 langchain-huggingface
@@ -8,5 +7,7 @@ faiss-cpu
 numpy
 tqdm
 requests
-perplexity
+langchain-ollama
+perplexityai
 openai
+langchain-openai

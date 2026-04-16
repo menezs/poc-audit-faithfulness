@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "url": "https://arxiv.org/html/2510.06265v2",
+    "paragraph": "A evolução meteórica dos Modelos de Linguagem de Grande Escala (LLMs) redefiniu as fronteiras do processamento de linguagem natural, permitindo capacidades sem precedentes em geração de texto, tradução e raciocínio complexo. No entanto, essa fluência linguística é frequentemente obscurecida pelo fenômeno das alucinações — a geração de conteúdos sintaticamente plausíveis, porém factualmente incorretos ou não fundamentados em evidências externas (https://arxiv.org/html/2510.06265v2). Este relatório técnico detalha uma pesquisa profunda e sistemática sobre o estado da arte da factualidade em LLMs, abrangendo desde a taxonomia do erro até as métricas de avaliação mais robustas validadas por humanos no período de 2021 a 2025."
+  },
+  {
+    "id": 2,
+    "url": "https://aclanthology.org/2024.emnlp-main.1088.pdf",
+    "paragraph": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 3,
+    "url": "https://aclanthology.org/2026.findings-eacl.46.pdf",
+    "paragraph": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 4,
+    "url": "https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+    "paragraph": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 5,
+    "url": "https://deepchecks.com/llm-hallucination-detection-and-mitigation-best-techniques/",
+    "paragraph": "As consultas de busca variaram entre termos técnicos como \"semantic entropy hallucination\" e \"SRLScore factuality\", permitindo capturar tanto métodos baseados em modelos quanto abordagens probabilísticas de \"caixa-preta\" (https://deepchecks.com/llm-hallucination-detection-and-mitigation-best-techniques/)."
+  },
+  {
+    "id": 6,
+    "url": "Min et al. (2023)",
+    "paragraph": "Min et\nal.\n(2023)\n\nPesquis\na de\nMétrica\ns\n\nLong-fo\nrm\ngenerati\non\n\nWikiped\nia\nBiograp\nhies\n\nFactSco\nre"
+  },
+  {
+    "id": 7,
+    "url": "Tjandra et al. (2024)",
+    "paragraph": "Tjandra\net al.\n(2024)\n\nPesquis\na\nEmpíric\na\n\nOpen-d\nomain\nQA\n\nTriviaQ\nA,\nPopQA\n\nCHOKE\n-Score"
+  },
+  {
+    "id": 8,
+    "url": "Guan et al. (2023)",
+    "paragraph": "Guan et\nal.\n(2023)\n\nBenchm\nark\n\nMultimo\ndal\n(Vision-\nLangua\nge)\n\nHallusio\nnBench\n\nQuestio\nn-Pair\nAccurac\ny"
+  },
+  {
+    "id": 9,
+    "url": "GitHub",
+    "paragraph": "GitHub\n\narXiv\n\nGitHub"
+  },
+  {
+    "id": 10,
+    "url": "arXiv",
+    "paragraph": "GitHub\n\narXiv\n\nGitHub"
+  },
+  {
+    "id": 11,
+    "url": "GitHub",
+    "paragraph": "GitHub\n\narXiv\n\nGitHub"
+  },
+  {
+    "id": 12,
+    "url": "WikiBio",
+    "paragraph": "WikiBio,\n\nSelfChe\n\nAmostr\n\nGitHub\n\nMétodo"
+  },
+  {
+    "id": 13,
+    "url": "SelfChe",
+    "paragraph": "WikiBio,\n\nSelfChe\n\nAmostr\n\nGitHub\n\nMétodo"
+  },
+  {
+    "id": 14,
+    "url": "GitHub",
+    "paragraph": "WikiBio,\n\nSelfChe\n\nAmostr\n\nGitHub\n\nMétodo"
+  },
+  {
+    "id": 15,
+    "url": "l et al. (2023)",
+    "paragraph": "l et al.\n(2023)\n\na de\nMétrica\ns\n\nas,\nBio-Me\n d\n\nSelfChe\nckGPT\n\nckGPT"
+  },
+  {
+    "id": 16,
+    "url": "SelfCheckGPT",
+    "paragraph": "l et al.\n(2023)\n\na de\nMétrica\ns\n\nas,\nBio-Me\n d\n\nSelfChe\nckGPT\n\nckGPT"
+  },
+  {
+    "id": 17,
+    "url": "ckGPT",
+    "paragraph": "l et al.\n(2023)\n\na de\nMétrica\ns\n\nas,\nBio-Me\n d\n\nSelfChe\nckGPT\n\nckGPT"
+  },
+  {
+    "id": 18,
+    "url": "Assis et al. (2025)",
+    "paragraph": "Assis et\nal.\n(2025)\n\nPesquis\na\nEmpíric\na\n\nSumariz\nação,\nSimplifi\ncação,\nQA\n\nBluex,\nTweetS\nentBR\n\nLLM-as-\na-judge,\nHuman\nEval"
+  },
+  {
+    "id": 19,
+    "url": "Bluex",
+    "paragraph": "Assis et\nal.\n(2025)\n\nPesquis\na\nEmpíric\na\n\nSumariz\nação,\nSimplifi\ncação,\nQA\n\nBluex,\nTweetS\nentBR\n\nLLM-as-\na-judge,\nHuman\nEval"
+  },
+  {
+    "id": 20,
+    "url": "TweetSentBR",
+    "paragraph": "Assis et\nal.\n(2025)\n\nPesquis\na\nEmpíric\na\n\nSumariz\nação,\nSimplifi\ncação,\nQA\n\nBluex,\nTweetS\nentBR\n\nLLM-as-\na-judge,\nHuman\nEval"
+  },
+  {
+    "id": 21,
+    "url": "LLM-as-judge",
+    "paragraph": "Assis et\nal.\n(2025)\n\nPesquis\na\nEmpíric\na\n\nSumariz\nação,\nSimplifi\ncação,\nQA\n\nBluex,\nTweetS\nentBR\n\nLLM-as-\na-judge,\nHuman\nEval"
+  },
+  {
+    "id": 22,
+    "url": "Human Eval",
+    "paragraph": "Assis et\nal.\n(2025)\n\nPesquis\na\nEmpíric\na\n\nSumariz\nação,\nSimplifi\ncação,\nQA\n\nBluex,\nTweetS\nentBR\n\nLLM-as-\na-judge,\nHuman\nEval"
+  },
+  {
+    "id": 23,
+    "url": "Hey et al. (2023)",
+    "paragraph": "Hey et\nal.\n(2023)\n\nPesquis\na de\nMétrica\ns\n\nSumariz\nação"
+  },
+  {
+    "id": 24,
+    "url": "Xu et al. (2025)",
+    "paragraph": "Xu et al.\n(2025)\n\nTreinam\nento /\nAlinham\nento\n\nFactual\nQA\n\nInFACT\ndataset\n\nFactual\nPrecisio\nn/Recall"
+  },
+  {
+    "id": 25,
+    "url": "InFACT",
+    "paragraph": "Xu et al.\n(2025)\n\nTreinam\nento /\nAlinham\nento\n\nFactual\nQA\n\nInFACT\ndataset\n\nFactual\nPrecisio\nn/Recall"
+  },
+  {
+    "id": 26,
+    "url": "Sabiá-3",
+    "paragraph": "Sabiá-3\ne\nTucano\napresen\ntam\nrobuste\nz\ncompeti\ntiva em\nPT-BR."
+  },
+  {
+    "id": 27,
+    "url": "Tucano",
+    "paragraph": "Sabiá-3\ne\nTucano\napresen\ntam\nrobuste\nz\ncompeti\ntiva em\nPT-BR."
+  },
+  {
+    "id": 28,
+    "url": "GitHub",
+    "paragraph": "GitHub\n\nGitHub\n\narXiv"
+  },
+  {
+    "id": 29,
+    "url": "GitHub",
+    "paragraph": "GitHub\n\nGitHub\n\narXiv"
+  },
+  {
+    "id": 30,
+    "url": "arXiv",
+    "paragraph": "GitHub\n\nGitHub\n\narXiv"
+  },
+  {
+    "id": 31,
+    "url": "zero-re source",
+    "paragraph": "de\n\"zero-re\nsource\"\nal-tamen\nte\ninfluent\ne."
+  },
+  {
+    "id": 32,
+    "url": "InFACT",
+    "paragraph": "Introduz\no\nframew\nork\nInFACT\npara\nmodelo"
+  }
+]

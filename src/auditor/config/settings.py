@@ -7,27 +7,34 @@ from typing import Optional
 class Settings:
     api_key: Optional[str]
     llm_model: str = "deepseek-ai/deepseek-v3.1"
-    embedding_model: str = "nvidia/nv-embed-v1"
+    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     temperature: float = 0.0
     top_k_retrieval: int = 3
-    use_local_embedding: bool = False
-    local_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_cache_folder: str = "./model_cache"
+    provider: str = "openai"
+    base_url: Optional[str] = None
 
     @classmethod
     def from_env(cls) -> "Settings":
-        api_key = os.getenv("NVIDIA_API_KEY")
-        use_local = os.getenv("USE_LOCAL_EMBEDDING", "false").lower() == "true"
-        local_model = os.getenv("LOCAL_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+        api_key = os.getenv("OPENAI_API_KEY")
+        embedding_model = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+        embedding_cache = os.getenv("EMBEDDING_CACHE_FOLDER", "./model_cache")
+        provider = os.getenv("LLM_PROVIDER", "openai")
+        base_url = os.getenv("LLM_BASE_URL")
+        llm_model = os.getenv("LLM_MODEL", "google/gemma-4-e4b")
         
-        if not use_local and not api_key:
-            raise ValueError("NVIDIA_API_KEY environment variable not set (or set USE_LOCAL_EMBEDDING=true)")
+        if not api_key and provider != "ollama":
+            raise ValueError("OPENAI_API_KEY environment variable not set (or use LLM_PROVIDER=ollama)")
         
         return cls(
             api_key=api_key,
-            use_local_embedding=use_local,
-            local_embedding_model=local_model
+            embedding_model=embedding_model,
+            embedding_cache_folder=embedding_cache,
+            provider=provider,
+            base_url=base_url,
+            llm_model=llm_model
         )
 
     @classmethod
     def from_default(cls, api_key: str) -> "Settings":
-        return cls(api_key=api_key)
+        return cls(api_key=api_key, provider="openai")

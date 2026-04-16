@@ -8,11 +8,11 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 - **Busca por Evidências**: Recupera passagens relevantes usando FAISS + similaridade de cosseno
 - **Verificação**: Classifica afirmações como `SUPPORTED`, `PARTIAL` ou `NOT_SUPPORTED`
 - **Pontuação**: Calcula score de 0 a 1 baseado nas verificações
-- **Embeddings Locais**: Suporte a modelo local (`all-MiniLM-L6-v2`) via HuggingFace
+- **Embeddings Locais**: Usa `sentence-transformers/all-MiniLM-L6-v2` via HuggingFace
 - **Deep Research**: Integração com Perplexity e OpenAI para pesquisas aprofundadas
 - **Barra de Progresso**: Visualização do andamento da auditoria
 - **Resultados em JSON**: Salva resultados em arquivos JSON estruturados
-- **API NVIDIA**: Integração com modelos da NVIDIA (DeepSeek LLM + NV-Embed)
+- **Múltiplos Providers LLM**: Suporte a OpenAI (inclui LM Studio) e Ollama
 - **POO**: Código estruturado com classes e serviços separados
 - **Type Hints**: Sistema fortemente tipado
 - **FAISS**: Banco vetorial para persistência e busca de embeddings
@@ -20,18 +20,19 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 ## Requisitos
 
 - Python 3.8+
-- API Key da NVIDIA (para modelos NVIDIA)
-- API Key da OpenAI (para deep research)
+- API Key da OpenAI (para modelos OpenAI/LM Studio) - opcional para Ollama
 - API Key da Perplexity (para deep research)
+- Ollama ou LM Studio instalados localmente (opcional)
 
 ### Dependências
 
 ```
 langchain
-langchain-nvidia-ai-endpoints
 langchain-community
 langchain-core
 langchain-huggingface
+langchain-ollama
+langchain-openai
 faiss-cpu
 numpy
 tqdm
@@ -53,7 +54,10 @@ pip install -r requirements.txt
 ```
 AuditorFidelidade/
 ├── main.py                    # Entry point
+├── teste.py                   # Exemplo de uso do ReferenceExtractor
 ├── requirements.txt
+├── .env                       # Variáveis de ambiente
+├── .env.example               # Exemplo de variáveis de ambiente
 ├── README.md
 └── src/
     └── auditor/
@@ -64,11 +68,13 @@ AuditorFidelidade/
         │   ├── claim.py           # Modelo Claim
         │   └── verification_result.py  # Modelo VerificationResult
         ├── services/
-        │   ├── llm_service.py       # Serviço LLM (LangChain)
-        │   ├── embedding_service.py  # Serviço de Embeddings (NVIDIA ou HuggingFace)
+        │   ├── llm_service.py       # Serviço LLM (OpenAI/Ollama)
+        │   ├── embedding_service.py  # Serviço de Embeddings (HuggingFace)
         │   ├── vector_store.py      # VectorStore (FAISS)
         │   ├── perplexity_service.py # Deep Research via Perplexity
-        │   └── openai_service.py    # Deep Research via OpenAI
+        │   ├── openai_service.py    # Deep Research via OpenAI
+        │   ├── reference_extractor.py # Extração de referências de markdown
+        │   └── file_converter.py    # Conversão de arquivos para markdown
         ├── core/
         │   ├── claim_extractor.py    # Extrator de Claims
         │   ├── retriever.py          # Recuperador de evidências (FAISS)
@@ -85,7 +91,6 @@ AuditorFidelidade/
 ### Executar o teste padrão
 
 ```bash
-# Configure as variáveis de ambiente no arquivo .env
 python main.py
 ```
 
@@ -118,7 +123,7 @@ for r in result.results:
     print(f"Label: {r.label.value}")
 ```
 
-### Exemplo de Resultado (INICIAL)
+### Exemplo de Resultado
 
 ```json
 {
@@ -132,27 +137,7 @@ for r in result.results:
     {
       "index": 0,
       "text": "Brazil was colonized by Portugal.",
-      "source_answer": "\n    Brazil was colonized by Portugal in the 16th century.\n    It became independent in 1822.\n    The capital of Brazil is Rio de Janeiro.\n    "
-    },
-    {
-      "index": 1,
-      "text": "The colonization of Brazil occurred in the 16th century.",
-      "source_answer": "\n    Brazil was colonized by Portugal in the 16th century.\n    It became independent in 1822.\n    The capital of Brazil is Rio de Janeiro.\n    "
-    },
-    {
-      "index": 2,
-      "text": "Brazil became independent.",
-      "source_answer": "\n    Brazil was colonized by Portugal in the 16th century.\n    It became independent in 1822.\n    The capital of Brazil is Rio de Janeiro.\n    "
-    },
-    {
-      "index": 3,
-      "text": "Brazil became independent in 1822.",
-      "source_answer": "\n    Brazil was colonized by Portugal in the 16th century.\n    It became independent in 1822.\n    The capital of Brazil is Rio de Janeiro.\n    "
-    },
-    {
-      "index": 4,
-      "text": "The capital of Brazil is Rio de Janeiro.",
-      "source_answer": "\n    Brazil was colonized by Portugal in the 16th century.\n    It became independent in 1822.\n    The capital of Brazil is Rio de Janeiro.\n    "
+      "source_answer": "..."
     }
   ],
   "results": [
@@ -160,51 +145,8 @@ for r in result.results:
       "claim_index": 0,
       "claim_text": "Brazil was colonized by Portugal.",
       "label": "SUPPORTED",
-      "justification": "The evidence directly confirms Brazil was colonized by Portugal during the 1500s and gained independence in 1822.",
-      "passages": [
-        "Brazil was colonized by Portugal during the 1500s. It gained independence in 1822.",
-        "The capital of Brazil is Brasília, not Rio de Janeiro."
-      ]
-    },
-    {
-      "claim_index": 1,
-      "claim_text": "The colonization of Brazil occurred in the 16th century.",
-      "label": "SUPPORTED",
-      "justification": "The evidence explicitly states Brazil was colonized by Portugal during the 1500s, which corresponds to the 16th century.",
-      "passages": [
-        "Brazil was colonized by Portugal during the 1500s. It gained independence in 1822.",
-        "The capital of Brazil is Brasília, not Rio de Janeiro."
-      ]
-    },
-    {
-      "claim_index": 2,
-      "claim_text": "Brazil became independent.",
-      "label": "SUPPORTED",
-      "justification": "The evidence explicitly states that Brazil gained independence in 1822, which directly supports the claim.",
-      "passages": [
-        "Brazil was colonized by Portugal during the 1500s. It gained independence in 1822.",
-        "The capital of Brazil is Brasília, not Rio de Janeiro."
-      ]
-    },
-    {
-      "claim_index": 3,
-      "claim_text": "Brazil became independent in 1822.",
-      "label": "SUPPORTED",
-      "justification": "The evidence explicitly states 'Brazil gained independence in 1822', which directly supports the claim.",
-      "passages": [
-        "Brazil was colonized by Portugal during the 1500s. It gained independence in 1822.",
-        "The capital of Brazil is Brasília, not Rio de Janeiro."
-      ]
-    },
-    {
-      "claim_index": 4,
-      "claim_text": "The capital of Brazil is Rio de Janeiro.",
-      "label": "NOT_SUPPORTED",
-      "justification": "The evidence explicitly states that Brasília is the capital of Brazil, not Rio de Janeiro.",
-      "passages": [
-        "The capital of Brazil is Brasília, not Rio de Janeiro.",
-        "Brazil was colonized by Portugal during the 1500s. It gained independence in 1822."
-      ]
+      "justification": "The evidence directly confirms Brazil was colonized by Portugal during the 1500s.",
+      "passages": ["Brazil was colonized by Portugal during the 1500s."]
     }
   ]
 }
@@ -221,6 +163,22 @@ pipeline.save_vector_store("./vector_store")
 pipeline = AuditPipeline.create_from_env()
 pipeline.load_vector_store("./vector_store")
 result = pipeline.audit(answer, documents)
+```
+
+### Extração de Referências de Markdown
+
+```python
+from src.auditor.services import LLMService, ReferenceExtractor
+
+llm = LLMService(
+    api_key="",
+    model="google/gemma-4-e4b",
+    provider="openai",
+    base_url="http://localhost:1234"
+)
+
+extractor = ReferenceExtractor(llm_service=llm)
+result = extractor.extract_from_markdown("./documento.md")
 ```
 
 ### Deep Research com OpenAI
@@ -279,30 +237,74 @@ O score está tratando:
 
 ## Configurações
 
+### Providers LLM
+
+O projeto suporta dois providers:
+
+| Provider | Descrição |
+|----------|-----------|
+| `openai` | OpenAI API, LM Studio, ou qualquer API OpenAI-compatible |
+| `ollama` | Ollama local |
+
 ### Variáveis de Ambiente
 
 | Variável | Descrição | Obrigatório |
 |----------|-----------|-------------|
-| `NVIDIA_API_KEY` | API key da NVIDIA | Sim (se não usar embedding local) |
+| `OPENAI_API_KEY` | API key da OpenAI | Sim (exceto para Ollama) |
 | `PERPLEXITY_TOKEN` | API key da Perplexity | Não |
-| `OPEN_AI_TOKEN` | API key da OpenAI | Não |
-| `USE_LOCAL_EMBEDDING` | Usar embedding local (`true`/`false`) | Não |
-| `LOCAL_EMBEDDING_MODEL` | Modelo local (padrão: `sentence-transformers/all-MiniLM-L6-v2`) | Não |
+| `LLM_PROVIDER` | Provider LLM (`openai` ou `ollama`) | Não (padrão: `openai`) |
+| `LLM_BASE_URL` | URL base do LLM | Não |
+| `LLM_MODEL` | Modelo LLM a usar | Não |
+| `EMBEDDING_MODEL` | Modelo de embedding (padrão: `sentence-transformers/all-MiniLM-L6-v2`) | Não |
+| `EMBEDDING_CACHE_FOLDER` | Pasta de cache dos modelos (padrão: `./model_cache`) | Não |
 
 ### Arquivo .env
 
 ```env
-NVIDIA_API_KEY=sua-chave-nvidia
-USE_LOCAL_EMBEDDING=true
+OPENAI_API_KEY=sua-chave-openai
 PERPLEXITY_TOKEN=sua-chave-perplexity
-OPEN_AI_TOKEN=sua-chave-openai
+
+# Para LM Studio ou Ollama
+LLM_PROVIDER=openai
+LLM_BASE_URL=http://localhost:1234
+LLM_MODEL=google/gemma-4-e4b
+
+# Para Ollama
+LLM_PROVIDER=ollama
+LLM_BASE_URL=http://localhost:11434
+LLM_MODEL=gpt-oss:20b
+```
+
+### Usar LM Studio
+
+1. Baixe e instale o LM Studio
+2. Baixe o modelo desejado (ex: `google/gemma-4-e4b`)
+3. Inicie o servidor na interface (clicando em "Start Server")
+4. Configure o `.env`:
+
+```env
+LLM_PROVIDER=openai
+LLM_BASE_URL=http://localhost:1234
+LLM_MODEL=google/gemma-4-e4b
+```
+
+### Usar Ollama
+
+1. Instale o Ollama
+2. Baixe o modelo desejado: `ollama pull gpt-oss:20b`
+3. Configure o `.env`:
+
+```env
+LLM_PROVIDER=ollama
+LLM_BASE_URL=http://localhost:11434
+LLM_MODEL=gpt-oss:20b
 ```
 
 ## API Utilizada
 
 ### Audit Pipeline
-- **LLM**: `deepseek-ai/deepseek-v3.1`
-- **Embedding**: `nvidia/nv-embed-v1` (ou `sentence-transformers/all-MiniLM-L6-v2`)
+- **LLM**: Configurável via `LLM_MODEL` (padrão: `google/gemma-4-e4b`)
+- **Embedding**: `sentence-transformers/all-MiniLM-L6-v2`
 
 ### Deep Research
 - **OpenAI**: `o4-mini-deep-research` (padrão) ou `o3-deep-research`
@@ -310,16 +312,26 @@ OPEN_AI_TOKEN=sua-chave-openai
 
 ## Exemplos de Uso Avançado
 
-### Usar embedding local
+### Usar diferente provider
 
 ```python
-# Via variável de ambiente
-USE_LOCAL_EMBEDDING=true
+from src.auditor.services import LLMService
 
-# Ou via código
-from src.auditor.services import EmbeddingService
+# Com OpenAI/LM Studio
+llm = LLMService(
+    api_key="sk-...",
+    model="google/gemma-4-e4b",
+    provider="openai",
+    base_url="http://localhost:1234"
+)
 
-embedding = EmbeddingService(use_local=True)
+# Com Ollama
+llm = LLMService(
+    api_key="",
+    model="gpt-oss:20b",
+    provider="ollama",
+    base_url="http://localhost:11434"
+)
 ```
 
 ### Controlar tool calls no deep research

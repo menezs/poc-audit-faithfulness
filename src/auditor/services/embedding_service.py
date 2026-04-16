@@ -1,35 +1,21 @@
-from typing import Optional, Union
-from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 
 
 class EmbeddingService:
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        model: str = "nvidia/nv-embed-v1",
-        use_local: bool = False,
-        local_model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
+        model: str = "sentence-transformers/all-MiniLM-L6-v2",
+        cache_folder: str = "./model_cache"
     ):
-        self._api_key = api_key
         self._model = model
-        self._use_local = use_local
-        self._local_model_name = local_model_name
-        self._client: Optional[Union[NVIDIAEmbeddings, HuggingFaceEmbeddings]] = None
+        self._cache_folder = cache_folder
+        self._client: HuggingFaceEmbeddings = None
 
     @property
-    def client(self) -> Union[NVIDIAEmbeddings, HuggingFaceEmbeddings]:
+    def client(self) -> HuggingFaceEmbeddings:
         if self._client is None:
-            if self._use_local:
-                self._client = HuggingFaceEmbeddings(
-                    model_name=self._local_model_name,
-                    cache_folder='./model_cache'
-                )
-            else:
-                if not self._api_key:
-                    raise ValueError("API key required for NVIDIA embeddings")
-                self._client = NVIDIAEmbeddings(
-                    model=self._model,
-                    nvidia_api_key=self._api_key
-                )
+            self._client = HuggingFaceEmbeddings(
+                model_name=self._model,
+                cache_folder=self._cache_folder
+            )
         return self._client

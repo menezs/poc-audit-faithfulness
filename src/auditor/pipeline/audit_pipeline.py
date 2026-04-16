@@ -37,12 +37,16 @@ class AuditResult:
 class AuditPipeline:
     def __init__(self, settings: Settings):
         self._settings = settings
-        self._llm_service = LLMService(settings.api_key, settings.llm_model, settings.temperature)
-        self._embedding_service = EmbeddingService(
+        self._llm_service = LLMService(
             api_key=settings.api_key,
+            model=settings.llm_model,
+            temperature=settings.temperature,
+            provider=settings.provider,
+            base_url=settings.base_url
+        )
+        self._embedding_service = EmbeddingService(
             model=settings.embedding_model,
-            use_local=settings.use_local_embedding,
-            local_model_name=settings.local_embedding_model
+            cache_folder=settings.embedding_cache_folder
         )
         self._vector_store = VectorStoreService(self._embedding_service)
 

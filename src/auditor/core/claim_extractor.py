@@ -1,11 +1,11 @@
 import json
-from typing import List
+from typing import List, Optional
 from ..models.claim import Claim
 from ..services.llm_service import LLMService
 
 
 class ClaimExtractor:
-    def __init__(self, llm_service: LLMService, system_message: str = None):
+    def __init__(self, llm_service: LLMService, system_message: Optional[str] = None):
         self._llm = llm_service
         self._system_message = system_message or "You are a precise assistant."
 

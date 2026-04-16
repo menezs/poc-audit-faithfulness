@@ -6,7 +6,7 @@ from ..models.verification_result import VerificationResult
 from ..pipeline.audit_pipeline import AuditResult
 
 
-def load_api_key(env_var: str = "NVIDIA_API_KEY") -> str:
+def load_api_key(env_var: str = "OPENAI_API_KEY") -> str:
     api_key = os.getenv(env_var)
     if not api_key:
         raise ValueError(f"{env_var} environment variable not set")

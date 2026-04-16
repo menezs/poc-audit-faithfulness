@@ -1,0 +1,297 @@
+[
+  {
+    "id": 1,
+    "url": "https://arxiv.org/html/2510.06265v2",
+    "paragrafo_citado": "A evolução meteórica dos Modelos de Linguagem de Grande Escala (LLMs) redefiniu as fronteiras do processamento de linguagem natural, permitindo capacidades sem precedentes em geração de texto, tradução e raciocínio complexo. No entanto, essa fluência linguística é frequentemente obscurecida pelo fenômeno das alucinações — a geração de conteúdos sintaticamente plausíveis, porém factualmente incorretos ou não fundamentados em evidências externas (https://arxiv.org/html/2510.06265v2). Este relatório técnico detalha uma pesquisa profunda e sistemática sobre o estado da arte da factualidade em LLMs, abrangendo desde a taxonomia do erro até as métricas de avaliação mais robustas validadas por humanos no período de 2021 a 2025."
+  },
+  {
+    "id": 2,
+    "url": "https://aclanthology.org/2024.emnlp-main.1088.pdf",
+    "paragrafo_citado": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 3,
+    "url": "https://aclanthology.org/2026.findings-eacl.46.pdf",
+    "paragrafo_citado": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 4,
+    "url": "https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+    "paragrafo_citado": "A integridade epistemológica dos LLMs é hoje o principal obstáculo para sua aplicação em domínios críticos como medicina, direito e ciência (https://aclanthology.org/2024.emnlp-main.1088.pdf). Enquanto modelos como o GPT-4o e o Llama 3 demonstram um conhecimento de mundo vasto, a \"factualidade\" — definida como a capacidade de gerar conteúdo consistente com o conhecimento estabelecido — nem sempre caminha em paralelo com a \"fidelidade à fonte\" (https://aclanthology.org/2026.findings-eacl.46.pdf). Esta análise investiga essa tensão fundamental, os avanços em detecção baseada em incerteza e o surgimento de benchmarks específicos para a língua portuguesa, como o PoETa v2 (https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf)."
+  },
+  {
+    "id": 5,
+    "url": "Min et al. (2023)",
+    "paragrafo_citacao": "Min et al. (2023)\nPesquisa de Métricas\nLong-form generation\nWikipedia Biographies\nFactScore"
+  },
+  {
+    "id": 6,
+    "url": "Tjandra et al. (2024)",
+    "paragrafo_citacao": "Tjandra et al. (2024)\nPesquisa Empírica\nOpen-domain QA\nTriviaQA, PopQA\nCHOKE-Score"
+  },
+  {
+    "id": 7,
+    "url": "Guan et al. (2023)",
+    "paragrafo_citacao": "Guan et al. (2023)\nBenchmark\nMultimodal (Vision-Language)\nHallucinationBench\nQuestion-Pair Accuracy\nGitHub\narXiv"
+  },
+  {
+    "id": 8,
+    "url": "l et al. (2023)",
+    "paragrafo_citacao": "l et al. (2023)\na de Métricas\nas,\nBio-Med\nSelfCheckGPT\nckGPT\nAssis et al. (2025)\nPesquisa Empírica\nSumarização, Simplificação, QA\nBluex, TweetSentBR\nLLM-as-a-judge, Human Eval"
+  },
+  {
+    "id": 9,
+    "url": "Hey et al. (2023)",
+    "paragrafo_citacao": "Hey et al. (2023)\nPesquisa de Métricas\nSumarização\nCNN/DM, XSum\nSRLScore"
+  },
+  {
+    "id": 10,
+    "url": "Xu et al. (2025)",
+    "paragrafo_citacao": "Xu et al. (2025)\nTreinamento / Alinhamento\nFactual QA\nInFACT dataset\nFactual Precision/Recall\ngem estocástica detecta alucinações sem recursos externos.\nSabiá-3 e Tucano apresentam robustez competitiva em PT-BR.\nUso de Semantic Role Labeling para extrair tuplas de fatos interpretáveis.\nAlinhar para informatividade também melhora a\nGitHub\narXiv"
+  },
+  {
+    "id": 11,
+    "url": "Síntese Narrativa: Categorias, Tendências e Mecanismos",
+    "paragrafo_citacao": "Decomposição em fatos atômicos permite auditoria fina de biografias.\nModelos podem alucinar com alta certeza mesmo sabendo a resposta correta.\nGPT-4V atinge apenas 31% de acerto em pares de perguntas visuais.\nValidado com custo humano de $26k; alta correlação.\nDesafia a ideia de que incerteza é o único proxy para alucinação.\nFoca em ilusões visuais e viés de linguagem em modelos multimodais.\nManaku\nPesquisar\nBiografias\nWikiBio, SelfChe\nAmostras\nMétodo"
+  },
+  {
+    "id": 12,
+    "url": "https://aclanthology.org/2025.findings-emnlp.1035.pdf",
+    "paragraph_context": "A factualidade em modelos de linguagem evoluiu de uma preocupação secundária para o centro do debate sobre segurança da IA. A análise sistemática dos estudos publicados entre 2021 e 2025 revela quatro tendências macro: a transição de métricas de sobreposição léxica para métricas baseadas em modelos (LLM-as-a-judge), a descoberta de alucinações de \"alta confiança\", o refinamento da avaliação em contextos multimodais e o esforço de soberania linguística em benchmarks não-ingleses (https://aclanthology.org/2025.findings-emnlp.1035.pdf)."
+  },
+  {
+    "id": 13,
+    "url": "https://aclanthology.org/2026.findings-eacl.46.pdf",
+    "paragraph_context": "● Harmful Factuality Hallucination (HFH): Um fenômeno recém-identificado onde o modelo, ao encontrar um erro factual no prompt (ex: \"Quem é o presidente dos EUA, Donald Trump?\" ), corrige a informação com base em seu conhecimento interno (\"Joe Biden\") mesmo quando a tarefa exige fidelidade estrita ao contexto fornecido (https://aclanthology.org/2026.findings-eacl.46.pdf). Este erro é particularmente insidioso em contextos jurídicos e médicos, onde a preservação de erros originais é necessária para análise técnica."
+  },
+  {
+    "id": 14,
+    "url": "https://arxiv.org/html/2502.12964v2",
+    "paragrafo_citado": "Além disso, o estudo CHOKE (Certainty in Hallucinations of Knowledgeable Entities) demonstra que modelos podem alucinar com alta certeza mesmo quando possuem a resposta correta em seus pesos internos (https://arxiv.org/html/2502.12964v2). Isso ocorre devido a perturbações triviais nos prompts ou vieses de decodificação, sugerindo que a factualidade não é apenas uma questão de \"ter o conhecimento\", mas de \"acessar o conhecimento de forma robusta\" durante a inferência."
+  },
+  {
+    "id": 15,
+    "url": "https://aclanthology.org/2022.naacl-main.187.pdf",
+    "paragrafo_citado": "Na tarefa de sumarização, a consistência factual é o critério de qualidade mais crítico. Métricas tradicionais como ROUGE falham severamente por focarem na sobreposição de tokens e ignorarem a semântica factual . O surgimento de frameworks como QAFactEval propôs uma mudança de paradigma: se um resumo é factualmente consistente, as perguntas feitas sobre o resumo devem ter as mesmas respostas quando feitas sobre o documento original (https://aclanthology.org/2022.naacl-main.187.pdf)."
+  },
+  {
+    "id": 16,
+    "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/evaluation/list-of-eval-metrics",
+    "paragrafo_citado": "No contexto de Retrieval-Augmented Generation (RAG), o desafio é o \"groundedness\". Modelos frequentemente ignoram os documentos recuperados em favor de seus próprios vieses pré-treinados, um problema que o framework RAGAS e o métrica FactScore tentam mitigar ao decompor as respostas em alegações atômicas verificáveis (https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/evaluation/list-of-eval-metrics)."
+  },
+  {
+    "id": 17,
+    "url": "https://journals-sol.sbc.org.br/index.php/jbcs/article/view/5814",
+    "paragrafo_citado": "Até 2023, a maioria das avaliações de factualidade era centrada no inglês, frequentemente utilizando traduções automáticas que perdiam nuances culturais. O benchmark PoETa v2 (2025) e o estudo \"Brazil's LLM Fauna\" representam marcos para a soberania tecnológica em língua portuguesa (https://journals-sol.sbc.org.br/index.php/jbcs/article/view/5814)."
+  },
+  {
+    "id": 18,
+    "url": "https://arxiv.org/html/2310.14566v5",
+    "paragrafo_contexto": "Com o advento de modelos como GPT-4V e Gemini Pro, as alucinações se estenderam para o domínio visual. O HallusionBench revelou que os modelos sofrem de \"viés de linguagem\": se uma imagem é ambígua, o modelo tende a descrever o que é estatisticamente comum em texto, ignorando os detalhes visuais contraditórios (https://arxiv.org/html/2310.14566v5)."
+  },
+  {
+    "id": 19,
+    "url": "https://arxiv.org/html/2509.16538v2",
+    "paragrafo_contexto": "Métricas como o VC-Inspector agora tentam avaliar a qualidade de legendas de vídeo sem depender de referências humanas, focando na presença factual de objetos e ações (https://arxiv.org/html/2509.16538v2)."
+  },
+  {
+    "id": 20,
+    "url": "https://aclanthology.org/2023.starsem-1.9.pdf",
+    "contexto": "● SRLScore: Utiliza Semantic Role Labeling para extrair tuplas (quem fez o quê, para quem, onde). A comparação entre as tuplas do texto gerado e da fonte permite uma avaliação altamente interpretável (https://aclanthology.org/2023.starsem-1.9.pdf)."
+  },
+  {
+    "id": 21,
+    "url": "https://medium.com/@zlatkov/deep-dive-into-g-eval-how-llms-evaluate-themselves-743624d22bf7",
+    "contexto": "● G-Eval: Utiliza o GPT-4o com rubricas de linguagem natural (ex: \"Dê uma nota de 1 a 5 para a factualidade deste parágrafo\"). Utiliza a normalização de probabilidades dos tokens de nota para aumentar a robustez (https://medium.com/@zlatkov/deep-dive-into-g-eval-how-llms-evaluate-themselves-743624d22bf7)."
+  },
+  {
+    "id": 22,
+    "url": "PoETa v2 (Benchmark)",
+    "contexto_citacao": "4. Fragilidade Multilingue em Domínios Técnicos\nBenchmarks como PoETa v2 são excelentes para cultura geral, mas faltam avaliações para o português jurídico ou médico .\n\n●  Proposta: Colaboração entre especialistas de domínio e pesquisadores de NLP para criar o \"PT-MedFact\", um dataset de prontuários médicos sintéticos em português para avaliar a precisão de resumos clínicos."
+  },
+  {
+    "id": 23,
+    "url": "Li et al. (2026). Harmful Factuality: LLMs Correcting What They Shouldn’t.",
+    "contexto_citacao": "1. Li et al. (2026). Harmful Factuality: LLMs Correcting What They Shouldn’t.\n\n○ Contribuição: Identifica o conflito entre conhecimento de mundo e fidelidade à fonte. Demonstra que o aumento da escala do modelo agrava a tendência de corrigir fontes externas de forma não autorizada. Essencial para entender os limites do grounding ."
+  },
+  {
+    "id": 24,
+    "url": "Fabbri et al. (2022). QAFactEval: Improved QA-Based Factual Consistency Evaluation for Summarization.",
+    "context_paragraph": "2. Fabbri et al. (2022). QAFactEval: Improved QA-Based Factual Consistency Evaluation for Summarization.\n○  Contribuição: Otimiza todos os componentes do pipeline de QA para avaliação.\n\nProva que a escolha do modelo de geração de perguntas e o critério de sobreposição de respostas são determinantes para a acurácia da métrica ."
+  },
+  {
+    "id": 25,
+    "url": "Almeida et al. (2025). PoETa v2: Toward More Robust Evaluation of Large Language Models in Portuguese.",
+    "context_paragraph": "3. Almeida et al. (2025). PoETa v2: Toward More Robust Evaluation of Large Language Models in Portuguese.\n○  Contribuição: Estabelece o padrão de ouro para avaliação de LLMs em português, cobrindo 44 tarefas. Introduz a métrica NPM para permitir a comparação justa entre modelos de diferentes escalas."
+  },
+  {
+    "id": 26,
+    "url": "Min et al. (2023). FactScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation.",
+    "context_paragraph": "4. Min et al. (2023). FactScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation.\n○  Contribuição: Propõe a atomização do conhecimento como forma de avaliação interpretável. Foi usado para auditar modelos comerciais e mostrou que mesmo o GPT-4 tem dificuldades com fatos de \"cauda longa\" (informações raras) ."
+  },
+  {
+    "id": 27,
+    "url": "Manakul et al. (2023). SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection.",
+    "context_paragraph": "5. Manakul et al. (2023). SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection.\n○  Contribuição: Resolve o problema de custo de verificação ao usar a própria consistência interna do modelo como sinal de verdade. É a base para muitos sistemas de monitoramento de alucinações em tempo real ."
+  },
+  {
+    "id": 28,
+    "url": "Tjandra et al. (2024). Certainty in Hallucinations of Knowledgeable Entities (CHOKE).",
+    "context_paragraph": "6. Tjandra et al. (2024). Certainty in Hallucinations of Knowledgeable Entities (CHOKE).\n○  Contribuição: Desmitifica a relação direta entre confiança do modelo e verdade. Revela que o \"viés de forma\" do prompt pode forçar o modelo a mentir mesmo quando ele possui o fato correto ."
+  },
+  {
+    "id": 29,
+    "url": "Guan et al. (2023). HallusionBench: An Advanced Diagnostic Suite for LVLMs.",
+    "context_paragraph": "7. Guan et al. (2023). HallusionBench: An Advanced Diagnostic Suite for LVLMs.\n○  Contribuição: Primeiro benchmark a diagnosticar sistematicamente falhas de raciocínio visual e conhecimento em modelos multimodais, expondo a fragilidade do alinhamento visão-texto ."
+  },
+  {
+    "id": 30,
+    "url": "Hey et al. (2023). SRLScore: Reference-free Evaluation Metric for Text",
+    "context_paragraph": "8. Hey et al. (2023). SRLScore: Reference-free Evaluation Metric for Text"
+  },
+  {
+    "id": 31,
+    "url": "https://aclanthology.org/2026.findings-eacl.46.pdf",
+    "context_paragraph": "A factualidade em LLMs não é um estado binário, mas uma propriedade emergente que\ndepende da interação entre o conhecimento pré-treinado, a fidelidade ao contexto e o\nmecanismo de decodificação. Para profissionais de NLP e bibliotecários de dados, as seguintes\nrecomendações são fundamentais:\n\n1.  Diversificação de Métricas: Nunca dependa de uma única métrica (especialmente\nBLEU/ROUGE). Combine FactScore para precisão atômica com SelfCheckGPT para\ndetecção de incerteza .\n\n2.  Priorização do Grounding: Em sistemas de produção, o uso de RAG com métricas de\nfidelidade (como QAFactEval) é preferível ao uso de modelos \"puros\" em modo de\nresposta livre .\n\n3.  Atenção ao Português: Utilize modelos como Sabiá-3 ou Tucano para tarefas que\nexigem conhecimento específico do contexto brasileiro, validando os resultados com o\nbenchmark PoETa v2 .\n\n4.  Mitigação de HFH: Ao usar LLMs para resumir ou traduzir documentos que podem\nconter erros intencionais ou técnicos, utilize prompts que enfatizem explicitamente: \"Não\ncorrija inconsistências factuais presentes no texto original\" .\n\nO campo caminha para modelos \"auto-corretivos\", onde a inferência inclui etapas de verificação\ninterna e consulta a bases de conhecimento dinâmicas. A factualidade deixará de ser um\n\"acidente estatístico\" para se tornar uma garantia arquitetônica nos próximos anos ."
+  },
+  {
+    "id": 32,
+    "url": "https://aclanthology.org/2024.emnlp-main.1088.pdf",
+    "context_paragraph": "A factualidade em LLMs não é um estado binário, mas uma propriedade emergente que\ndepende da interação entre o conhecimento pré-treinado, a fidelidade ao contexto e o\nmecanismo de decodificação. Para profissionais de NLP e bibliotecários de dados, as seguintes\nrecomendações são fundamentais:\n\n1.  Diversificação de Métricas: Nunca dependa de uma única métrica (especialmente\nBLEU/ROUGE). Combine FactScore para precisão atômica com SelfCheckGPT para\ndetecção de incerteza .\n\n2.  Priorização do Grounding: Em sistemas de produção, o uso de RAG com métricas de\nfidelidade (como QAFactEval) é preferível ao uso de modelos \"puros\" em modo de\nresposta livre .\n\n3.  Atenção ao Português: Utilize modelos como Sabiá-3 ou Tucano para tarefas que\nexigem conhecimento específico do contexto brasileiro, validando os resultados com o\nbenchmark PoETa v2 .\n\n4.  Mitigação de HFH: Ao usar LLMs para resumir ou traduzir documentos que podem\nconter erros intencionais ou técnicos, utilize prompts que enfatizem explicitamente: \"Não\ncorrija inconsistências factuais presentes no texto original\" .\n\nO campo caminha para modelos \"auto-corretivos\", onde a inferência inclui etapas de verificação\ninterna e consulta a bases de conhecimento dinâmicas. A factualidade deixará de ser um\n\"acidente estatístico\" para se tornar uma garantia arquitetônica nos próximos anos ."
+  },
+  {
+    "id": 33,
+    "url": "https://aclanthology.org/2025.emnlp-main.645.pdf",
+    "context_paragraph": "A factualidade em LLMs não é um estado binário, mas uma propriedade emergente que\ndepende da interação entre o conhecimento pré-treinado, a fidelidade ao contexto e o\nmecanismo de decodificação. Para profissionais de NLP e bibliotecários de dados, as seguintes\nrecomendações são fundamentais:\n\n1.  Diversificação de Métricas: Nunca dependa de uma única métrica (especialmente\nBLEU/ROUGE). Combine FactScore para precisão atômica com SelfCheckGPT para\ndetecção de incerteza .\n\n2.  Priorização do Grounding: Em sistemas de produção, o uso de RAG com métricas de\nfidelidade (como QAFactEval) é preferível ao uso de modelos \"puros\" em modo de\nresposta livre .\n\n3.  Atenção ao Português: Utilize modelos como Sabiá-3 ou Tucano para tarefas que\nexigem conhecimento específico do contexto brasileiro, validando os resultados com o\nbenchmark PoETa v2 .\n\n4.  Mitigação de HFH: Ao usar LLMs para resumir ou traduzir documentos que podem\nconter erros intencionais ou técnicos, utilize prompts que enfatizem explicitamente: \"Não\ncorrija inconsistências factuais presentes no texto original\" .\n\nO campo caminha para modelos \"auto-corretivos\", onde a inferência inclui etapas de verificação\ninterna e consulta a bases de conhecimento dinâmicas. A factualidade deixará de ser um\n\"acidente estatístico\" para se tornar uma garantia arquitetônica nos próximos anos ."
+  },
+  {
+    "id": 34,
+    "url": "https://arxiv.org/html/2408.14317v2",
+    "context_paragraph": "A factualidade em LLMs não é um estado binário, mas uma propriedade emergente que\ndepende da interação entre o conhecimento pré-treinado, a fidelidade ao contexto e o\nmecanismo de decodificação. Para profissionais de NLP e bibliotecários de dados, as seguintes\nrecomendações são fundamentais:\n\n1.  Diversificação de Métricas: Nunca dependa de uma única métrica (especialmente\nBLEU/ROUGE). Combine FactScore para precisão atômica com SelfCheckGPT para\ndetecção de incerteza .\n\n2.  Priorização do Grounding: Em sistemas de produção, o uso de RAG com métricas de\nfidelidade (como QAFactEval) é preferível ao uso de modelos \"puros\" em modo de\nresposta livre .\n\n3.  Atenção ao Português: Utilize modelos como Sabiá-3 ou Tucano para tarefas que\nexigem conhecimento específico do contexto brasileiro, validando os resultados com o\nbenchmark PoETa v2 .\n\n4.  Mitigação de HFH: Ao usar LLMs para resumir ou traduzir documentos que podem\nconter erros intencionais ou técnicos, utilize prompts que enfatizem explicitamente: \"Não\ncorrija inconsistências factuais presentes no texto original\" .\n\nO campo caminha para modelos \"auto-corretivos\", onde a inferência inclui etapas de verificação\ninterna e consulta a bases de conhecimento dinâmicas. A factualidade deixará de ser um\n\"acidente estatístico\" para se tornar uma garantia arquitetônica nos próximos anos ."
+  },
+  {
+    "id": 35,
+    "url": "https://arxiv.org/html/2508.03860",
+    "contexto_de_citacao": "ArXiv Review. (2025). LLM Fact-Checking Systems."
+  },
+  {
+    "id": 36,
+    "url": "https://www.diva-portal.org/smash/get/diva2:1938959/FULLTEXT02",
+    "contexto_de_citacao": "DIVA Portal. (2025). Specificity and Factuality in LLMs."
+  },
+  {
+    "id": 37,
+    "url": "https://deepchecks.com/llm-hallucination-detection-and-mitigation-best-techniques/",
+    "contexto_de_citacao": "Deepchecks. (2025). Hallucination Detection Techniques."
+  },
+  {
+    "id": 38,
+    "url": "https://arxiv.org/html/2502.12964v1",
+    "contexto_de_citacao": "Tjandra, A., et al. (2024). CHOKE: Certainty in Hallucinations. arXiv v1."
+  },
+  {
+    "id": 39,
+    "url": "https://arxiv.org/html/2502.12964v2",
+    "contexto_de_citacao": "Tjandra, A., et al. (2025). CHOKE: Certainty in Hallucinations v2. arXiv."
+  },
+  {
+    "id": 40,
+    "url": "https://medium.com/cvs-health-tech-blog/detecting-llm-hallucinations-at-generation-time-with-uqlm-cd749d2338ec",
+    "contexto_de_citacao": "CVS Health Tech. (2024). UQLM: Hallucination Detection at Generation Time."
+  },
+  {
+    "id": 41,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12969083/",
+    "contexto_de_citacao": "PMC. (2025). AI-generated Misinformation in Portuguese."
+  },
+  {
+    "id": 42,
+    "url": "https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+    "contexto_de_citacao": "Almeida, T. R. S., et al. (2025). PoETa v2: Evaluation in Portuguese. IEEE."
+  },
+  {
+    "id": 43,
+    "url": "https://arxiv.org/pdf/2509.08960",
+    "contexto_de_citacao": "Almeida, T. R. S., et al. (2025). BRoverbs: Brazilian Proverbs Dataset. arXiv."
+  },
+  {
+    "id": 44,
+    "url": "https://journals-sol.sbc.org.br/index.php/jbcs/article/view/5814",
+    "contexto_de_citacao": "Assis, G., et al. (2025). Exploring Brazil's LLM Fauna. JBCS."
+  },
+  {
+    "id": 45,
+    "url": "https://aclanthology.org/2026.eacl-long.252.pdf",
+    "contexto_de_citacao": "Bai, Y., et al. (2026). TACO: Mitigating Multimodal Hallucinations. EACL 2026."
+  },
+  {
+    "id": 46,
+    "url": "https://arxiv.org/html/2507.19024v2",
+    "contexto_de_citacao": "ArXiv Survey. (2025). Hallucination Evaluation in MLLMs."
+  },
+  {
+    "id": 47,
+    "url": "https://arxiv.org/html/2310.14566v5",
+    "contexto_de_citacao": "Guan, T., et al. (2023). HallusionBench: Diagnostic Suite for LVLMs. arXiv."
+  },
+  {
+    "id": 48,
+    "url": "https://www.preprints.org/manuscript/202602.0467",
+    "contexto_de_citacao": "Preprints. (2026). Multimodal Hallucination Benchmarks."
+  },
+  {
+    "id": 49,
+    "url": "https://www.semanticscholar.org/paper/Hallusionbench%3A-An-Advanced-Diagnostic-Suite-for-i n-Guan-Liu/0b395ed1c8b284e551172b728e83cf257e33729a",
+    "contexto_de_citacao": "Semantic Scholar. (2023). HallusionBench Analysis."
+  },
+  {
+    "id": 50,
+    "url": "https://ai.meta.com/research/publications/factscore-fine-grained-atomic-evaluation-of-factual-precision-in-long-form-text-generation/",
+    "contexto_citacao": "Meta AI. (2023). FactScore Research Publication.\nhttps://ai.meta.com/research/publications/factscore-fine-grained-atomic-evaluation-of-factual-precision-in-long-form-text-generation/"
+  },
+  {
+    "id": 51,
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/8b8a7960d343e023a6a0afe37eee6022-Paper-Datasets_and_Benchmarks.pdf",
+    "contexto_citacao": "NeurIPS. (2023). FELM: Factuality Evaluation for LLMs.\nhttps://proceedings.neurips.cc/paper_files/paper/2023/file/8b8a7960d343e023a6a0afe37eee60\n22-Paper-Datasets_and_Benchmarks.pdf"
+  },
+  {
+    "id": 52,
+    "url": "https://openreview.net/forum?id=lkrH6ovzsj",
+    "contexto_citacao": "OpenReview. (2024). Multilingual FactScore Evaluation.\nhttps://openreview.net/forum?id=lkrH6ovzsj"
+  },
+  {
+    "id": 53,
+    "url": "https://aclanthology.org/2023.starsem-1.9.pdf",
+    "contexto_citacao": "Hey, J., et al. (2023). SRLScore: Reference-free Metric. StarSEM 2023.\nhttps://aclanthology.org/2023.starsem-1.9.pdf"
+  },
+  {
+    "id": 54,
+    "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/evaluation/list-of-eval-metrics",
+    "contexto_citacao": "Microsoft. (2025). Generative AI Evaluation Playbook.\nhttps://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/evaluation/list-of-eval-metrics"
+  },
+  {
+    "id": 55,
+    "url": "https://www.sciencepublishinggroup.com/article/10.11648/j.ajai.20261001.16",
+    "contexto_citacao": "Science Publishing Group. (2026). Factual Consistency in LLMs Survey.\nhttps://www.sciencepublishinggroup.com/article/10.11648/j.ajai.20261001.16"
+  },
+  {
+    "id": 56,
+    "url": "https://aimultiple.com/ai-hallucination-detection",
+    "contexto_citacao": "AiMultiple. (2025). Hallucination Detection Tools Review.\nhttps://aimultiple.com/ai-hallucination-detection"
+  },
+  {
+    "id": 57,
+    "url": "https://arxiv.org/html/2509.16538v2",
+    "contexto_citacao": "ArXiv. (2025). VC-Inspector: Video Caption Evaluation.\nhttps://arxiv.org/html/2509.16538v2"
+  },
+  {
+    "id": 58,
+    "url": "https://aclanthology.org/2024.findings-emnlp.685.pdf",
+    "contexto_citacao": "EMNLP. (2024). PHD: Passage-level Hallucination Detection.\nhttps://aclanthology.org/2024.findings-emnlp.685.pdf"
+  },
+  {
+    "id": 59,
+    "url": "https://arxiv.org/pdf/2309.05922",
+    "contexto_citacao": "ArXiv. (2023). Chain of Knowledge for LLMs.\nhttps://arxiv.org/pdf/2309.05922"
+  }
+]

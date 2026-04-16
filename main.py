@@ -11,14 +11,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from src.auditor import AuditPipeline
-from src.auditor.utils import print_result, save_result_json
+from src.auditor.utils import save_result_json
 
 
-def main():
-    api_key = os.getenv("NVIDIA_API_KEY")
-    if not api_key:
-        print("Erro: NVIDIA_API_KEY não configurada", file=sys.stderr)
-        print("Defina a variável de ambiente NVIDIA_API_KEY", file=sys.stderr)
+def main() -> None:
+    api_key = os.getenv("OPENAI_API_KEY", "")
+    provider = os.getenv("LLM_PROVIDER", "openai")
+
+    if not api_key and provider != "ollama":
+        print("Erro: OPENAI_API_KEY não configurada", file=sys.stderr)
+        print("Defina a variável de ambiente OPENAI_API_KEY ou use LLM_PROVIDER=ollama", file=sys.stderr)
         sys.exit(1)
 
     pipeline = AuditPipeline.create_from_env()
@@ -35,7 +37,6 @@ def main():
     ]
 
     result = pipeline.audit(answer, documents)
-    # print_result(result)
 
     filepath = save_result_json(result)
     print(f"\nResultado salvo em: {filepath}")
