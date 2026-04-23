@@ -1,0 +1,470 @@
+[
+  {
+    "answer": "answers/gemini_Factualidade_em_LLMs_Benchmark.md",
+    "documents": [
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_1.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_2.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_3.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_5.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_6.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_7.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_8.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_9.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_11.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_12.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_13.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_14.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_16.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_17.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_18.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_19.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_20.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_22.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_23.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_24.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_26.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_29.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_30.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_31.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_32.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_35.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_36.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_38.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_39.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_40.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_41.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_42.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_43.md"
+    ],
+    "errors": [
+      {
+        "url": "https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+        "error_type": "HTTPError",
+        "error_message": "420 Client Error:  for url: https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+        "reference_id": 4
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-ll ms/evaluation/list-of-eval-metrics",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-ll ms/evaluation/list-of-eval-metrics",
+        "reference_id": 10
+      },
+      {
+        "url": "https://medium.com/@zlatkov/deep-dive-into-g-eval-how-llms-evaluate-themselves-743624d22bf7",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://medium.com/@zlatkov/deep-dive-into-g-eval-how-llms-evaluate-themselves-743624d22bf7",
+        "reference_id": 15
+      },
+      {
+        "url": "https://www.diva-portal.org/smash/get/diva2:1938959/FULLTEXT02",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.diva-portal.org/smash/get/diva2:1938959/FULLTEXT02",
+        "reference_id": 21
+      },
+      {
+        "url": "https://medium.com/cvs-health-tech-blog/detecting-llm-hallucinations-at-generation-time-with-uqlm-cd749d2338ec",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://medium.com/cvs-health-tech-blog/detecting-llm-hallucinations-at-generation-time-with-uqlm-cd749d2338ec",
+        "reference_id": 25
+      },
+      {
+        "url": "https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+        "error_type": "HTTPError",
+        "error_message": "420 Client Error:  for url: https://ieeexplore.ieee.org/iel8/6287639/10820123/11303664.pdf",
+        "reference_id": 27
+      },
+      {
+        "url": "https://arxiv.org/pdf/2509.08960",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://arxiv.org/pdf/2509.08960",
+        "reference_id": 28
+      },
+      {
+        "url": "https://www.preprints.org/manuscript/202602.0467",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.preprints.org/manuscript/202602.0467",
+        "reference_id": 33
+      },
+      {
+        "url": "https://www.semanticscholar.org/paper/Hallusionbench%3A-An-Advanced-Diagnostic-Suite-for-i n-Guan-Liu/0b395ed1c8b284e551172b728e83cf257e33729a",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.semanticscholar.org/paper/Hallusionbench%3A-An-Advanced-Diagnostic-Suite-for-i n-Guan-Liu/0b395ed1c8b284e551172b728e83cf257e33729a",
+        "reference_id": 34
+      },
+      {
+        "url": "https://openreview.net/forum?id=lkrH6ovzsj",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://openreview.net/forum?id=lkrH6ovzsj",
+        "reference_id": 37
+      },
+      {
+        "url": "https://arxiv.org/pdf/2309.05922",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://arxiv.org/pdf/2309.05922",
+        "reference_id": 44
+      }
+    ]
+  },
+  {
+    "answer": "answers/chatGPT_deep_research_report.md",
+    "documents": [
+      "documents/chatGPT_deep_research_report_doc_1.md",
+      "documents/chatGPT_deep_research_report_doc_2.md",
+      "documents/chatGPT_deep_research_report_doc_3.md",
+      "documents/chatGPT_deep_research_report_doc_4.md",
+      "documents/chatGPT_deep_research_report_doc_5.md",
+      "documents/chatGPT_deep_research_report_doc_7.md",
+      "documents/chatGPT_deep_research_report_doc_8.md"
+    ],
+    "errors": [
+      {
+        "url": "https://www.nature.com/articles/s41586-024-07421-0",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.nature.com/articles/s41586-024-07421-0",
+        "reference_id": 6
+      },
+      {
+        "url": "https://doi.org/Hendrycks_et_al_2021",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/Hendrycks_et_al_2021",
+        "reference_id": 9
+      },
+      {
+        "url": "https://doi.org/FELM_37L31-L39",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/FELM_37L31-L39",
+        "reference_id": 10
+      },
+      {
+        "url": "https://doi.org/QAFactEval_15L628-L636",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/QAFactEval_15L628-L636",
+        "reference_id": 11
+      },
+      {
+        "url": "https://doi.org/Farquhar_et_al_2024_30L79-L88",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/Farquhar_et_al_2024_30L79-L88",
+        "reference_id": 12
+      },
+      {
+        "url": "https://doi.org/Survey_EMNLP_2024_3L19-L26",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/Survey_EMNLP_2024_3L19-L26",
+        "reference_id": 13
+      },
+      {
+        "url": "https://doi.org/34L77-L86",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/34L77-L86",
+        "reference_id": 14
+      },
+      {
+        "url": "https://doi.org/Mujahid_et_al_2025_34L43-L52",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/Mujahid_et_al_2025_34L43-L52",
+        "reference_id": 15
+      },
+      {
+        "url": "https://doi.org/surveys_3L17-L26",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/surveys_3L17-L26",
+        "reference_id": 16
+      },
+      {
+        "url": "https://citation-reference/28",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/28",
+        "reference_id": 17
+      },
+      {
+        "url": "https://citation-reference/18",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/18",
+        "reference_id": 18
+      },
+      {
+        "url": "https://citation-reference/43",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/43",
+        "reference_id": 19
+      },
+      {
+        "url": "https://citation-reference/37",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/37",
+        "reference_id": 20
+      },
+      {
+        "url": "https://citation-reference/34",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/34",
+        "reference_id": 21
+      },
+      {
+        "url": "https://citation-reference/39",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-reference/39",
+        "reference_id": 22
+      },
+      {
+        "url": "https://citation.example.com/Wang_2022",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/Wang_2022",
+        "reference_id": 23
+      },
+      {
+        "url": "https://citation.example.com/Scialom_2021",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/Scialom_2021",
+        "reference_id": 24
+      },
+      {
+        "url": "https://citation.example.com/Durmus_et_al_2020",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/Durmus_et_al_2020",
+        "reference_id": 25
+      },
+      {
+        "url": "https://citation.example.com/QAFactEval_2022",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/QAFactEval_2022",
+        "reference_id": 26
+      },
+      {
+        "url": "https://citation.example.com/Bongini_2020",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/Bongini_2020",
+        "reference_id": 27
+      },
+      {
+        "url": "https://doi.org/kryscinski2020",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/kryscinski2020",
+        "reference_id": 28
+      },
+      {
+        "url": "https://doi.org/zhang2020",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/zhang2020",
+        "reference_id": 29
+      },
+      {
+        "url": "https://doi.org/farquhar2024",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/farquhar2024",
+        "reference_id": 30
+      },
+      {
+        "url": "https://doi.org/27",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/27",
+        "reference_id": 31
+      },
+      {
+        "url": "https://doi.org/27",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/27",
+        "reference_id": 32
+      },
+      {
+        "url": "https://doi.org/9",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/9",
+        "reference_id": 33
+      },
+      {
+        "url": "https://doi.org/34",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/34",
+        "reference_id": 34
+      },
+      {
+        "url": "https://doi.org/41",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/41",
+        "reference_id": 35
+      },
+      {
+        "url": "https://doi.org/emnlp-2024/wang_et_al",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp-2024/wang_et_al",
+        "reference_id": 36
+      },
+      {
+        "url": "https://doi.org/emnlp-2023/min_et_al",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp-2023/min_et_al",
+        "reference_id": 37
+      },
+      {
+        "url": "https://doi.org/emnlp-2023/liu_wan",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp-2023/liu_wan",
+        "reference_id": 38
+      },
+      {
+        "url": "https://arxiv.org/abs/factcheck-gpt-wang2023",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://arxiv.org/abs/factcheck-gpt-wang2023",
+        "reference_id": 39
+      },
+      {
+        "url": "https://arxiv.org/abs/plainqafact-youguo2025",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://arxiv.org/abs/plainqafact-youguo2025",
+        "reference_id": 40
+      },
+      {
+        "url": "https://doi.org/nature-farquhar2024",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/nature-farquhar2024",
+        "reference_id": 41
+      },
+      {
+        "url": "https://proceedings.neurips.cc/paper/2023/felm-chenetal",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://proceedings.neurips.cc/paper/2023/felm-chenetal",
+        "reference_id": 42
+      },
+      {
+        "url": "https://arxiv.org/abs/long-summaries-metrics-mujahid2025",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://arxiv.org/abs/long-summaries-metrics-mujahid2025",
+        "reference_id": 43
+      },
+      {
+        "url": "https://doi.org/ai-review-rahman2026",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/ai-review-rahman2026",
+        "reference_id": 44
+      },
+      {
+        "url": "https://doi.org/placeholder/kryscinski2020",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/kryscinski2020",
+        "reference_id": 45
+      },
+      {
+        "url": "https://doi.org/placeholder/huangetal2022",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/huangetal2022",
+        "reference_id": 46
+      },
+      {
+        "url": "https://doi.org/placeholder/scialometal2021",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/scialometal2021",
+        "reference_id": 47
+      },
+      {
+        "url": "https://doi.org/placeholder/labanetal2022",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/labanetal2022",
+        "reference_id": 48
+      },
+      {
+        "url": "https://doi.org/placeholder/liuetal2024",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/liuetal2024",
+        "reference_id": 49
+      },
+      {
+        "url": "https://doi.org/placeholder/zhuoetal2023",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/zhuoetal2023",
+        "reference_id": 50
+      },
+      {
+        "url": "https://doi.org/emnlp2024/factuality-llm-survey",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp2024/factuality-llm-survey",
+        "reference_id": 51
+      },
+      {
+        "url": "https://doi.org/emnlp2023/factscore-atomic-evaluation",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp2023/factscore-atomic-evaluation",
+        "reference_id": 52
+      },
+      {
+        "url": "https://doi.org/emnlp2023/models-see-hallucinations",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp2023/models-see-hallucinations",
+        "reference_id": 53
+      },
+      {
+        "url": "https://doi.org/arxiv.org/factcheck-gpt",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/arxiv.org/factcheck-gpt",
+        "reference_id": 54
+      },
+      {
+        "url": "https://doi.org/arxiv.org/plainqafact",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/arxiv.org/plainqafact",
+        "reference_id": 55
+      },
+      {
+        "url": "https://doi.org/nature/hallucination-llm-semantic",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/nature/hallucination-llm-semantic",
+        "reference_id": 56
+      },
+      {
+        "url": "https://doi.org/neurips2023/felm-benchmarking",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/neurips2023/felm-benchmarking",
+        "reference_id": 57
+      },
+      {
+        "url": "https://doi.org/arxiv.org/stress-testing-factual-consistency",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/arxiv.org/stress-testing-factual-consistency",
+        "reference_id": 58
+      },
+      {
+        "url": "https://doi.org/ai-review/hallucination-truth-review",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/ai-review/hallucination-truth-review",
+        "reference_id": 59
+      },
+      {
+        "url": "https://doi.org/emnlp2020/factcc-consistency",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp2020/factcc-consistency",
+        "reference_id": 60
+      },
+      {
+        "url": "https://doi.org/icml2022/truthfulqa-measuring",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/icml2022/truthfulqa-measuring",
+        "reference_id": 61
+      },
+      {
+        "url": "https://doi.org/emnlp2021/questeval-question-generation",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/emnlp2021/questeval-question-generation",
+        "reference_id": 62
+      },
+      {
+        "url": "https://doi.org/acl2022/summac-consistency",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/acl2022/summac-consistency",
+        "reference_id": 63
+      },
+      {
+        "url": "https://doi.org/naacl2023/g-eval-explainable",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/naacl2023/g-eval-explainable",
+        "reference_id": 64
+      },
+      {
+        "url": "https://doi.org/survey/diversity-factuality",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/survey/diversity-factuality",
+        "reference_id": 65
+      }
+    ]
+  }
+]

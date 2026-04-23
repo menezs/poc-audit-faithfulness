@@ -9,9 +9,9 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 - **Verificação**: Classifica afirmações como `SUPPORTED`, `PARTIAL` ou `NOT_SUPPORTED`
 - **Pontuação**: Calcula score de 0 a 1 baseado nas verificações
 - **Embeddings Locais**: Usa `sentence-transformers/all-MiniLM-L6-v2` via HuggingFace
-- **Deep Research**: Integração com Perplexity e OpenAI para pesquisas aprofundadas
-- **Barra de Progresso**: Visualização do andamento da auditoria
-- **Resultados em JSON**: Salva resultados em arquivos JSON estruturados
+- **Extração de Referências**: Extrai URLs de referências de arquivos markdown e baixa conteúdo
+- **Pipeline Integrado**: Executa todo o fluxo de auditoria em um único comando
+- **Resultados em JSON**: Salva resultados em arquivos JSON estruturados por answer
 - **Múltiplos Providers LLM**: Suporte a OpenAI (inclui LM Studio) e Ollama
 - **POO**: Código estruturado com classes e serviços separados
 - **Type Hints**: Sistema fortemente tipado
@@ -21,7 +21,6 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 
 - Python 3.8+
 - API Key da OpenAI (para modelos OpenAI/LM Studio) - opcional para Ollama
-- API Key da Perplexity (para deep research)
 - Ollama ou LM Studio instalados localmente (opcional)
 
 ### Dependências
@@ -37,10 +36,11 @@ faiss-cpu
 numpy
 tqdm
 requests
-perplexity
 openai
 sentence-transformers
 dotenv
+trafilatura
+pymupdf4llm
 ```
 
 ## Instalação
@@ -53,48 +53,143 @@ pip install -r requirements.txt
 
 ```
 AuditorFidelidade/
-├── main.py                    # Entry point
-├── teste.py                   # Exemplo de uso do ReferenceExtractor
+├── main.py                                         # Entry point principal (fluxo integrado)
+├── answers/                                        # Arquivos de resposta (.md)
+│   ├── gemini_Factualidade_em_LLMs_Benchmark.md
+│   └── chatGPT_deep_research_report.md
+├── documents/                                      # Documentos de referência baixados (.md)
+├── register/                                       # Registro de downloads e erros
+│   └── register.json
+├── results/                                        # Resultados da auditoria
+│   └── AnswerName/
+│       └── audit_*.json
 ├── requirements.txt
-├── .env                       # Variáveis de ambiente
-├── .env.example               # Exemplo de variáveis de ambiente
+├── .env
+├── .env.example
 ├── README.md
 └── src/
     └── auditor/
-        ├── __init__.py       # Versão e exports
+        ├── __init__.py
         ├── config/
-        │   └── settings.py  # Configurações (Settings)
+        │   └── settings.py
         ├── models/
-        │   ├── claim.py           # Modelo Claim
-        │   └── verification_result.py  # Modelo VerificationResult
+        │   ├── claim.py
+        │   └── verification_result.py
         ├── services/
-        │   ├── llm_service.py       # Serviço LLM (OpenAI/Ollama)
-        │   ├── embedding_service.py  # Serviço de Embeddings (HuggingFace)
-        │   ├── vector_store.py      # VectorStore (FAISS)
-        │   ├── perplexity_service.py # Deep Research via Perplexity
-        │   ├── openai_service.py    # Deep Research via OpenAI
-        │   ├── reference_extractor.py # Extração de referências de markdown
-        │   └── file_converter.py    # Conversão de arquivos para markdown
+        │   ├── llm_service.py
+        │   ├── embedding_service.py
+        │   ├── vector_store.py
+        │   ├── reference_extractor.py
+        │   └── file_converter.py
         ├── core/
-        │   ├── claim_extractor.py    # Extrator de Claims
-        │   ├── retriever.py          # Recuperador de evidências (FAISS)
-        │   ├── verifier.py           # Verificador
-        │   └── scorer.py             # Calculador de score
+        │   ├── claim_extractor.py
+        │   ├── retriever.py
+        │   ├── verifier.py
+        │   └── scorer.py
         ├── pipeline/
-        │   └── audit_pipeline.py    # Pipeline principal
+        │   └── audit_pipeline.py
         └── utils/
-            └── helpers.py            # Utilitários (print_result, save_result_json)
+            └── helpers.py
 ```
+
+## Fluxo de Execução
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                         main.py                                        │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│   ┌──────────────┐      ┌──────────────┐      ┌──────────────────┐     │
+│   │ answers/*.md │◀───▶│ register.json│◀───▶│ documents/*.md   │     │
+│   └──────────────┘      └──────────────┘      └──────────────────┘     │
+│         ▲                       │                      ▲               │
+│         │                       │                      │               │
+│         │                       │                      │               │
+│         │                       │                      │               │
+│         ▼                       ▼                      ▼               │
+│   ┌─────────────┐      ┌─────────────────┐      ┌──────────────┐       │
+│   │  Ler todos  │      │ Tem documentos? │      │  Ler todos   │       │
+│   │answers/*.md │      └────────┬────────┘      │documents/*.md│       │
+│   └─────────────┘               │               └──────────────┘       │
+│                                 │                                      │
+│                        ┌───NÃO──┴───SIM──┐                             │
+│                        ▼                 ▼                             │
+│                   ┌─────────────┐      ┌──────────┐                    │
+│                   │ download_   │ ───> │ pipeline │                    │
+│                   │references() │      │.audit()  │                    │
+│                   └─────────────┘      └────┬─────┘                    │
+│                                             │                          │
+│                                             ▼                          │
+│                                  ┌────────────────────┐                │
+│                                  │  Salvar            │                │
+│                                  │ register.json      │                │
+│                                  └────────────────────┘                │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+### Detalhes do Fluxo
+
+1. **Levantamento**: Lista todos os arquivos `.md` em `./answers/`
+
+2. **Verificação**: Consulta `./register/register.json` para verificar se o answer já foi processado
+
+3. **Download** (se necessário):
+   - Extrai URLs de referências do arquivo markdown usando LLM
+   - Baixa conteúdo de cada URL para `./documents/`
+   - Salva os registros em `register.json` para consulta posterior
+
+4. **Auditoria**:
+   - Lê conteúdo do answer e documentos
+   - Extrai claims factuais
+   - Recupera passagens relevantes
+   - Classifica como SUPPORTED/PARTIAL/NOT_SUPPORTED
+   - Calcula score final
+
+5. **Resultado**: Salva em `./results/AnswerName/audit_TIMESTAMP.json`
 
 ## Uso
 
-### Executar o teste padrão
+### Executar o fluxoo completo
 
 ```bash
 python main.py
 ```
 
+### Adicionar novo answer
+
+1. Adicione o arquivo `.md` em `./answers/`
+
+2. Execute o main.py:
+```bash
+python main.py
+```
+
+3. O sistema irá:
+   - Detectar o novo arquivo
+   - Baixar as referências
+   - Executar a auditoria
+   - Salvar os resultados
+
 ### Usar como módulo
+
+```python
+from src.auditor import AuditPipeline
+
+pipeline = AuditPipeline.create_from_env()
+
+# Com paths de arquivos
+answer = "answers/minha_resposta.md"
+documents = ["documents/doc1.md", "documents/doc2.md"]
+
+result = pipeline.audit(answer, documents)
+
+print(f"Score: {result.score}")
+print(f"Supported: {result.total_supported}")
+print(f"Not Supported: {result.total_not_supported}")
+```
+
+### Usar com texto direto
 
 ```python
 from src.auditor import AuditPipeline
@@ -113,24 +208,40 @@ documents = [
 ]
 
 result = pipeline.audit(answer, documents)
-
-print(f"Score: {result.score}")
-print(f"Supported: {result.total_supported}")
-print(f"Not Supported: {result.total_not_supported}")
-
-for r in result.results:
-    print(f"Claim: {r.claim.text}")
-    print(f"Label: {r.label.value}")
 ```
 
-### Exemplo de Resultado
+## Registro (register.json)
+
+O arquivo `register.json` armazena o estado do processamento:
+
+```json
+[
+  {
+    "answer": "answers/gemini_Factualidade_em_LLMs_Benchmark.md",
+    "documents": [
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_1.md",
+      "documents/gemini_Factualidade_em_LLMs_Benchmark_doc_2.md"
+    ],
+    "errors": [
+      {
+        "url": "https://exemplo.com/erro",
+        "error_type": "HTTPError",
+        "error_message": "404 Not Found",
+        "reference_id": 1
+      }
+    ]
+  }
+]
+```
+
+## Exemplo de Resultado
 
 ```json
 {
-  "timestamp": "20260408_182957",
-  "score": 0.8,
+  "timestamp": "20260421_194319",
+  "score": 0.65,
   "total_supported": 4,
-  "total_partial": 0,
+  "total_partial": 2,
   "total_not_supported": 1,
   "is_fully_supported": false,
   "claims": [
@@ -152,56 +263,6 @@ for r in result.results:
 }
 ```
 
-### Salvar e carregar vector store
-
-```python
-pipeline.audit(answer, documents)
-pipeline.save_vector_store("./vector_store")
-```
-
-```python
-pipeline = AuditPipeline.create_from_env()
-pipeline.load_vector_store("./vector_store")
-result = pipeline.audit(answer, documents)
-```
-
-### Extração de Referências de Markdown
-
-```python
-from src.auditor.services import LLMService, ReferenceExtractor
-
-llm = LLMService(
-    api_key="",
-    model="google/gemma-4-e4b",
-    provider="openai",
-    base_url="http://localhost:1234"
-)
-
-extractor = ReferenceExtractor(llm_service=llm)
-result = extractor.extract_from_markdown("./documento.md")
-```
-
-### Deep Research com OpenAI
-
-```python
-from src.auditor.services import OpenAIService
-
-client = OpenAIService()
-response = client.deep_research("Who is Sam Bankman-Fried?")
-client.save_response_json(response, "./results/pesquisa.json")
-client.save_text(response, "./results/pesquisa.txt")
-```
-
-### Deep Research com Perplexity
-
-```python
-from src.auditor.services import PerplexityService
-
-perplexity = PerplexityService()
-results = perplexity.search("latest AI developments 2024")
-perplexity.save_results_to_json(results, "./results/pesquisa.json")
-```
-
 ## Cálculo do Score
 
 O score é calculado com base nas verificações das afirmações:
@@ -212,12 +273,11 @@ score = (suportadas + 0.5 * parciais) / total
 
 **Exemplo:**
 ```
-resposta parcialmente fundamentada
 10 claims
 5 suportadas
 3 parciais
 2 não suportadas
-score = (5 + 0.5*3) / 10 = 0.65 
+score = (5 + 0.5*3) / 10 = 0.65
 ```
 
 **Interpretação:**
@@ -225,21 +285,9 @@ score = (5 + 0.5*3) / 10 = 0.65
 - `PARTIAL`: Afirmação parcialmente validada (peso 0.5)
 - `NOT_SUPPORTED`: Afirmação não validada (peso 0.0)
 
-**Limitação**
-```
-- Todas as claims têm a mesma importância
-- Cada claim contribui igualmente para o score final
-```
-O score está tratando:
-```
-"erro trivial" == "erro crítico"
-```
-
 ## Configurações
 
 ### Providers LLM
-
-O projeto suporta dois providers:
 
 | Provider | Descrição |
 |----------|-----------|
@@ -251,20 +299,18 @@ O projeto suporta dois providers:
 | Variável | Descrição | Obrigatório |
 |----------|-----------|-------------|
 | `OPENAI_API_KEY` | API key da OpenAI | Sim (exceto para Ollama) |
-| `PERPLEXITY_TOKEN` | API key da Perplexity | Não |
 | `LLM_PROVIDER` | Provider LLM (`openai` ou `ollama`) | Não (padrão: `openai`) |
 | `LLM_BASE_URL` | URL base do LLM | Não |
 | `LLM_MODEL` | Modelo LLM a usar | Não |
-| `EMBEDDING_MODEL` | Modelo de embedding (padrão: `sentence-transformers/all-MiniLM-L6-v2`) | Não |
-| `EMBEDDING_CACHE_FOLDER` | Pasta de cache dos modelos (padrão: `./model_cache`) | Não |
+| `EMBEDDING_MODEL` | Modelo de embedding | Não |
+| `EMBEDDING_CACHE_FOLDER` | Pasta de cache dos modelos | Não |
 
 ### Arquivo .env
 
 ```env
 OPENAI_API_KEY=sua-chave-openai
-PERPLEXITY_TOKEN=sua-chave-perplexity
 
-# Para LM Studio ou Ollama
+# Para LM Studio
 LLM_PROVIDER=openai
 LLM_BASE_URL=http://localhost:1234
 LLM_MODEL=google/gemma-4-e4b
@@ -279,7 +325,7 @@ LLM_MODEL=gpt-oss:20b
 
 1. Baixe e instale o LM Studio
 2. Baixe o modelo desejado (ex: `google/gemma-4-e4b`)
-3. Inicie o servidor na interface (clicando em "Start Server")
+3. Inicie o servidor na interface
 4. Configure o `.env`:
 
 ```env
@@ -291,7 +337,7 @@ LLM_MODEL=google/gemma-4-e4b
 ### Usar Ollama
 
 1. Instale o Ollama
-2. Baixe o modelo desejado: `ollama pull gpt-oss:20b`
+2. Baixe o modelo: `ollama pull gpt-oss:20b`
 3. Configure o `.env`:
 
 ```env
@@ -305,38 +351,3 @@ LLM_MODEL=gpt-oss:20b
 ### Audit Pipeline
 - **LLM**: Configurável via `LLM_MODEL` (padrão: `google/gemma-4-e4b`)
 - **Embedding**: `sentence-transformers/all-MiniLM-L6-v2`
-
-### Deep Research
-- **OpenAI**: `o4-mini-deep-research` (padrão) ou `o3-deep-research`
-- **Perplexity**: `sonar-deep-research`
-
-## Exemplos de Uso Avançado
-
-### Usar diferente provider
-
-```python
-from src.auditor.services import LLMService
-
-# Com OpenAI/LM Studio
-llm = LLMService(
-    api_key="sk-...",
-    model="google/gemma-4-e4b",
-    provider="openai",
-    base_url="http://localhost:1234"
-)
-
-# Com Ollama
-llm = LLMService(
-    api_key="",
-    model="gpt-oss:20b",
-    provider="ollama",
-    base_url="http://localhost:11434"
-)
-```
-
-### Controlar tool calls no deep research
-
-```python
-client = OpenAIService()
-response = client.deep_research("sua query", max_tool_calls=10)
-```

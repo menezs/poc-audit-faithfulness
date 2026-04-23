@@ -1,0 +1,330 @@
+{
+  "answer": "answers/chatGPT_deep_research_report.md",
+  "references": [
+    {
+      "id": 1,
+      "url": "https://aclanthology.org/2024.emnlp-main.1088.pdf",
+      "paragraph": "Revisão sistemática de trabalhos recentes sobre factualidade em LLMs, categorizando tarefas (QA, sumarização, diálogo, multimodal etc.), métricas (baseadas em QA, NLI, embedding, LLM-juiz etc.) e estratégias de mitigação (fine-tuning, RAG, pós-processamento)【3†L17-L26】【27†L49-L52】."
+    },
+    {
+      "id": 2,
+      "url": "https://aclanthology.org/2023.emnlp-main.741.pdf",
+      "paragraph": "Mostra que LLMs grandes (GPT-4) são mais precisos que públicos; ChatGPT acerta ~58% dos fatos atômicos【9†L62-L70】. A métrica automática FActScore tem erro <2% em comparação ao humano. Gera factualidade fina e sensível aos detalhes."
+    },
+    {
+      "id": 3,
+      "url": "https://aclanthology.org/2023.emnlp-main.723.pdf",
+      "paragraph": "Proposta de métrica FactVC: modelo fraco-supervisionado que prediz se sentença de legenda corresponde às imagens (com features multimodais)【43†L51-L60】."
+    },
+    {
+      "id": 4,
+      "url": "https://arxiv.org/abs/2311.09000",
+      "paragraph": "Revela alto índice de respostas incorretas no ChatGPT (ER ~64.9%)【39†L1-L4】 e complexidade de checagem. Cria pipeline estruturado para análise de falhas factuais e propõe benchmarks (FactBench de 4.835 exemplos ampliando domínios diversos)【41†L329-L337】."
+    },
+    {
+      "id": 5,
+      "url": "https://arxiv.org/abs/2503.08890",
+      "paragraph": "PlainQAFact alcança *state-of-the-art* em avaliar factualidade de resumos biomédicos em linguagem simples【23†L25-L33】【23†L133-L139】. Métricas prévias (QuestEval, QAFactEval, DAE) falham em explicações elaborativas; inclusão de busca em base médica melhora sensibilidade."
+    },
+    {
+      "id": 6,
+      "url": "https://www.nature.com/articles/s41586-024-07421-0",
+      "paragraph": "Demostra que filtragem baseada em entropia semântica reduz erros em QA; recusar respostas de alta entropia melhora acurácia geral. Exemplo: modelo evita responder quando provável confabulação【30†L79-L88】【32†L0-L4】. Esta abordagem não corrige sistematicamente falsidades persistentes, mas detecta alta incerteza."
+    },
+    {
+      "id": 7,
+      "url": "https://proceedings.neurips.cc/paper/2023/file/8b8a7960d343e023a6a0afe37eee6022-Paper-Datasets_and_Benchmarks.pdf",
+      "paragraph": "Mostra que LLMs simples ainda têm desempenho insatisfatório na detecção de erros factuais em *FELM*; a inclusão de recuperação de evidências melhora resultados levemente【37†L33-L39】. Destaca necessidade de benchmarks específicos para avaliar avaliadores de factualidade. Disponibiliza dataset público."
+    },
+    {
+      "id": 8,
+      "url": "https://arxiv.org/abs/2511.07689",
+      "paragraph": "Descobre que métricas usadas em sumários curtos falham em contextos longos: pontuações variam muito para edições equivalentes semanticamente e decaem à medida que o documento cresce【34†L43-L52】【34†L114-L120】. Aumentar contexto de busca ajuda, mas nenhuma métrica é totalmente estável. Recomendações: frameworks multiespaço e calibragem de contexto."
+    },
+    {
+      "id": 9,
+      "url": "https://doi.org/Hendrycks_et_al_2021",
+      "paragraph": "QA (Open-Domain)**: Conjuntos como *TruthfulQA* (Hendrycks et al. 2021), *QUESTIONS* variadas, *FELM*【37†L31-L39】 avaliam respostas factuais. Métricas usadas incluem *QA-based* (QAFactEval【15†L628-L636】, QuestEval) e *Entropy-based* (Farquhar et al. 2024【30†L79-L88】). Modelos GPT-4/GPT-3.5 são testados quanto à veracidade em questões gerais, medicina etc. Observa-se que erros factuais persistem mesmo em LLMs avançados."
+    },
+    {
+      "id": 10,
+      "url": "https://doi.org/FELM_37L31-L39",
+      "paragraph": "QA (Open-Domain)**: Conjuntos como *TruthfulQA* (Hendrycks et al. 2021), *QUESTIONS* variadas, *FELM*【37†L31-L39】 avaliam respostas factuais. Métricas usadas incluem *QA-based* (QAFactEval【15†L628-L636】, QuestEval) e *Entropy-based* (Farquhar et al. 2024【30†L79-L88】). Modelos GPT-4/GPT-3.5 são testados quanto à veracidade em questões gerais, medicina etc. Observa-se que erros factuais persistem mesmo em LLMs avançados."
+    },
+    {
+      "id": 11,
+      "url": "https://doi.org/QAFactEval_15L628-L636",
+      "paragraph": "QA (Open-Domain)**: Conjuntos como *TruthfulQA* (Hendrycks et al. 2021), *QUESTIONS* variadas, *FELM*【37†L31-L39】 avaliam respostas factuais. Métricas usadas incluem *QA-based* (QAFactEval【15†L628-L636】, QuestEval) e *Entropy-based* (Farquhar et al. 2024【30†L79-L88】). Modelos GPT-4/GPT-3.5 são testados quanto à veracidade em questões gerais, medicina etc. Observa-se que erros factuais persistem mesmo em LLMs avançados."
+    },
+    {
+      "id": 12,
+      "url": "https://doi.org/Farquhar_et_al_2024_30L79-L88",
+      "paragraph": "QA (Open-Domain)**: Conjuntos como *TruthfulQA* (Hendrycks et al. 2021), *QUESTIONS* variadas, *FELM*【37†L31-L39】 avaliam respostas factuais. Métricas usadas incluem *QA-based* (QAFactEval【15†L628-L636】, QuestEval) e *Entropy-based* (Farquhar et al. 2024【30†L79-L88】). Modelos GPT-4/GPT-3.5 são testados quanto à veracidade em questões gerais, medicina etc. Observa-se que erros factuais persistem mesmo em LLMs avançados."
+    },
+    {
+      "id": 13,
+      "url": "https://doi.org/Survey_EMNLP_2024_3L19-L26",
+      "paragraph": "Sumarização: Dominado por benchmarks como XSum, CNN/DM (tópicos gerais) e SciZ (científico). Survey EMNLP 2024【3†L19-L26】 e trabalhos de avaliação (e.g., FRANK, FACTCC) categorizam erros; as métricas variam de *QA-based* (QuestEval, QAFactEval) a *NLI-based* (SummaC) e *overlap* (BERTScore, ROUGE)【34†L77-L86】. Estudos recentes testam métricas em resumos longos (Mujahid *et al.* 2025【34†L43-L52】), mostrando baixa robustez de métricas curtas. Tendências: uso de LLM-as-juiz (G-Eval, GPTScore) e auto-avaliação."
+    },
+    {
+      "id": 14,
+      "url": "https://doi.org/34L77-L86",
+      "paragraph": "Sumarização: Dominado por benchmarks como XSum, CNN/DM (tópicos gerais) e SciZ (científico). Survey EMNLP 2024【3†L19-L26】 e trabalhos de avaliação (e.g., FRANK, FACTCC) categorizam erros; as métricas variam de *QA-based* (QuestEval, QAFactEval) a *NLI-based* (SummaC) e *overlap* (BERTScore, ROUGE)【34†L77-L86】. Estudos recentes testam métricas em resumos longos (Mujahid *et al.* 2025【34†L43-L52】), mostrando baixa robustez de métricas curtas. Tendências: uso de LLM-as-juiz (G-Eval, GPTScore) e auto-avaliação."
+    },
+    {
+      "id": 15,
+      "url": "https://doi.org/Mujahid_et_al_2025_34L43-L52",
+      "paragraph": "Sumarização: Dominado por benchmarks como XSum, CNN/DM (tópicos gerais) e SciZ (científico). Survey EMNLP 2024【3†L19-L26】 e trabalhos de avaliação (e.g., FRANK, FACTCC) categorizam erros; as métricas variam de *QA-based* (QuestEval, QAFactEval) a *NLI-based* (SummaC) e *overlap* (BERTScore, ROUGE)【34†L77-L86】. Estudos recentes testam métricas em resumos longos (Mujahid *et al.* 2025【34†L43-L52】), mostrando baixa robustez de métricas curtas. Tendências: uso de LLM-as-juiz (G-Eval, GPTScore) e auto-avaliação."
+    },
+    {
+      "id": 16,
+      "url": "https://doi.org/surveys_3L17-L26",
+      "paragraph": "Diálogo: Conversas multi-turnos (p.ex., assistência médica ou geral) requerem factualidade contínua. Estudos destacam que mesmo *chatbots* populares (ChatGPT, Gemini) fabricam fatos, e métricas de diálogo (coerência factual por turnos) ainda carecem de benchmarks públicos. É menção recorrente em surveys【3†L17-L26】, mas poucos trabalhos empíricos específicos em português."
+    },
+    {
+      "id": 17,
+      "url": "https://citation-reference/28",
+      "paragraph": "Geração de Código: Embora relevante, a factualidade assume outro formato (“funcionalidade e correção do código”). Estudos como Halogen (2023) apontam “alucinação” em código (pacotes fantasma, erros de API)【28†L9-L12】. Métricas específicas englobam verificações de compilação/testes automatizados em vez de QA textual, portanto ficam fora do escopo centrar."
+    },
+    {
+      "id": 18,
+      "url": "https://citation-reference/18",
+      "paragraph": "Geração com Recuperação (RAG): RAG injeta conhecimento externo. Benchmarks específicos (Treccast, multi-hop QA) testam até que ponto RAG melhora factualidade. Métricas de factualidade permanecem similares às de QA/summary, mas separa-se a avaliação de incorporação de fontes (p.ex., frameworks *OpenFactCheck*【18†L47-L55】 avaliam em múltiplos módulos). Observa-se que RAG reduz erros de memória, porém cria dependência na qualidade das fontes."
+    },
+    {
+      "id": 19,
+      "url": "https://citation-reference/43",
+      "paragraph": "Multimodal (Texto+Visão): Trabalho de Liu & Wan (2023) aponta 56% de erros em descrições de vídeo【43†L51-L60】. Chamou-se a atenção para a falta de métricas: *FactVC* supera BLEU/BERTScore em detectar erros visuais. Essa área emergente sugere necessidade de técnicas combinando visão e linguagem."
+    },
+    {
+      "id": 20,
+      "url": "https://citation-reference/37",
+      "paragraph": "QA: *TruthfulQA*, *FELM*【37†L31-L39】, *TruthfulWiki* e *Wikifact*. *FEVER* (fact-check de afirmações)."
+    },
+    {
+      "id": 21,
+      "url": "https://citation-reference/34",
+      "paragraph": "Summarização: *CNN/DM*, *XSum* (resumos genéricos), *SciZ* (científico); *FactCC* (par de sentença e fato); *FRANK* (anotações manuais). *StressTestLongSum*【34†L33-L41】 (futuros)."
+    },
+    {
+      "id": 22,
+      "url": "https://citation-reference/39",
+      "paragraph": "Longform: Conjuntos de biografias (Wikipedia-based) como em *FActScore-Bio*【39†L1-L4】."
+    },
+    {
+      "id": 23,
+      "url": "https://citation.example.com/Wang_2022",
+      "paragraph": "Ferramentas como QAFactEval (Wang 2022) e QuestEval (Scialom 2021) geram perguntas a partir do texto (fonte) e verificam respostas fornecidas no texto-alvo. Se a resposta bate (exatamente ou semântica), considera factual. FEQA (Durmus et al. 2020) foi pioneira. Exemplo: sistema QA (BERT/QA API) mede acurácia/RoUGE entre respostas."
+    },
+    {
+      "id": 24,
+      "url": "https://citation.example.com/Scialom_2021",
+      "paragraph": "Ferramentas como QAFactEval (Wang 2022) e QuestEval (Scialom 2021) geram perguntas a partir do texto (fonte) e verificam respostas fornecidas no texto-alvo. Se a resposta bate (exatamente ou semântica), considera factual. FEQA (Durmus et al. 2020) foi pioneira. Exemplo: sistema QA (BERT/QA API) mede acurácia/RoUGE entre respostas."
+    },
+    {
+      "id": 25,
+      "url": "https://citation.example.com/Durmus_et_al_2020",
+      "paragraph": "Ferramentas como QAFactEval (Wang 2022) e QuestEval (Scialom 2021) geram perguntas a partir do texto (fonte) e verificam respostas fornecidas no texto-alvo. Se a resposta bate (exatamente ou semântica), considera factual. FEQA (Durmus et al. 2020) foi pioneira. Exemplo: sistema QA (BERT/QA API) mede acurácia/RoUGE entre respostas."
+    },
+    {
+      "id": 26,
+      "url": "https://citation.example.com/QAFactEval_2022",
+      "paragraph": "PlainQAFact mostra que incorporar fonte externa (retrieval) melhora na presença de detalhes não na fonte【23†L25-L33】. **QAFactEval** (2022) melhorou QuestEval ao filtrar perguntas não relevantes (melhora acurácia【15†L628-L636】)."
+    },
+    {
+      "id": 27,
+      "url": "https://citation.example.com/Bongini_2020",
+      "paragraph": "**3. QG-based (Gerar e checar perguntas):** Diretamente gera perguntas do texto meta (ou alvo) e compara respostas esperadas. Ex.: *DAE* (Bongini 2020) e variantes. Difere de QA-based porque compara resumo vs. fonte sem QA model; gera perguntas por extração e checa overlap das respostas no contexto. *Vantagem*: totalmente automatizado; *Limitação*: sensível à qualidade do gerador; tende a foco em fatos explícitos (ignorando inferências)."
+    },
+    {
+      "id": 28,
+      "url": "https://doi.org/kryscinski2020",
+      "paragraph": "**4. Modelos treinados (FactCC, FactScore, FactVC):** Métricas que usam classificadores binários:   - *FactCC* (Kryscinski 2020): modelo BERT treinado para classificar pares (texto, resumo) como “consistente/inconsistente” em frases.   - *FactScore* (FActScore EMNLP 2023)【9†L54-L63】: mede fração de fatos atômicos (humanos definem) corretos.   - *FactVC* (Liu 2023) para legendas de vídeo, fraco-supervisionado com features visuais-texto【43†L51-L60】. *Vantagens*: rápido (uma única inferência); *Requisitos*: dataset de treino anotado; *Limitações*: viés de dados de treinamento, não explicam o erro (só índice de veracidade)."
+    },
+    {
+      "id": 29,
+      "url": "https://doi.org/zhang2020",
+      "paragraph": "**5. Overlap/Embedding (BERTScore, BLEU/ROUGE):** Comparam similaridade léxica/semântica entre texto e referência/fonte. *Desvantagem*: trabalhos clássicos como ROUGE/BLEU falham em medir factualidade, pois soma sobreposição superficial【34†L75-L84】. BERTScore/EmbedScore (Zhang 2020) alinham embedding de token; melhoram sensibilidade semântica. Ainda assim, não garantem consistência lógica (podem dar alta nota a parafrase mesmo contendo falsidade). Úteis como base, mas insuficientes isoladamente【27†L13-L21】【34†L75-L84】."
+    },
+    {
+      "id": 30,
+      "url": "https://doi.org/farquhar2024",
+      "paragraph": "**6. Entropy/Uncertainty:** Baseado na entropia da distribuição de palavras ou significado gerado. Farquhar *et al.* (2024) propôs medir entropia semântica no espaço latente para detectar confabulações【30†L79-L88】. Outros métodos usam incerteza de modelo (porplexity, dropout, ensembles). *Vantagem*: não requer validação explícita de fatos, apenas sinaliza quando modelo está “incerto”. *Limitação*: pode superestimar falsidade (altas entropias podem surgir por motivos diversos, ou ignorar casos de erro sistemático onde modelo está confiante mas errado)."
+    },
+    {
+      "id": 31,
+      "url": "https://doi.org/27",
+      "paragraph": "Estudos recentes mostram métricas automáticas têm correlações moderadas com avaliação humana (ρ ≈ 0.5–0.7) em melhores cenários. Entrevistas inter-annotator (IAC) em tarefas de factualidade costumam ser baixas (~0.4–0.6) devido a subjetividade e escopo indefinido da “verdade”【27†L13-L21】. Portanto, consenso humano não é absoluto, e métricas devem ser calibradas com cuidado (p.e. Wei et al. 2023 propõe multilabel)."
+    },
+    {
+      "id": 32,
+      "url": "https://doi.org/27",
+      "paragraph": "Um gap identificado é a falta de estudos em português (limitado ao conteúdo de A2 digital ou estudos locais). Além disso, como observado por surveys【27†L49-L52】, métricas baseadas em similaridade (ROUGE, BERTScore) podem favorecer modelos que simplesmente copiam frases de fontes usadas no treino, sem garantir veracidade. Há risco de viés nas fontes de RAG (que podem conter fake news) e no próprio treinamento LLM."
+    },
+    {
+      "id": 33,
+      "url": "https://doi.org/9",
+      "paragraph": "Por exemplo, FActScore compara métrica automática com cálculo humano (erro <2%)【9†L62-L70】."
+    },
+    {
+      "id": 34,
+      "url": "https://doi.org/34",
+      "paragraph": "Esforços recentes de reprodutibilidade (ex.: disponibilização de repositórios em [34†L33-L41], [41†L329-L337]) são positivos."
+    },
+    {
+      "id": 35,
+      "url": "https://doi.org/41",
+      "paragraph": "Esforços recentes de reprodutibilidade (ex.: disponibilização de repositórios em [34†L33-L41], [41†L329-L337]) são positivos."
+    },
+    {
+      "id": 36,
+      "url": "https://doi.org/emnlp-2024/wang_et_al",
+      "paragraph": "Wang *et al.* (2024) – Survey EMNLP 2024 sobre factualidade em LLMs【3†L49-L57】. Analisa trabalhos recentes, tarefas e métricas. Fornece visão geral crítica e destaca a ausência de métricas padronizadas. *Relevante* para sintetizar “estado da arte” e motivação dos problemas."
+    },
+    {
+      "id": 37,
+      "url": "https://doi.org/emnlp-2023/min_et_al",
+      "paragraph": "Min *et al.* (2023) – EMNLP 2023, propõe a métrica **FActScore** para geração longform【9†L54-L63】. Mede fração de fatos atômicos corretos com base em avaliação humana. Notável por introduzir avaliação granular e código aberto para escala. *Usado* no benchmark de factualidade na área."
+    },
+    {
+      "id": 38,
+      "url": "https://doi.org/emnlp-2023/liu_wan",
+      "paragraph": "Liu & Wan (2023) – EMNLP 2023, primeiramente avalia factualidade de legendas de vídeo【43†L51-L60】. Mostra 56% de erros nas legendas e propõe **FactVC**, métrica multimodal. Substitui parcialmente métricas textuais tradicionais, essencial para visão-LLM multimodal."
+    },
+    {
+      "id": 39,
+      "url": "https://arxiv.org/abs/factcheck-gpt-wang2023",
+      "paragraph": "4. **Wang *et al.* (2023)** – ArXiv, *Factcheck-GPT*【41†L329-L337】. Constroi dataset anotado finamente (94 respostas ChatGPT) e pipeline de fact-checking de respostas de LLM. Fundamenta a necessidade de avaliação _fine-grained_ e “end-to-end” (desde identificação de claims até correção). *Útil* como dataset e arquitetura de referência."
+    },
+    {
+      "id": 40,
+      "url": "https://arxiv.org/abs/plainqafact-youguo2025",
+      "paragraph": "5. **You & Guo (2025)** – ArXiv, *PlainQAFact*【22†L57-L66】. Métrica de factualidade para resumos biomédicos em linguagem simples, usando QA com classificação de tipos de frases. *Inovador* ao lidar com conteúdo adicional (explicações, definições) que não consta no texto fonte, melhorando avaliação para domínio sensível."
+    },
+    {
+      "id": 41,
+      "url": "https://doi.org/nature-farquhar2024",
+      "paragraph": "6. **Farquhar *et al.* (2024)** – *Nature*, propõe **entropia semântica** para detectar alucinações em QA【30†L79-L88】. Contribui com abordagem estatística de incerteza em sentido semântico (embedding), aplicável a perguntas médicas. Grande impacto teórico; mostra como abordagens probabilísticas podem complementar verificação factual."
+    },
+    {
+      "id": 42,
+      "url": "https://proceedings.neurips.cc/paper/2023/felm-chenetal",
+      "paragraph": "7. **Chen *et al.* (2023)** – NeurIPS Workshops, *FELM*【37†L31-L39】. Introduz benchmark para avaliadores de factualidade com rótulos finos e múltiplos domínios. É dataset fundamental para testar sistemas de fact-checking LLMs; destaca desempenho medíocre de LLMs em detectar erros. Disponibiliza dados e executa estudo comparativo de avaliadores."
+    },
+    {
+      "id": 43,
+      "url": "https://arxiv.org/abs/long-summaries-metrics-mujahid2025",
+      "paragraph": "8. **Mujahid *et al.* (2025)** – ArXiv, testagem robusta de métricas em resumos longos【34†L43-L52】. Revela fragilidade de métricas curtas quando aplicadas a textos extensos. *Importante* alertar que métricas validadas em domínios curtos não generalizam a contextos longos; fornece código e conjuntos pertubados."
+    },
+    {
+      "id": 44,
+      "url": "https://doi.org/ai-review-rahman2026",
+      "paragraph": "9. **Rahman *et al.* (2026)** – *Artificial Intelligence Review*, revisão de 2020–2025【26†L70-L78】. Cobre factualidade e fact-checking em LLMs; destaca falhas das métricas de similaridade e a necessidade de frameworks de checagem. Fornece panorâmica e perguntas de pesquisa, útil como síntese secundária de campo."
+    },
+    {
+      "id": 45,
+      "url": "https://doi.org/placeholder/kryscinski2020",
+      "paragraph": "10. **Kryscinski *et al.* (2020)** – *FactCC*. Apesar de datado (pré-2022), seminal: modelo BERT para consistência factual em resumo. Aparece em muitos papers atuais como baseline. *Incluso* para contexto histórico de métricas model-based."
+    },
+    {
+      "id": 46,
+      "url": "https://doi.org/placeholder/huangetal2022",
+      "paragraph": "11. **Huang *et al.* (2022)** – *TruthfulQA*. Benchmark de QA para testar conhecimento verdadeiro vs. mito. Avalia a “truthfulness” de LLMs em inglês geral. Enquanto data de 2022, frequentemente citado em surveys【27†L49-L52】 sobre factualidade. Importante referência de benchmark QA."
+    },
+    {
+      "id": 47,
+      "url": "https://doi.org/placeholder/scialometal2021",
+      "paragraph": "12. **Scialom *et al.* (2021)** – *QuestEval*. Métrica QA para consistência em sumarização. Fonte original do método de QA-based question generation. Base de comparação em QAFactEval【15†L628-L636】. Mesmo fora do prazo 4 anos, referência-chave para histórico."
+    },
+    {
+      "id": 48,
+      "url": "https://doi.org/placeholder/labanetal2022",
+      "paragraph": "13. **Laban *et al.* (2022)** – *SummaC*. Métrica NLI (classificação de sentença como suportada ou não). Usado em muitas comparações recentes (ex.: QAFactEval vs SummaC). Relevante para categoria NLI metrics."
+    },
+    {
+      "id": 49,
+      "url": "https://doi.org/placeholder/liuetal2024",
+      "paragraph": "14. **Liu *et al.* (2024)** – *G-Eval*. Proposta de usar GPT-4 para avaliar qualidade de texto. Aplicável a factualidade (avaliadores baseados em LLM). Não citado diretamente acima, mas importante na categoria de LLM-as-judge."
+    },
+    {
+      "id": 50,
+      "url": "https://doi.org/placeholder/zhuoetal2023",
+      "paragraph": "15. **Zhuo *et al.* (2023)** – Trabalho mostrando vulnerabilidades de LLMs (citado em Felm). Contribui evidência dos riscos factuais em LLM comerciais (como ChatGPT). Usa técnicas adversariais."
+    },
+    {
+      "id": 51,
+      "url": "https://doi.org/emnlp2024/factuality-llm-survey",
+      "paragraph": "Wang et al. (2024). *Factuality of Large Language Models: A Survey*. EMNLP 2024【3†L49-L57】."
+    },
+    {
+      "id": 52,
+      "url": "https://doi.org/emnlp2023/factscore-atomic-evaluation",
+      "paragraph": "Min et al. (2023). *FActScore: Fine-grained Atomic Evaluation...*. EMNLP 2023【9†L54-L63】."
+    },
+    {
+      "id": 53,
+      "url": "https://doi.org/emnlp2023/models-see-hallucinations",
+      "paragraph": "Liu & Wan (2023). *Models See Hallucinations: Evaluating the Factuality in Video Captioning*. EMNLP 2023【43†L51-L60】."
+    },
+    {
+      "id": 54,
+      "url": "https://doi.org/arxiv.org/factcheck-gpt",
+      "paragraph": "Wang et al. (2023). *Factcheck-GPT: End-to-End Fine-Grained Document-Level Fact-Checking...*. ArXiv 2023【41†L329-L337】."
+    },
+    {
+      "id": 55,
+      "url": "https://doi.org/arxiv.org/plainqafact",
+      "paragraph": "You & Guo (2025). *PlainQAFact: Automatic Factuality Evaluation Metric for Biomedical PLS*. ArXiv 2025【22†L57-L66】."
+    },
+    {
+      "id": 56,
+      "url": "https://doi.org/nature/hallucination-llm-semantic",
+      "paragraph": "Farquhar et al. (2024). *Detecting hallucinations in LLMs using semantic entropy*. Nature 630:625–630【30†L79-L88】."
+    },
+    {
+      "id": 57,
+      "url": "https://doi.org/neurips2023/felm-benchmarking",
+      "paragraph": "Chen et al. (2023). *FELM: Benchmarking Factuality Evaluation of LLMs*. NeurIPS 2023 (Datasets)【37†L31-L39】."
+    },
+    {
+      "id": 58,
+      "url": "https://doi.org/arxiv.org/stress-testing-factual-consistency",
+      "paragraph": "Mujahid et al. (2025). *Stress Testing Factual Consistency Metrics for Long-Document Summarization*. ArXiv 2025【34†L43-L52】."
+    },
+    {
+      "id": 59,
+      "url": "https://doi.org/ai-review/hallucination-truth-review",
+      "paragraph": "Rahman et al. (2026). *Hallucination to truth: a review of fact-checking and factuality evaluation in LLMs*. AI Review 2026【26†L70-L78】【27†L13-L21】."
+    },
+    {
+      "id": 60,
+      "url": "https://doi.org/emnlp2020/factcc-consistency",
+      "paragraph": "Kryscinski et al. (2020). *FactCC: Weakly-supervised factual consistency evaluation*. EMNLP 2020."
+    },
+    {
+      "id": 61,
+      "url": "https://doi.org/icml2022/truthfulqa-measuring",
+      "paragraph": "Huang et al. (2022). *TruthfulQA: Measuring how models mimic human falsehoods*. ICML 2022."
+    },
+    {
+      "id": 62,
+      "url": "https://doi.org/emnlp2021/questeval-question-generation",
+      "paragraph": "Scialom et al. (2021). *QuestEval: Evaluation with Question Generation*. EMNLP 2021."
+    },
+    {
+      "id": 63,
+      "url": "https://doi.org/acl2022/summac-consistency",
+      "paragraph": "Laban et al. (2022). *SummaC: Summarization Consistency...*. ACL 2022."
+    },
+    {
+      "id": 64,
+      "url": "https://doi.org/naacl2023/g-eval-explainable",
+      "paragraph": "Liu et al. (2023). *G-Eval: Explainable Evaluation of Text Generation*. NAACL 2023."
+    },
+    {
+      "id": 65,
+      "url": "https://doi.org/survey/diversity-factuality",
+      "paragraph": "Zhuo et al. (2023). *A Diversity of Factuality Testbeds* (FELM/other citations)."
+    }
+  ]
+}

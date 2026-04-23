@@ -30,11 +30,16 @@ def print_result(result: AuditResult) -> None:
         print(f"Justification: {r.justification}")
 
 
-def save_result_json(result: AuditResult, output_dir: str = "./results") -> str:
+def save_result_json(result: AuditResult, output_dir: str = "./results", answer_name: str = None) -> str:
     os.makedirs(output_dir, exist_ok=True)
-    
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"audit_{timestamp}.json"
+
+    if answer_name:
+        safe_name = answer_name.replace(" ", "_").replace(".md", "")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"audit_{safe_name}_{timestamp}.json"
+    else:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"audit_{timestamp}.json"
     filepath = os.path.join(output_dir, filename)
     
     data = {

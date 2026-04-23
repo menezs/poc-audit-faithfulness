@@ -352,4 +352,5 @@ pyrightconfig.json
 
 .opencode/
 model_cache/
+.model_cache/
 teste.py

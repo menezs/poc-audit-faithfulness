@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
+from pathlib import Path
 from tqdm import tqdm
 from ..models.claim import Claim
 from ..models.verification_result import VerificationResult, VerificationLabel
@@ -70,10 +71,31 @@ class AuditPipeline:
         self._retriever = Retriever(self._vector_store, top_k=self._settings.top_k_retrieval)
         return self._retriever
 
+    def _process_answer(self, answer: str) -> str:
+        if Path(answer).suffix == ".md" and Path(answer).exists():
+            with open(answer, "r", encoding="utf-8") as f:
+                return f.read()
+        return answer
+
+    def _process_documents(self, documents: List[str]) -> List[str]:
+        processed = []
+        for doc in documents:
+            if Path(doc).suffix == ".md" and Path(doc).exists():
+                with open(doc, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    if content.strip():
+                        processed.append(content)
+            else:
+                processed.append(doc)
+        return processed
+
     def audit(self, answer: str, documents: List[str]) -> AuditResult:
-        claims = self._extractor.extract(answer)
-        
-        retriever = self._ensure_retriever(documents)
+        answer_text = self._process_answer(answer)
+        processed_docs = self._process_documents(documents)
+
+        claims = self._extractor.extract(answer_text)
+
+        retriever = self._ensure_retriever(processed_docs)
         verification_results = []
 
         print("\nVerifying claims...")

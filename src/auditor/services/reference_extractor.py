@@ -71,7 +71,7 @@ Extrair TODAS as referências presentes no texto, incluindo:
     def __init__(
         self,
         llm_service: LLMService,
-        output_dir: str = "./results",
+        output_dir: str = "./references",
         model: str = "gpt-oss:20b"
     ):
         self._llm_service = llm_service
@@ -113,9 +113,7 @@ Extrair TODAS as referências presentes no texto, incluindo:
             response = response.replace('```', '')
             return json.loads(response)
         except json.JSONDecodeError:
-            print('error')
-            print(chunk)
-            print('-' * 50)
+            print('Ao extrair as referências do Chunk atual o modelo não respondeu em JSON.')
             return []
 
     def extract_from_markdown(self, file_path: Union[str, Path]) -> str:
@@ -126,6 +124,10 @@ Extrair TODAS as referências presentes no texto, incluindo:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
+        final_file_json = {
+            'answer': file_path,
+            'references': []
+        }
         chunks = self._split_into_chunks(content)
         all_references = []
         global_id = 1
@@ -142,9 +144,10 @@ Extrair TODAS as referências presentes no texto, incluindo:
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_file = self._output_dir / f"references_lmStudio_{timestamp}.json"
+        final_file_json["references"] = all_references
 
         with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(all_references, f, ensure_ascii=False, indent=2)
+            json.dump(final_file_json, f, ensure_ascii=False, indent=2)
 
         print(f"Referências salvas em: {output_file}")
 

@@ -1,0 +1,557 @@
+## **Taming Object Hallucinations with Verified Atomic Confidence Estimation** 
+
+**Jiarui Liu[1] , Weihao Xuan[2,3] , Zhijing Jin[4,5] , Mona Diab[1]** 1CMU, 2The University of Tokyo, 3RIKEN AIP, 4MPI, 5The University of Toronto jiaruil5@andrew.cmu.edu 
+
+## **Abstract** 
+
+Multimodal Large Language Models (MLLMs) often suffer from hallucinations, particularly errors in object existence, attributes, or relations, which undermine their reliability. We introduce TACO (Verified Atomic Confidence Estimation), a simple framework that mitigates hallucinations through self-verification and confidence calibration without relying on external vision experts. TACO decomposes responses into atomic queries, paraphrases them to reduce sensitivity to wording, and estimates confidence using selfconsistency (black-box) or self-confidence (gray-box) aggregation, before refining answers with a language model. Experiments on five benchmarks (POPE, MME, HallusionBench, AMBER, and MM-Hal Bench) with two MLLMs (LLaVA-1.5-7B and CogVLM2) show that TACO consistently outperforms direct prompting and Visual Contrastive Decoding, reduces systematic biases, and improves confidence calibration, demonstrating its effectiveness in enhancing the faithfulness of MLLMs. 
+
+## **1 Introduction** 
+
+Multimodal Large Language Models (MLLMs) have gained significant attention for their ability to bridge computer vision and natural language processing, excelling in tasks such as Visual Question Answering (VQA) (Liu et al., 2023; Yin et al., 2024; Wu and Xie, 2024). Despite this progress, MLLMs remain vulnerable to hallucination, producing responses that are unfaithful to the visual input (Yin et al., 2023; Bai et al., 2024; Huang et al., 2024; Favero et al., 2024). Unlike hallucinations in purely text-based LLMs, hallucinations in MLLMs often manifest as object hallucinations (Li et al., 2023), including errors about an object’s existence, attributes, or relations. These errors reduce trustworthiness and limit the adoption of MLLMs in high-stakes applications. 
+
+A key cause of hallucination is that MLLMs are overly sensitive to textual variations (Chowdhury and Soni, 2025; Ismithdeen et al., 2025). User queries are naturally diverse and fragmentary, yet current models often struggle to align visual content with such variations. Consequently, small differences in wording can lead to inconsistent predictions, undermining reliability (Guan et al., 2023). Existing methods to mitigate hallucinations typically rely on external experts such as object detectors or image captioning models (Chen et al., 2024a; Yu et al., 2024), or on post-hoc calibration strategies (Min et al., 2023). However, these approaches introduce dependencies on auxiliary models that may not generalize well and can be computationally expensive. 
+
+In this work, we introduce TACO (Verified Atomic Confidence Estimation), a simple yet effective framework to address multimodal hallucinations through self-verification and confidence calibration, without relying on external vision models. TACO operates in four stages: (1) atomic query generation, decomposing user queries and model answers into fine-grained atomic queries that can be verified independently; (2) query reformulation, paraphrasing atomic queries into semantically equivalent variations to mitigate sensitivity to surface-level phrasing; (3) confidence estimation, aggregating responses to reformulated queries using either self-consistency (black-box) or self-confidence (gray-box with logits) estimation to identify the most reliable answer; and (4) response refinement, leveraging a language model to integrate verified atomic answers back into a coherent response. Through this design, TACO systematically detects and corrects hallucinations, making MLLM predictions more consistent and faithful to visual input. 
+
+We conduct comprehensive experiments across five benchmarks: POPE (Li et al., 2023), MME (Fu et al., 2023), HallusionBench (Guan et al., 2023), 
+
+5430 
+
+_Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics Volume 1: Long Papers_ , pages 5430–5444 March 24-29, 2026 ©2026 Association for Computational Linguistics 
+
+**==> picture [455 x 119] intentionally omitted <==**
+
+Figure 1: Illustration of the TACO pipeline using a generative example across four steps. First, atomic facts are extracted from the query and the original answer, and each fact is framed as a binary atomic query. Second, each atomic query is reformulated into multiple semantically equivalent variations to mitigate the over-sensitivity of MLLMs to surface text. Third, the MLLM’s responses to these queries are aggregated, and confidence is estimated using either self-consistency (black-box) or self-confidence (gray-box) to select the more reliable answer. Finally, an LLM refines the MLLM’s initial response by incorporating the corrected atomic answers. 
+
+AMBER (Wang et al., 2023), and MM-Hal Bench (Sun et al., 2023), and two state-of-the-art MLLMs, LLaVA-1.5-7B (Liu et al., 2023) and CogVLM2 (Hong et al., 2024). Results demonstrate that TACO consistently reduces hallucinations in both discriminative and generative tasks, outperforming direct prompting and Visual Contrastive Decoding (VCD). Notably, we find that self-confidence estimation outperforms self-consistency, showing the advantage of gray-box calibration. Beyond benchmark performance, our analysis further reveals how TACO mitigates systematic biases (e.g., “yes”-answer bias) and improves reliability under query reformulations. 
+
+In summary, our contributions are threefold: 
+
+1. We propose TACO, a unified framework for mitigating hallucinations in MLLMs through verified atomic confidence estimation. 
+
+2. We demonstrate that TACO improves calibration in both black-box and gray-box settings, offering insights into the strengths of self-confidence over self-consistency. 
+
+3. We validate TACO across multiple benchmarks and models, showing consistent improvements and providing deeper analysis of its effects on error patterns and biases. 
+
+## **2 Related Work** 
+
+**Fact Verification** Existing fact verification methods for text generation typically follow a multistage pipeline that leverages external knowledge bases or domain experts (Zhong et al., 2020; Guo et al., 2022; Durmus et al., 2020; Honovich et al., 
+
+2022). In VQA, analogous strategies employ external vision experts, such as object detection models (Rohrbach et al., 2018; Li et al., 2023; Wang et al., 2023; Chen et al., 2024b; Sahu et al., 2024; Chen et al., 2024a; Zhou et al., 2025) or image captioning models (Yin et al., 2023; Yu et al., 2024), to provide verification evidence. However, these approaches often inherit the limitations of expert outputs, reducing their robustness on outof-distribution tasks (Manakul et al., 2023). By contrast, self-verification has been explored in the text domain as a means of validating reasoning steps without reliance on external inputs (Fabbri et al., 2022; Weng et al., 2023; Miao et al., 2023; Ling et al., 2023; Zhang et al., 2023; Li et al., 2024). Inspired by sampling-based self-check techniques in text generation (Manakul et al., 2023) and fact extraction in image-to-text tasks (Min et al., 2023; Cho et al., 2024), our work investigates the potential of self-verification to mitigate multimodal hallucinations, thereby eliminating the need for external vision experts. 
+
+**Confidence Calibration** Modern neural networks are widely recognized for producing poorly calibrated predictions (Guo et al., 2017; Wang et al., 2020; Minderer et al., 2021; Jiang et al., 2021; Xiong et al., 2023). Traditional calibration methods often rely on retraining or the construction of dedicated calibration datasets (Lakshminarayanan et al., 2017; Gal and Ghahramani, 2016; Lee et al., 2018; Yoo et al., 2022). With the advent of LLMs, new approaches that avoid full retraining have emerged. These methods can be broadly categorized into verbalization-based techniques (Lin et al., 2022; Zhou et al., 2023; Mielke et al., 2022; Band et al., 
+
+5431 
+
+2024), consistency-based techniques (Wang et al., 2022; Xiong et al., 2024; Lyu et al., 2024), and probability-based techniques (Guo et al., 2017; Zhang et al., 2020; Malinin and Gales, 2021; Kuhn et al., 2023; Deng et al., 2023; Xiong et al., 2024). 
+
+Verbalization-based methods assess whether models can explicitly articulate their confidence, while consistency-based and probability-based methods calibrate output distributions, either without or with access to logits. Typically, multiple generations are sampled using decoding strategies such as temperature scaling (Lin et al., 2024; Desai and Durrett, 2020), beam search (Kuhn et al., 2023), or prompt variation (Tian et al., 2023; Xiong et al., 2024; Pedapati et al., 2024). Notably, initiated by Leng et al. (2024), a line of probability based methods for visual contrastive decoding (Wang et al., 2024; Favero et al., 2024; Zhang et al., 2024), contrasts token level probability distributions conditioned on the original image with those conditioned on a perturbed version of the input instruction or image to mitigate multimodal hallucination. Despite these advances, little work has systematically examined whether model responses can be calibrated through self-estimated confidence derived from question samples in multimodal contexts. 
+
+## **3 TACO: Verified Atomic Confidence Estimation** 
+
+Unlike prior work that primarily validates objectexistence hallucinations (Wang et al., 2023; Li et al., 2023), our goal is to detect and correct a broader range of object-level hallucinations in MLLM-generated responses, encompassing inaccuracies in object existence, attributes, and relations (Bai et al., 2024). Our approach consists of four stages: atomic query generation, query reformulation, confidence estimation, and response refinement. Given an image and a query, the MLLM first produces an initial response. We then evaluate its self-consistency or self-confidence on each extracted atomic question, and leverage an LLM to refine the response by resolving any identified hallucinations. An overview of this framework is illustrated in Figure 1. 
+
+a taxonomy of question types in Table 1 and require that all verification questions satisfy two key criteria: 
+
+1. Each question must be atomic (Cho et al., 2024), i.e., it should capture the smallest possible semantic unit. This means focusing on a single atomic fact, as specified by the taxonomy in Table 1, and ensuring the question is self-contained and answerable without additional context. 
+
+2. Each question must be a positively framed binary question, enabling an unambiguous “yes” or “no” answer. 
+
+We employ an LLM to generate atomic questions that provide full semantic coverage of the initial response requiring refinement. To improve this process, we design a two-stage procedure: First, given the user’s question and the MLLM’s initial response, we extract atomic semantic tuples based on the taxonomy. For example, to verify the existence of a truck, the tuple entity–whole (truck) is instantiated from the “Entity–Whole” category. This tuple is then converted into a binary question such as “Is there a truck?” If the original VQA question is already atomic and binary, it is preserved directly as the output. Additional implementation details are provided in Section A.1. 
+
+## **3.2 Query Reformulation** 
+
+For each atomic question, we apply question scaling to generate sampled responses for confidence estimation. A straightforward approach would be to use different decoding strategies, such as greedy decoding, beam search, top- _p_ sampling, or temperature scaling. However, these perturbation methods fail to sufficiently explore the MLLM’s output space when applied to binary questions. In contrast, question paraphrasing offers a more effective perturbation strategy, as MLLMs are highly sensitive to syntactic variations in text (Ismithdeen et al., 2025). This sensitivity allows paraphrasing to better expose overconfidence and improve calibration. Accordingly, we employ an LLM to paraphrase each atomic question into _n_ variations and evaluate the resulting outputs. Additional implementation details are provided in Section A.2. 
+
+## **3.3 Confidence Estimation** 
+
+## **3.1 Atomic Query Generation** 
+
+To comprehensively address different categories of object hallucinations, it is essential to define the types of verification questions that can be generated. Inspired by (Cho et al., 2024), we introduce 
+
+The variance among multiple responses to a given question has been proposed as a proxy for model confidence (Xiong et al., 2024). In this step, given the original image as input, we prompt the MLLM to generate responses to each perturbed 
+
+5432 
+
+|**Hallucination Type**|**Subcategory**|
+|---|---|
+|**Entity**|Whole (entire entity, e.g.,_boy_), Part (part of entity, e.g.,_boy’s arm_)|
+|**Attribute**|State (e.g.,_happy emoji_), Color (e.g.,_white chalk_), Type (e.g.,_aviator goggles_), Text rendering (e.g.,|
+||_text "START"_), Material (e.g.,_plastic bowl_), Shape (e.g.,_round plate_), Size (e.g.,_long bench_), Count<br>(e.g.,_three cars_), Texture (e.g.,_fattened surface_), Style (e.g.,_realistic photo_), Temporal (e.g.,_old_|
+||_clock_)|
+|**Relation**|Spatial (e.g.,_A behind B_), Action (e.g.,_A touches B_)|
+
+
+
+Table 1: Taxonomy used by the atomic query generator to guide the creation of targeted question types. The taxonomy defines core categories of object hallucination, covering entities, attributes, and relations, which can be extended to more comprehensive supersets for broader and benchmark-specific coverage. 
+
+atomic question. For each initial atomic quesˆ tion, we collect an answer set **a** = _{a_ 1 _, . . . ,_ ˆ _an}_ , from which the majority answer is determined as ¯ _n a_ = arg max _a∈_ Yes _,_ No � _i_ =1 **[1]**[(ˆ] _[a][i]_[=] _[ a]_[)][using][ag-] gregation functions over candidate answers. 
+
+We then propose two methods for estimating and aggregating the MLLM’s self-confidence: _blackbox assessment_ and _gray-box assessment_ . Each method produces a confidence score conf( _q, v,_ ¯ _a_ ) for atomic question _q_ given visual input _v_ , which is subsequently used to calibrate the reliability of the MLLM’s prediction. 
+
+**Black-Box Assessment** We estimate selfconfidence by measuring the self-consistency of candidate answers, without requiring access to the model’s internal states or output logits. Following prior work that evaluates agreement between candidate responses _a_ ˆ _i_ and the majority answer _a_ ¯ (Wang et al., 2022; Lyu et al., 2024), self-consistency is defined as: 
+
+**==> picture [186 x 32] intentionally omitted <==**
+
+**Gray-Box Assessment** When output probabilities are available, we can leverage them as uncertainty indicators. For each paraphrased binary question _qi_ and visual input _v_ , we extract the probability _p_ ˆ(ˆ _ai | qi, v_ ) assigned to the predicted answer _a_ ˆ _i ∈{_ “Yes” _,_ “No” _}_ . These probabilities are incorporated as weights in the aggregation function used to assess alignment with the majority answer. By default, we use the mean as the aggregation function, while alternative functions are explored in Section 6. The self-confidence score is then computed as: 
+
+**==> picture [214 x 45] intentionally omitted <==**
+
+## **3.4 Response Refinement** 
+
+Guided by the atomic verification questions and their answers, we employ an LLM to refine the MLLM’s initial response by incorporating the more confident answer to each atomic query and integrating them into a unified output. Notably, the LLM does not require visual inputs for this step, thereby reducing reliance on the external helper model. If only a single atomic query is generated (i.e., when the original question is already atomic), this refinement step is unnecessary. In our experiments, we use Claude-3-Sonnet and Claude-3.7-Sonnet as the LLMs. Additional implementation details are provided in Section A.3. 
+
+## **4 Experiment Setup** 
+
+We evaluate our confidence calibration approach on two state-of-the-art MLLMs, LLaVA-1.5-7B and CogVLM2. Experiments are conducted across three discriminative benchmarks: POPE (Li et al., 2023), MME (Fu et al., 2023), and HallusionBench (Guan et al., 2023) as well as two generative benchmarks: AMBER (Wang et al., 2023) and MM-Hal (Sun et al., 2023). We compare TACO against the following baselines: (1) direct prompting of the MLLM, and (2) VCD, which applies contrastive decoding by comparing the model’s responses with those generated from a perturbed image input (Leng et al., 2024). We refer to our self-consistency approach as TACO-S and our self-confidence approach as TACO-F. Further implementation details are provided in Section A.4. 
+
+**POPE** POPE (Li et al., 2023) introduces a polling-based query method to evaluate an MLLM’s ability to answer object-existence questions in images. The task is framed as binary classification using yes/no questions, which improves both stability and flexibility. The benchmark is constructed from 500 MSCOCO images with an equal 
+
+5433 
+
+|Model<br>Approach|Accuracy<br>Adversarial<br>Popular<br>Random|F1<br>Adversarial<br>Popular<br>Random|
+|---|---|---|
+|LLaVA-1.5-7B<br>Direct<br>VCD<br>TACO-S w/Claude-3-Sonnet<br>TACO-F w/Claude-3-Sonnet<br>TACO-S w/Claude-3.7-Sonnet<br>TACO-F w/Claude-3.7-Sonnet|79.60<br>81.73<br>83.47<br>81.90<br>84.83<br>86.83<br>83.54<br>86.58<br>88.78<br>84.88<br>87.93<br>89.29<br>84.70<br>87.57<br>89.07<br>84.80<br>87.70<br>89.33|78.36<br>80.17<br>81.71<br>81.30<br>83.84<br>85.66<br>83.15<br>85.78<br>87.95<br>84.47<br>87.21<br>88.48<br>84.21<br>86.79<br>88.20<br>84.40<br>86.99<br>88.53|
+|CogVLM2<br>Direct<br>VCD<br>TACO-S w/Claude-3-Sonnet<br>TACO-F w/Claude-3-Sonnet<br>TACO-S w/Claude-3.7-Sonnet<br>TACO-F w/Claude-3.7-Sonnet|84.80<br>85.90<br>88.53<br>85.87<br>87.20<br>89.97<br>85.32<br>85.90<br>86.84<br>85.64<br>86.53<br>87.42<br>84.70<br>85.50<br>86.13<br>84.77<br>85.67<br>86.43|84.17<br>85.06<br>87.55<br>85.11<br>86.37<br>89.04<br>83.61<br>84.10<br>84.99<br>84.00<br>84.84<br>85.70<br>82.53<br>83.40<br>83.98<br>82.67<br>83.64<br>84.39|
+
+
+
+Table 2: Results on POPE. _Direct_ denotes the direct sampling baseline, and _VCD_ refers to the visual contrastive decoding baseline (Leng et al., 2024). 
+
+**==> picture [455 x 175] intentionally omitted <==**
+
+**----- Start of picture text -----**<br>
+Existence Existence<br>OCR 195.0 Count OCR 190.0 Count<br>122.5 138.3 150.0 153.3<br>Artwork125.5 82.5 183.3 95.0 128.3Position Artwork130.1 107.5 165.0 98.3 156.7Position<br>99.5 111.7 103.2 86.7<br>122.5 133.3 105.0 141.7<br>158.0 145.2 104.4 116.3 175.0 153.6 132.2 102.1 147.6 185.0<br>Landmark Color Landmark Color<br>154.2 146.5 151.0 169.8<br>Scene 136.5 Posters Scene 145.5 Posters<br>Celebrity Celebrity<br>Direct TACO-S w/ Claude-3-Sonnet Direct TACO-S w/ Claude-3-Sonnet<br>VCD TACO-F w/ Claude-3.7-Sonnet VCD TACO-F w/ Claude-3.7-Sonnet<br>TACO-F w/ Claude-3-Sonnet TACO-S w/ Claude-3.7-Sonnet TACO-F w/ Claude-3-Sonnet TACO-S w/ Claude-3.7-Sonnet<br>(a) LLaVA-1.5-7B on MME. (b) CogVLM2 on MME.<br>**----- End of picture text -----**<br>
+
+
+Figure 2: Results on the MME benchmark for both models. Subfigures show perception-task performance of (a) LLaVA-1.5-7B and (b) CogVLM2. 
+
+number of positive and negative ground-truth examples, yielding 9,000 questions. These are evenly distributed across three settings: _random_ , _popular_ , and _adversarial_ , for generating negative examples. We report accuracy and F1 score. 
+
+**MME** The MME benchmark evaluates the perception and cognition capabilities of MLLMs across 14 tasks with 2374 examples (Fu et al., 2023). Consistent with our definition in Section 3.1, each question is binary, focusing on an atomic fact derived from an image. Following (Yin et al., 2023; Leng et al., 2024), we restrict our evaluation to perception tasks in order to specifically examine object hallucination. We report the score following Fu et al. (2023) based on accuracy. 
+
+**HallusionBench** HallusionBench is a benchmark designed to evaluate the failure modes of MLLMs (Guan et al., 2023). It contains 1,129 questions 
+
+divided into two categories: _Visual Dependent_ and _Visual Supplement_ . _Visual Dependent_ questions require visual information for accurate answers, while _Visual Supplement_ questions can be answered without it, with the visual input serving only as additional context or correction. This design enables assessment of both visual reasoning ability and the interplay between language priors and visual content. All questions are binary under our definition. We report question-pair accuracy (qAcc), figure accuracy (fAcc), and overall accuracy (aAcc) as evaluation metrics. 
+
+**AMBER** AMBER is an LLM-free, multidimensional benchmark designed to evaluate hallucinations in MLLMs across both generative and discriminative tasks (Wang et al., 2023). In our work, we use its 1,004 generative questions to assess the effectiveness of our atomic question gener- 
+
+5434 
+
+ation approach. Evaluation is based on four metrics: CHAIR, Cover, Hal, and Cog. CHAIR measures the frequency of hallucinated objects in responses; Cover measures object coverage; Hal measures the proportion of responses containing hallucinations; and Cog measures whether MLLM hallucinations resemble patterns observed in human cognition. 
+
+**MM-Hal** MM-Hal is a benchmark specifically designed to evaluate hallucinations in MLLMs (Sun et al., 2023). Unlike prior benchmarks that focus on general response quality or restrict evaluation to yes/no questions, MM-Hal employs openended, realistic questions to better capture hallucination phenomena in practical settings. It consists of 96 image–question pairs across 8 categories and 12 object topics, targeting common failure modes such as incorrect attributes, adversarial objects, counting, comparison, spatial relations, environment, and holistic descriptions. Evaluation is performed with GPT-4o as the judge, comparing model responses against human-written references to determine whether hallucinations are present. 
+
+## **5 Results** 
+
+**POPE** The experimental results on POPE across the random, popular, and adversarial settings are shown in Table 2. Our approach consistently outperforms both baselines in terms of accuracy and F1 score across all subtasks on LLaVA-1.5-7B, while achieving comparable performance on CogVLM2. Importantly, selfconfidence estimation consistently surpasses selfconsistency estimation across all subtasks and models, demonstrating that leveraging the model’s probabilistic distribution leads to more effective confidence calibration. The performances of Claude-3-Sonnet and Claude-3.7-Sonnet are largely comparable. 
+
+**MME** Figure 2 shows radar plots of evaluation results across MME perception task subsets. Unlike benchmarks focused solely on object existence, MME also evaluates attribute-level hallucinations, providing a broader assessment of model reliability. Our methods consistently reduce hallucinations across different subsets and MLLMs. Consistent with the POPE results, self-confidence estimation generally outperforms self-consistency in terms of overall accuracy. By contrast, the VCD approach yields only marginal gains. 
+
+**HallusionBench** Our evaluation shows that both of our approaches outperform baseline methods across all accuracy metrics. The self-consistency and self-confidence estimation methods achieve largely comparable results, while VCD does not yield clear improvements on this benchmark. This is because HallusionBench provides a more rigorous and adversarial evaluation of VQA dependencies on visual content. In such cases, VCD often fails when the perturbed image does not offer sufficiently informative contrastive cues to guide the model’s attention. 
+
+**AMBER** The results for both models in Table 4 show that TACO outperforms the direct prompting baseline on the CHAIR, Hal, and Cog metrics, while maintaining comparable object coverage as measured by COVER. Notably, the hallucination rate decreases substantially, with minimal loss of useful information. 
+
+**MM-Hal** On MM-Hal in Table 5, we find that TACO improves performance for LLaVA-1.5-7B but not for CogVLM2. Notably, CogVLM2 outperforms LLaVA-1.5-7B by a significant margin. We attribute this to the strong baseline performance of CogVLM2 on this task, where the involvement of an auxiliary language model may introduce negative effects when the original MLLM already possesses sufficient capability to answer the questions. 
+
+## **6 Discussion** 
+
+Based on our experiments across both discriminative and generative benchmarks, we highlight two key findings: (1) TACO consistently outperforms both direct sampling and visual contrastive decoding baselines, demonstrating its effectiveness as a confidence calibration method. (2) Self-confidence estimation surpasses self-consistency estimation, showing that gray-box assessments provide deeper insight into an MLLM’s calibrated confidence. 
+
+Below, we further analyze statistics from POPE and HallusionBench to shed light on the underlying behavior of our method. 
+
+**Does the model exhibit greater consistency across reformulated queries when producing correct answers?** To examine whether the dispersion of model outputs (i.e., disagreement among paraphrased responses) is linked to prediction reliability, we analyzed the per-question variance of binary answers on POPE. For each question, we computed the proportion of “yes” responses and 
+
+5435 
+
+|Model<br>Approach|qAcc (_↑_)<br>fAcc (_↑_)<br>Easy aAcc (_↑_)<br>Hard aAcc (_↑_)<br>aAcc (_↑_)|
+|---|---|
+|LLaVA-1.5-7B<br>Direct<br>VCD<br>TACO-S w/ Claude-3-Sonnet<br>TACO-F w/ Claude-3-Sonnet<br>TACO-S w/ Claude-3.7-Sonnet<br>TACO-F w/ Claude-3.7-Sonnet|17.58<br>19.36<br>42.42<br>43.72<br>49.60<br>16.92<br>18.79<br>41.10<br>42.33<br>49.25<br>19.56<br>21.39<br>46.37<br>46.28<br>50.49<br>14.51<br>22.54<br>45.93<br>48.60<br>51.20<br>20.88<br>25.14<br>49.67<br>48.60<br>55.09<br>20.44<br>26.30<br>48.35<br>50.00<br>55.62|
+|CogVLM2<br>Direct<br>VCD<br>TACO-S w/ Claude-3-Sonnet<br>TACO-F w/ Claude-3-Sonnet<br>TACO-S w/ Claude-3.7-Sonnet<br>TACO-F w/ Claude-3.7-Sonnet|21.98<br>21.68<br>50.55<br>42.33<br>53.06<br>21.32<br>23.12<br>52.75<br>41.40<br>52.88<br>30.11<br>32.08<br>53.85<br>56.28<br>60.50<br>30.55<br>36.13<br>56.48<br>61.86<br>63.86<br>24.84<br>27.46<br>50.33<br>55.35<br>59.26<br>24.62<br>25.43<br>50.99<br>54.19<br>59.26|
+
+
+
+Table 3: Results on HallusionBench. 
+
+|Model|Approach<br>Direct|CHAIR (_↓_)<br>11.7|COVER (_↑_)<br>51.1|Hal (_↓_)<br>49.5|Cog (_↓_)<br>4.4|
+|---|---|---|---|---|---|
+|LLaVA-1.5-7B|TACO-S w/Claude-3.7-Sonnet<br>TACO-F w/Claude-3.7-Sonnet|6.5<br>6.4|48.5<br>49.0|29.1<br>28.8|1.9<br>2.0|
+||Direct|11.3|61.9|50.9|4.1|
+|CogVLM2|TACO-S w/Claude-3.7-Sonnet<br>TACO-F w/Claude-3.7-Sonnet|7.6<br>7.7|59.1<br>59.0|36.6<br>37.1|2.1<br>2.2|
+
+
+
+Table 4: Results on AMBER. For all metrics except _COVER_ , lower values indicate better performance. 
+
+|Model|Approach|Average Score (_↑_)|Hallucination Rate (_↓_)|
+|---|---|---|---|
+|LLaVA-1.5-7B|Direct<br>TACO-S w/Claude-3.7-Sonnet|1.85<br>2.25|0.69<br>0.58|
+||TACO-F w/Claude-3.7-Sonnet|2.53|0.52|
+||Direct|2.71|0.53|
+|CogVLM2|TACO-S w/Claude-3.7-Sonnet|2.59|0.50|
+||TACO-F w/Claude-3.7-Sonnet|2.59|0.51|
+
+
+
+|Metric|LLaVA-1.5-7B<br>Random<br>Popular<br>Adv.|CogVLM2<br>Random<br>Popular<br>Adv.|
+|---|---|---|
+|T-Test p-value<br>Mann-Whitney U p-value|3.1e-25<br>3.3e-21<br>3.0e-23<br>4.4e-88<br>2.1e-58<br>4.5e-53|2.0e-21<br>6.8e-22<br>3.5e-22<br>3.3e-63<br>7.3e-61<br>3.1e-56|
+
+
+
+Table 6: Statistical significance tests comparing the variance _p_ (1 _− p_ ) of atomic answer distributions between correctly and incorrectly answered questions on POPE. Reported values are _p_ -values from Welch’s two-sample _t_ -test and the Mann–Whitney _U_ test across random, popular, and adversarial settings for LLaVA-1.5-7B and CogVLM2. Lower _p_ -values indicate stronger evidence that variances differ between correct and incorrect answers. 
+
+Table 5: Results on MM-Hal Bench. Lower values indicate better performance for hallucination rate. 
+
+derived the variance _p_ (1 _− p_ ) as a measure of uncertainty. The majority vote was then compared against the ground truth to assess correctness. 
+
+We tested whether variance differed significantly between correctly and incorrectly answered questions using Welch’s two-sample _t_ -test, and verified robustness with the non-parametric Mann–Whitney _U_ test. We also quantified the relationship between variance and correctness using the point-biserial correlation. Results show that incorrect predictions exhibit substantially higher mean variance than correct ones, with both statistical tests confirming significance and a negative correlation observed between variance and correctness. 
+
+These findings support the hypothesis that greater disagreement among paraphrased answers is predictive of reduced majority-vote accuracy. They further suggest that MLLMs are more sensitive to syntactic variation when less confident, consistent with our intuition. 
+
+**What bias does TACO correct?** Prior work has shown that MLLMs often exhibit a bias toward answering “Yes,” particularly in existence and attribute verification tasks (Guan et al., 2023). This tendency stems from poor confidence calibration and leads models to over-predict object presence or attributes even when they are absent. 
+
+To evaluate whether TACO mitigates this bias, we analyzed the ratio of “Yes” responses on HallusionBench, comparing our approach with baseline methods. Specifically, we measured the deviation in _Yes_ prediction percentages from the reference values reported by Guan et al. (2023). 
+
+Our results show that TACO effectively reduces the systematic “Yes” bias observed in the baselines, producing more balanced predictions between “Yes” and “No.” In particular, our methods substantially lower the internal bias of both models, as reflected in improvements on the Pct Diff and FP Ratio metrics. These findings indicate that TACO not only calibrates confidence more accurately but also helps correct the inherent response imbalance in MLLMs. 
+
+5436 
+
+|Approach|LLaVA-1.5-7B<br>Pct Diff (~0)<br>FP Ratio (~0.5)|CogVLM2<br>Pct Diff (~0)<br>FP Ratio (~0.5)|
+|---|---|---|
+|Direct<br>VCD<br>TACO-S<br>TACO-F|0.12<br>0.62<br>0.14<br>0.63<br>0.00<br>0.50<br>0.02<br>0.52|0.17<br>0.68<br>0.19<br>0.70<br>-0.07<br>0.41<br>-0.08<br>0.40|
+
+
+
+Table 7: Analysis of Yes/No prediction bias on HallusionBench. We report the _Yes Percentage Difference_ (Pct Diff; closer to 0 indicates balanced Yes/No predictions) and the _False Positive Ratio_ (FP Ratio; closer to 0.5 indicates reduced bias toward predicting “Yes”). Results show that both TACO-S and TACO-F substantially reduce the Yes-bias compared to the direct and VCD baselines for both LLaVA-1.5-7B and CogVLM2. 
+
+**==> picture [220 x 154] intentionally omitted <==**
+
+**----- Start of picture text -----**<br>
+0.90<br>TACO-F-MEAN<br>0.89 TACO-F-MAX<br>TACO-S<br>0.88<br>0.87<br>0.86<br>0.85<br>0.84<br>0.83<br>0.82<br>Random Popular Adversarial<br>Accuracy<br>**----- End of picture text -----**<br>
+
+
+Figure 3: Comparison of aggregation functions for selfconfidence estimation on POPE using LLaVA-1.5-7B. 
+
+**Which aggregation function is better for selfconfidence estimation: MEAN or MAX?** We compare two aggregation strategies for selfconfidence estimation: MAX and MEAN. The MAX function selects the larger probability between predicting Yes” and No” across all paraphrased atomic questions, while the MEAN function computes the average probability of each answer over all paraphrases. As shown in Figure 3, MEAN consistently provides more reliable confidence estimates than MAX, leading to superior calibration performance. 
+
+## **Would removing query reformulation decrease** 
+
+**performance?** We examine the effect of removing the query reformulation step while retaining atomic verification, and report the results in Table 8. Across both LLaVA-1.5-7B and CogVLM2 on POPE and HallusionBench, this modification consistently leads to performance degradation. For instance, on POPE, accuracy decreases across random, popular, and adversarial settings when reformulation is removed, and on HallusionBench the overall score for CogVLM2 drops from 63.9 to 60.7. Despite 
+
+||Model & Dataset<br>LLaVA-1.5-7B<br>on POPE|Metric<br>Random<br>Popular<br>Adversarial|Direct<br>0.835<br>0.817<br>0.796|TACO w/o Step 2<br>0.890<br>0.867<br>0.817|TACO<br>0.893<br>0.879<br>0.849|
+|---|---|---|---|---|---|
+||CogVLM2<br>on POPE|Random<br>Popular<br>Adversarial|0.885<br>0.859<br>0.848|0.864<br>0.854<br>0.843|0.874<br>0.865<br>0.856|
+|||qAcc|17.58|13.8|14.51|
+||LLaVA-1.5-7B<br>on HallusionBench|fAcc<br>Easy<br>Hard<br>Overall|19.36<br>42.42<br>43.72<br>49.60|23.1<br>46.3<br>47.2<br>50.6|22.54<br>45.93<br>48.60<br>51.20|
+||CogVLM2<br>on HallusionBench|qAcc<br>fAcc<br>Easy<br>Hard<br>Overall|21.98<br>21.68<br>50.55<br>42.33<br>53.06|25.5<br>35.0<br>55.8<br>54.4<br>60.7|30.6<br>36.1<br>56.5<br>61.9<br>63.9|
+
+
+
+Table 8: Ablation study on removing the query reformulation step (Step 2). We use TACO-F w/ Claude-3-Sonnet. Results are reported for LLaVA and CogVLM2 on POPE and HallusionBench. 
+
+this decline, the variant without reformulation remains competitive and generally outperforms direct prompting, indicating that atomic verification provides the primary robustness improvement, while query reformulation further enhances stability and response quality. 
+
+**Can LLMs handle negative questions?** During our experiments, we observed an interesting phenomenon: current MLLMs struggle with negative queries. Both LLaVA-1.5-7B and CogVLM2 frequently misinterpret questions such as “Isn’t there a ball in the image?” or “Are there no balls in the image?”, often producing inconsistent or random answers, even when they correctly answer the corresponding positive query. This suggests that their basic linguistic reasoning capabilities remain limited, highlighting the need for improved training strategies to strengthen textual understanding and better align language with visual inputs. 
+
+## **Would TACO introduce significantly higher la-** 
+
+**tency?** The computational cost depends primarily on the number of atomic queries generated from the original question and the number of paraphrases used per query. Suppose a question produces _m_ atomic queries and we generate _n_ paraphrases for each. The total number of model calls becomes: (1) one LLM call for atomic query generation, (2) _m_ LLM calls for reformulation, (3) one LLM cal for answer refinement, and (4) _m × n_ calls to the underlying MLLM for confidence estimation. Let _t_ llm denote the time for one LLM call and _t_ mllm the time for one MLLM call. The direct prompting baseline requires only _t_ mllm. Our pipeline requires 
+
+5437 
+
+|Dataset<br>POPE|Metric<br>Random F1<br>Random Acc<br>Adversarial F1<br>Adversarial Acc|Direct<br>0.857<br>0.873<br>0.837<br>0.852|TACO-S<br>0.875<br>0.888<br>0.850<br>0.863|
+|---|---|---|---|
+||Popular F1<br>Popular Acc|0.847<br>0.863|0.871<br>0.882|
+|MME|Score|1611|1711|
+|AMBER|CHAIR (_↓_)<br>Cover (_↑_)<br>Hal (_↓_)<br>Cog (_↓_)|6.7<br>63.3<br>34.8<br>2.0|5.3<br>61.9<br>28.4<br>1.5|
+
+
+
+Table 9: Comparison between Direct and TACO-S across POPE, MME, and AMBER benchmarks using Qwen2.5-VL-7B-Instruct. 
+
+approximately _t_ llm _×_ (1 + _m_ + 1) + _t_ mllm _×_ ( _mn_ ). The dominant cost arises from the confidence estimation stage, where the MLLM is queried _m × n_ times. In practice, we parallelize MLLM calls across multiple replicas so that the system can process reformulated queries in a first come first serve manner. Because API latency can vary significantly and different environments support different acceleration strategies, absolute latency numbers may vary depending on hardware, API conditions, and parallelization settings. 
+
+## **Would TACO generalize to stronger VLMs?** 
+
+To evaluate the generalization ability of TACO on stronger vision language models, we conduct additional experiments using Qwen2.5-VL-7B-Instruct (Bai et al., 2025) under the same experimental configuration on POPE, MME, and AMBER. The results are reported in Table 9. Across all three benchmarks, TACO-S consistently improves performance, demonstrating its effectiveness and robustness on more capable VLMs. 
+
+## **7 Conclusion** 
+
+In this work, we presented a sampling-based confidence calibration framework to address object hallucinations in VQA tasks. Our four-step pipeline systematically generates atomic questions, reformulates them into multiple variations, estimates the MLLM’s confidence, and refines its initial response through calibrated feedback. Experiments on multiple benchmarks and state-of-the-art MLLMs show that question paraphrasing is an effective strat- 
+
+egy for sampling diverse generations, while LLMassisted atomic fact extraction and question formulation substantially reduce hallucinations in generative settings. These results highlight the potential of verified atomic confidence estimation as a lightweight yet powerful approach for improving the faithfulness and reliability of MLLMs. 
+
+## **Limitations** 
+
+While our study demonstrates the effectiveness of TACO in mitigating multimodal hallucinations, several limitations remain that open up directions for future work. 
+
+First, our framework is evaluated primarily on a selection of widely used benchmarks. Although these cover both discriminative and generative tasks, they may not fully capture the diversity of real-world multimodal scenarios, such as opendomain dialogue, video understanding, or interactive systems. Extending the evaluation to broader and more dynamic datasets would help verify the generalizability of our approach. 
+
+Second, our method currently focuses on hallucinations at the object level: existence, attributes, and relations. While these represent the most common and impactful error modes, hallucinations can also manifest in more abstract forms, such as commonsense reasoning or causal inference. Incorporating atomic query generation for higher-level semantic reasoning remains an interesting direction for future research. 
+
+Additionally, our framework relies on an external LLM to perform instruction following steps such as formatting atomic queries, paraphrasing, and rewriting. Although these operations are lightweight compared to visual expert based pipelines, they still require reliable adherence to structured output constraints and moderate few shot learning capability. The LLMs used in our experiment do not represent current frontier performance, and different LLM choices may influence the stability and quality of atomic query generation. 
+
+Finally, while we deliberately avoid reliance on external vision experts to keep the framework lightweight and generalizable, there may still be scenarios where integrating complementary signals from specialized vision modules could further enhance robustness. Exploring hybrid approaches that combine self-verification with external guidance in a controllable way may provide a balance between autonomy and reliability. Due to compu- 
+
+5438 
+
+tational constraints, we leave such investigations to future work. 
+
+## **Ethical Considerations** 
+
+Our work addresses the problem of hallucinations in MLLMs, with the goal of improving the faithfulness and reliability of model outputs. While this research aims to reduce the risks associated with inaccurate or misleading responses, mitigating hallucinations does not guarantee the elimination of all errors. Models calibrated with TACO may still produce inaccurate or biased outputs, particularly when operating on out-of-distribution data. Users should be aware that even with improved confidence estimation, MLLMs should not be blindly trusted in safety-critical domains such as healthcare, law, or autonomous systems without human oversight. 
+
+Our framework relies on large-scale pretrained MLLMs and LLMs, which themselves may encode societal biases present in their training data. Although TACO helps calibrate confidence and correct factual inconsistencies, it does not directly address biases or harmful stereotypes inherent to the underlying models. 
+
+Additionally, improving faithfulness may inadvertently increase user trust in MLLMs. While this is a desirable outcome for reliability, it also carries the risk of over-reliance, particularly if users assume that calibrated models are universally correct. It is important that system designers clearly communicate residual limitations and provide mechanisms for human-in-the-loop verification. 
+
+## **Acknowledgment** 
+
+We sincerely thank Renato Negrinho, Manuel Mager, Neha Anna John, Yassine Benajiba, and Chao Shang for their support during the early stages of this project. 
+
+This material is based in part upon work supported by the German Federal Ministry of Education and Research (BMBF): Tübingen AI Center, FKZ: 01IS18039B; by the Machine Learning Cluster of Excellence, EXC number 2064/1 – Project number 390727645; by Schmidt Sciences SAFEAI Grant; by the Frontier Model Forum and AI Safety Fund; by Coefficient Giving; by the Survival and Flourishing Fund; and by the Cooperative AI Foundation. The usage of OpenAI credits is largely supported by the Tübingen AI Center and Schmidt Sciences. Resources used in preparing 
+
+this research project were provided, in part, by the Province of Ontario, the Government of Canada through CIFAR, and companies sponsoring the Vector Institute. 
+
+## **References** 
+
+- Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun Tang, and 1 others. 2025. Qwen2. 5-vl technical report. _arXiv preprint arXiv:2502.13923_ . 
+
+- Zechen Bai, Pichao Wang, Tianjun Xiao, Tong He, Zongbo Han, Zheng Zhang, and Mike Zheng Shou. 2024. Hallucination of multimodal large language models: A survey. _arXiv preprint arXiv:2404.18930_ . 
+
+- Neil Band, Xuechen Li, Tengyu Ma, and Tatsunori Hashimoto. 2024. Linguistic calibration of longform generations. In _Forty-first International Conference on Machine Learning_ . 
+
+- Xiang Chen, Chenxi Wang, Yida Xue, Ningyu Zhang, Xiaoyan Yang, Qiang Li, Yue Shen, Lei Liang, Jinjie Gu, and Huajun Chen. 2024a. Unified hallucination detection for multimodal large language models. _CoRR_ , abs/2402.03190. 
+
+- Xiang Chen, Chenxi Wang, Yida Xue, Ningyu Zhang, Xiaoyan Yang, Qiang Li, Yue Shen, Lei Liang, Jinjie Gu, and Huajun Chen. 2024b. Unified hallucination detection for multimodal large language models. _arXiv preprint arXiv:2402.03190_ . 
+
+- Jaemin Cho, Yushi Hu, Roopal Garg, Peter Anderson, Ranjay Krishna, Jason Baldridge, Mohit Bansal, Jordi Pont-Tuset, and Su Wang. 2024. Davidsonian Scene Graph: Improving Reliability in Fine-Grained Evaluation for Text-to-Image Generation. In _ICLR_ . 
+
+- Souvik Chowdhury and Badal Soni. 2025. R-vqa: A robust visual question answering model. _KnowledgeBased Systems_ , 309:112827. 
+
+- Ailin Deng, Miao Xiong, and Bryan Hooi. 2023. Great models think alike: Improving model reliability via inter-model latent agreement. _arXiv preprint arXiv:2305.01481_ . 
+
+- Shrey Desai and Greg Durrett. 2020. Calibration of pre-trained transformers. In _Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)_ , pages 295–302, Online. Association for Computational Linguistics. 
+
+- Esin Durmus, He He, and Mona Diab. 2020. FEQA: A question answering evaluation framework for faithfulness assessment in abstractive summarization. In _Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics_ , pages 5055– 5070, Online. Association for Computational Linguistics. 
+
+5439 
+
+- Alexander Fabbri, Chien-Sheng Wu, Wenhao Liu, and Caiming Xiong. 2022. QAFactEval: Improved QAbased factual consistency evaluation for summarization. In _Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies_ , pages 2587–2601, Seattle, United States. Association for Computational Linguistics. 
+
+- Alessandro Favero, Luca Zancato, Matthew Trager, Siddharth Choudhary, Pramuditha Perera, Alessandro Achille, Ashwin Swaminathan, and Stefano Soatto. 2024. Multi-modal hallucination control by visual information grounding. In _Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition_ , pages 14303–14312. 
+
+- Chaoyou Fu, Peixian Chen, Yunhang Shen, Yulei Qin, Mengdan Zhang, Xu Lin, Jinrui Yang, Xiawu Zheng, Ke Li, Xing Sun, and 1 others. 2023. Mme: A comprehensive evaluation benchmark for multimodal large language models. _arXiv preprint arXiv:2306.13394_ . 
+
+- Yarin Gal and Zoubin Ghahramani. 2016. Dropout as a bayesian approximation: Representing model uncertainty in deep learning. In _Proceedings of The 33rd International Conference on Machine Learning_ , volume 48 of _Proceedings of Machine Learning Research_ , pages 1050–1059, New York, New York, USA. PMLR. 
+
+- Tianrui Guan, Fuxiao Liu, Xiyang Wu, Ruiqi Xian, Zongxia Li, Xiaoyu Liu, Xijun Wang, Lichang Chen, Furong Huang, Yaser Yacoob, Dinesh Manocha, and Tianyi Zhou. 2023. Hallusionbench: An advanced diagnostic suite for entangled language hallucination & visual illusion in large vision-language models. _Preprint_ , arXiv:2310.14566. 
+
+- Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. 2017. On calibration of modern neural networks. In _International conference on machine learning_ , pages 1321–1330. PMLR. 
+
+- Zhijiang Guo, Michael Schlichtkrull, and Andreas Vlachos. 2022. A Survey on Automated Fact-Checking. _Transactions of the Association for Computational Linguistics_ , 10:178–206. 
+
+- Wenyi Hong, Weihan Wang, Ming Ding, Wenmeng Yu, Qingsong Lv, Yan Wang, Yean Cheng, Shiyu Huang, Junhui Ji, Zhao Xue, and 1 others. 2024. Cogvlm2: Visual language models for image and video understanding. _arXiv preprint arXiv:2408.16500_ . 
+
+- Or Honovich, Roee Aharoni, Jonathan Herzig, Hagai Taitelbaum, Doron Kukliansy, Vered Cohen, Thomas Scialom, Idan Szpektor, Avinatan Hassidim, and Yossi Matias. 2022. TRUE: Re-evaluating factual consistency evaluation. In _Proceedings of the Second DialDoc Workshop on Document-grounded Dialogue and Conversational Question Answering_ , pages 161– 175, Dublin, Ireland. Association for Computational Linguistics. 
+
+- Qidong Huang, Xiaoyi Dong, Pan Zhang, Bin Wang, Conghui He, Jiaqi Wang, Dahua Lin, Weiming Zhang, and Nenghai Yu. 2024. Opera: Alleviating hallucination in multi-modal large language models via over-trust penalty and retrospection-allocation. In _Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition_ , pages 13418– 13427. 
+
+- Mohamed Insaf Ismithdeen, Muhammad Uzair Khattak, and Salman Khan. 2025. Promptception: How sensitive are large multimodal models to prompts? _arXiv preprint arXiv:2509.03986_ . 
+
+- Zhengbao Jiang, Jun Araki, Haibo Ding, and Graham Neubig. 2021. How can we know when language models know? on the calibration of language models for question answering. _Transactions of the Association for Computational Linguistics_ , 9:962–977. 
+
+- Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar. 2023. Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation. _ArXiv_ , abs/2302.09664. 
+
+- Balaji Lakshminarayanan, Alexander Pritzel, and Charles Blundell. 2017. Simple and scalable predictive uncertainty estimation using deep ensembles. In _Advances in Neural Information Processing Systems_ , volume 30. Curran Associates, Inc. 
+
+- Kimin Lee, Kibok Lee, Honglak Lee, and Jinwoo Shin. 2018. A simple unified framework for detecting outof-distribution samples and adversarial attacks. In _Advances in Neural Information Processing Systems_ , volume 31. Curran Associates, Inc. 
+
+- Sicong Leng, Hang Zhang, Guanzheng Chen, Xin Li, Shijian Lu, Chunyan Miao, and Lidong Bing. 2024. Mitigating object hallucinations in large visionlanguage models through visual contrastive decoding. In _Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)_ , pages 13872–13882. 
+
+- Miaoran Li, Baolin Peng, Michel Galley, Jianfeng Gao, and Zhu Zhang. 2024. Self-checker: Plug-and-play modules for fact-checking with large language models. In _Findings of the Association for Computational Linguistics: NAACL 2024_ , pages 163–181, Mexico City, Mexico. Association for Computational Linguistics. 
+
+- Yifan Li, Yifan Du, Kun Zhou, Jinpeng Wang, Wayne Xin Zhao, and Ji-Rong Wen. 2023. Evaluating object hallucination in large vision-language models. In _The 2023 Conference on Empirical Methods in Natural Language Processing_ . 
+
+- Stephanie Lin, Jacob Hilton, and Owain Evans. 2022. Teaching models to express their uncertainty in words. _arXiv preprint arXiv:2205.14334_ . 
+
+- Zhen Lin, Shubhendu Trivedi, and Jimeng Sun. 2024. Generating with confidence: Uncertainty quantification for black-box large language models. _Transactions on Machine Learning Research_ . 
+
+5440 
+
+- Zhan Ling, Yunhao Fang, Xuanlin Li, Zhiao Huang, Mingu Lee, Roland Memisevic, and Hao Su. 2023. Deductive verification of chain-of-thought reasoning. _arXiv preprint arXiv:2306.03872_ . 
+
+- Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae Lee. 2023. Visual instruction tuning. _Advances in neural information processing systems_ , 36:34892– 34916. 
+
+- Qing Lyu, Kumar Shridhar, Chaitanya Malaviya, Li Zhang, Yanai Elazar, Niket Tandon, Marianna Apidianaki, Mrinmaya Sachan, and Chris Callison-Burch. 2024. Calibrating large language models with sample consistency. _arXiv preprint arXiv:2402.13904_ . 
+
+- Andrey Malinin and Mark John Francis Gales. 2021. Uncertainty estimation in autoregressive structured prediction. In _International Conference on Learning Representations_ . 
+
+- Potsawee Manakul, Adian Liusie, and Mark Gales. 2023. SelfCheckGPT: Zero-resource black-box hallucination detection for generative large language models. In _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ , pages 9004–9017, Singapore. Association for Computational Linguistics. 
+
+- Ning Miao, Yee Whye Teh, and Tom Rainforth. 2023. Selfcheck: Using llms to zero-shot check their own step-by-step reasoning. _arXiv preprint arXiv:2308.00436_ . 
+
+- Sabrina J. Mielke, Arthur Szlam, Emily Dinan, and Y- Lan Boureau. 2022. Reducing conversational agents’ overconfidence through linguistic calibration. _Transactions of the Association for Computational Linguistics_ , 10:857–872. 
+
+- Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh, Mohit Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023. FActScore: Fine-grained atomic evaluation of factual precision in long form text generation. In _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ , pages 12076–12100, Singapore. Association for Computational Linguistics. 
+
+- Matthias Minderer, Josip Djolonga, Rob Romijnders, Frances Hubis, Xiaohua Zhai, Neil Houlsby, Dustin Tran, and Mario Lucic. 2021. Revisiting the calibration of modern neural networks. _Advances in Neural Information Processing Systems_ , 34:15682–15694. 
+
+- Tejaswini Pedapati, Amit Dhurandhar, Soumya Ghosh, Soham Dan, and Prasanna Sattigeri. 2024. Large language model confidence estimation via black-box access. _arXiv preprint arXiv:2406.04370_ . 
+
+- Anna Rohrbach, Lisa Anne Hendricks, Kaylee Burns, Trevor Darrell, and Kate Saenko. 2018. Object hallucination in image captioning. In _Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing_ , pages 4035–4045, Brussels, Belgium. Association for Computational Linguistics. 
+
+- Pritish Sahu, Karan Sikka, and Ajay Divakaran. 2024. Pelican: Correcting hallucination in vision-llms via claim decomposition and program of thought verification. _arXiv preprint arXiv:2407.02352_ . 
+
+- Zhiqing Sun, Sheng Shen, Shengcao Cao, Haotian Liu, Chunyuan Li, Yikang Shen, Chuang Gan, LiangYan Gui, Yu-Xiong Wang, Yiming Yang, and 1 others. 2023. Aligning large multimodal models with factually augmented rlhf. _arXiv preprint arXiv:2309.14525_ . 
+
+- Katherine Tian, Eric Mitchell, Allan Zhou, Archit Sharma, Rafael Rafailov, Huaxiu Yao, Chelsea Finn, and Christopher Manning. 2023. Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback. In _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ , pages 5433–5442, Singapore. Association for Computational Linguistics. 
+
+- Junyang Wang, Yuhang Wang, Guohai Xu, Jing Zhang, Yukai Gu, Haitao Jia, Ming Yan, Ji Zhang, and Jitao Sang. 2023. An llm-free multi-dimensional benchmark for mllms hallucination evaluation. _arXiv preprint arXiv:2311.07397_ . 
+
+- Shuo Wang, Zhaopeng Tu, Shuming Shi, and Yang Liu. 2020. On the inference calibration of neural machine translation. In _Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics_ , pages 3070–3079, Online. Association for Computational Linguistics. 
+
+- Xintong Wang, Jingheng Pan, Liang Ding, and Chris Biemann. 2024. Mitigating hallucinations in large vision-language models with instruction contrastive decoding. _arXiv preprint arXiv:2403.18715_ . 
+
+- Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, and Denny Zhou. 2022. Self-consistency improves chain of thought reasoning in language models. _arXiv preprint arXiv:2203.11171_ . 
+
+- Yixuan Weng, Minjun Zhu, Fei Xia, Bin Li, Shizhu He, Shengping Liu, Bin Sun, Kang Liu, and Jun Zhao. 2023. Large language models are better reasoners with self-verification. In _Findings of the Association for Computational Linguistics: EMNLP 2023_ , pages 2550–2575, Singapore. Association for Computational Linguistics. 
+
+- Penghao Wu and Saining Xie. 2024. V?: Guided visual search as a core mechanism in multimodal llms. In _Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition_ , pages 13084– 13094. 
+
+- Miao Xiong, Ailin Deng, Pang Wei W Koh, Jiaying Wu, Shen Li, Jianqing Xu, and Bryan Hooi. 2023. Proximity-informed calibration for deep neural networks. _Advances in Neural Information Processing Systems_ , 36:68511–68538. 
+
+5441 
+
+- Miao Xiong, Zhiyuan Hu, Xinyang Lu, YIFEI LI, Jie Fu, Junxian He, and Bryan Hooi. 2024. Can LLMs express their uncertainty? an empirical evaluation of confidence elicitation in LLMs. In _The Twelfth International Conference on Learning Representations_ . 
+
+- Shukang Yin, Chaoyou Fu, Sirui Zhao, Ke Li, Xing Sun, Tong Xu, and Enhong Chen. 2024. A survey on multimodal large language models. _National Science Review_ , 11(12):nwae403. 
+
+- Shukang Yin, Chaoyou Fu, Sirui Zhao, Tong Xu, Hao Wang, Dianbo Sui, Yunhang Shen, Ke Li, Xing Sun, and Enhong Chen. 2023. Woodpecker: Hallucination correction for multimodal large language models. _arXiv preprint arXiv:2310.16045_ . 
+
+- KiYoon Yoo, Jangho Kim, Jiho Jang, and Nojun Kwak. 2022. Detection of word adversarial examples in text classification: Benchmark and baseline via robust density estimation. _arXiv preprint arXiv:2203.01677_ . 
+
+- Qifan Yu, Juncheng Li, Longhui Wei, Liang Pang, Wentao Ye, Bosheng Qin, Siliang Tang, Qi Tian, and Yueting Zhuang. 2024. Hallucidoctor: Mitigating hallucinatory toxicity in visual instruction data. In _Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition_ , pages 12944– 12953. 
+
+- Jize Zhang, Bhavya Kailkhura, and T Yong-Jin Han. 2020. Mix-n-match: Ensemble and compositional methods for uncertainty calibration in deep learning. In _International conference on machine learning_ , pages 11117–11128. PMLR. 
+
+- Yi-Fan Zhang, Weichen Yu, Qingsong Wen, Xue Wang, Zhang Zhang, Liang Wang, Rong Jin, and Tieniu Tan. 2024. Debiasing multimodal large language models. _arXiv preprint arXiv:2403.05262_ . 
+
+- Zhuosheng Zhang, Aston Zhang, Mu Li, Hai Zhao, George Karypis, and Alex Smola. 2023. Multimodal chain-of-thought reasoning in language models. _arXiv preprint arXiv:2302.00923_ . 
+
+- Wanjun Zhong, Jingjing Xu, Duyu Tang, Zenan Xu, Nan Duan, Ming Zhou, Jiahai Wang, and Jian Yin. 2020. Reasoning over semantic-level graph for fact checking. In _Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics_ , pages 6170–6180, Online. Association for Computational Linguistics. 
+
+Chang. 2025. M[2] -TabFact: Multi-document multimodal fact verification with visual and textual representations of tabular data. In _Findings of the Association for Computational Linguistics: ACL 2025_ , pages 26239–26256, Vienna, Austria. Association for Computational Linguistics. 
+
+## **A Appendix** 
+
+## **A.1 Atomic Query Generation Details** 
+
+Atomic query generation consists of two steps. First, we prompt an LLM to generate tuples following the provided taxonomy. The prompt is shown below. We provide five-shot examples. 
+
+Task: Based on the example input questions, the example output tuples, and the provided tuple taxonomy below, generate skill-specific tuples to help verify and refine the answer of the last input question. 
+
+Requirements: 
+
+1. Ensure the generated tuples fully capture the factual information of the input question, with each tuple representing a distinct atomic and positive statement. Subjective elements in the initial answer should be disregarded. 
+
+2. If the input question is irrelevant to any category, output "None." 3. You must remove any negative words including "not" and "no" from your generation regardless of whether it will result in the opposite meaning. 4. Do not generate trivial tuples about - the image itself such as "entity whole (image)". 
+
+5. Each tuple should be output in the following format: id | tuple 
+
+Tuple taxonomy: ````` 
+
+Entity relationships: 
+
+* entity - whole 
+
+- Kaitlyn Zhou, Dan Jurafsky, and Tatsunori Hashimoto. 2023. Navigating the grey area: How expressions of uncertainty and overconfidence affect language models. In _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ , pages 5506–5524, Singapore. Association for Computational Linguistics. 
+
+- Mingyang Zhou, Lingyu Zhang, Sophia Horng, Maximillian Chen, Kung-Hsiang Huang, and Shih-Fu 
+
+* entity - part 
+
+Attribute relationships: 
+
+* attribute - state 
+
+* attribute - color 
+
+* attribute - type * attribute - text rendering * attribute - material 
+
+5442 
+
+* attribute - shape * attribute - size * attribute - count * attribute - texture * attribute - style * attribute - temporal Relations: * relation - spatial * relation - action 
+
+Miscellaneous: * other - other ````` 
+
+Second, we prompt the same LLM to convert these tuples into atomic queries. The corresponding prompt is shown below. We conduct experiments with two LLMs, Claude-3-Sonnet and Claude-3.7-Sonnet. For both models, the temperature is set to 0 and the maximum output length to 1000 tokens. This decoding configuration is applied consistently across all uses of the LLM. We provide two shot examples. 
+
+Task: Given the example input questions, skill-specific tuples, and the example output of generated binary questions, re-write each tuple from the last example into a standalone, positively framed natural language binary question. 
+
+Requirements: 
+
+1. Each binary question should be non-trivial for a vision model to verify. Exclude trivial tuples that do not help in verifying and refining the initial answer. 
+
+2. Each binary question should be self-contained and answerable independently, without requiring knowledge of other binary questions. 2. Generate one binary question only for the two or more tuples sharing the same meaning or the opposite meaning. 3. Ensure the generated questions fully capture the factual information of the input question. Create additional binary questions if they are helpful and complementary for refining the initial answer. 
+
+4. Treat conditional statements or 
+
+given information in "Question:" as context that you don't need to ask questions from. 
+
+5. You must generate positively framed questions and remove any negative words including "not" and "no" from your generation regardless of whether it will result in the opposite meaning. For example, instead of generating "is this artwork not created by Jacob?", you should always ask its corresponding positive question "is this artwork created by Jacob?" output format: id | question 
+
+## **A.2 Query Reformulation Details** 
+
+For each atomic query, we generate nine reformulated variations using the same LLM as above. The corresponding prompt is shown below. We provide two-shot examples. 
+
+Paraphrase the following question about an image maintaining the exact same meaning. You must keep the entity names in the paraphrased questions the same as in the input question to prevent any ambiguity. Ensure each generated question is easily understandable and can be answered with "yes" or "no." Generate 10 distinct paraphrased versions of the question. 
+
+Input question: ````` 
+
+{question} ````` 
+
+Directly provide your paraphrased questions in a numbered list without any explanations. 
+
+## **A.3 Response Refinement Details** 
+
+The following prompt is used to guide the LLM in refining the MLLM’s answer. 
+
+Given a VQA question-answer pair, refine the model's initial answer using the context of verification questions and their ground truth answers. Preserve the model's answer if the verification context confirms that the final answer is correct, even if the 
+
+5443 
+
+model's reasoning is flawed. Only revise the model's answer if the verification context provides highly specific and directly relevant evidence that the final answer itself is incorrect. If no sufficiently relevant verification questions are available, return the initial answer as the output. Ensure that all output text is derived from the initial answer or the provided context; do not generate any new, unverified information. 
+
+## **A.6 Usage of AI Assistants** 
+
+We use AI assistants solely to correct grammar and improve clarity of writing. 
+
+Question: "{question}" 
+
+Model's initial answer: "{answer}" 
+
+Verification context: ````` 
+
+{verification_qa} ````` 
+
+Provide only the revised answer without any explanation or additional text. 
+
+## **A.4 Experiment Details** 
+
+We conduct our experiments on 8 NVIDIA A100 80G GPUs, totaling approximately 1,000 GPU hours. For all experiments involving MLLMs, results are averaged over three random seeds, and we report the mean performance. We set the decoding temperature to 0.6 to reduce repetitions in text generation and limit the maximum number of new tokens to 1,024. For VCD, we use _α_ = 1, _β_ = 0 _._ 1, and 500 noise steps. The total API cost for LLM usage was approximately $1000. 
+
+We use the official implementations of LLaVA-1.5-7B[1] and CogVLM2[2] . 
+
+## **A.5 Dataset details** 
+
+All datasets used in this work are subject to their respective licenses and are employed strictly for research purposes, consistent with their original intended use. The datasets contain only VQA examples and do not include any personally identifiable information or offensive content. 
+
+> 1https://github.com/haotian-liu/LLaVA 
+
+> 2https://github.com/zai-org/CogVLM2 
+
+5444 
+
