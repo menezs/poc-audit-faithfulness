@@ -3,13 +3,7 @@ import os
 import sys
 import json
 from pathlib import Path
-
-project_root = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, project_root)
-
 from dotenv import load_dotenv
-
-load_dotenv()
 
 from src.auditor import AuditPipeline
 from src.auditor.utils import save_result_json
@@ -17,15 +11,19 @@ from src.auditor.services.file_converter import FileConverter
 from src.auditor.services.llm_service import LLMService
 from src.auditor.services.reference_extractor import ReferenceExtractor
 
+project_root = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, project_root)
+
+REGISTER_FILE = Path("./register/register.json")
 ANSWERS_DIR = Path("./answers")
 DOCUMENTS_DIR = Path("./documents")
-REGISTER_FILE = Path("./register/register.json")
+DOCUMENTS_DIR.mkdir(parents=True, exist_ok=True)
+Path("./register").mkdir(parents=True, exist_ok=True)
+
+load_dotenv()
 
 llm_base_url = os.getenv("LLM_BASE_URL", "http://localhost:1234/v1/")
 llm_model = os.getenv("LLM_MODEL", "google/gemma-4-e4b")
-
-DOCUMENTS_DIR.mkdir(parents=True, exist_ok=True)
-Path("./register").mkdir(parents=True, exist_ok=True)
 
 
 def load_register() -> list:
