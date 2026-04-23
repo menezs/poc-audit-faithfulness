@@ -128,6 +128,10 @@ AuditorFidelidade/
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
+### Diagrama
+
+<img src="diagrams/flowAudit.png" width="700"/>
+
 ### Detalhes do Fluxo
 
 1. **Levantamento**: Lista todos os arquivos `.md` em `./answers/`
