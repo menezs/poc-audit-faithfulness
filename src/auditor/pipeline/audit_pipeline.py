@@ -3,7 +3,7 @@ from typing import List, Optional
 from pathlib import Path
 from tqdm import tqdm
 from ..models.claim import Claim
-from ..models.verification_result import VerificationResult, VerificationLabel
+from ..models.verification_result import VerificationResult, VerificationLabel, VerificationLabelNew, VerificationResultNew
 from ..core import ClaimExtractor, Retriever, Verifier, Scorer
 from ..config.settings import Settings
 from ..services import LLMService, EmbeddingService, VectorStoreService
@@ -12,7 +12,7 @@ from ..services import LLMService, EmbeddingService, VectorStoreService
 @dataclass
 class AuditResult:
     score: float
-    results: List[VerificationResult]
+    results: List[VerificationResultNew]
     claims: List[Claim]
     total_supported: int
     total_partial: int
@@ -110,20 +110,20 @@ class AuditPipeline:
     def _build_result(
         self,
         claims: List[Claim],
-        verification_results: List[VerificationResult],
+        verification_results: List[VerificationResultNew],
         score: float
     ) -> AuditResult:
         total_supported = sum(
             1 for r in verification_results
-            if r.label == VerificationLabel.SUPPORTED
+            if r.label == VerificationLabelNew.EXPLICIT
         )
         total_partial = sum(
             1 for r in verification_results
-            if r.label == VerificationLabel.PARTIAL
+            if r.label == VerificationLabelNew.INFERRED
         )
         total_not_supported = sum(
             1 for r in verification_results
-            if r.label == VerificationLabel.NOT_SUPPORTED
+            if r.label == VerificationLabelNew.NOT_SUPPORTED
         )
 
         return AuditResult(

@@ -30,31 +30,37 @@ class ClaimExtractor:
         return f"""
 You are an expert in factual decomposition and information extraction.
 
-Your task is to extract a list of atomic, verifiable factual claims from the text.
+Your task is to extract atomic, verifiable factual claims from the text.
 
 Definition of a claim:
-- A claim is a single, independent factual statement that can be verified against evidence.
-- Each claim must express ONE fact only.
+- A claim is a single factual statement that can be directly checked against evidence.
 
 Instructions:
-- Split complex sentences into multiple claims if needed
+- Each claim must express ONE fact only
+- Split complex sentences into multiple claims
 - Preserve the original meaning
-- Avoid vague, generic, or subjective statements
-- Avoid combining multiple facts into a single claim
-- Do not include opinions, speculation, or implications
-- Prefer explicit statements over inferred ones
-- Keep each claim concise but complete
 
-Important:
-- Each claim must be independently verifiable
-- Each claim must be self-contained (do not rely on context from other claims)
+STRICT RULES:
+- Prefer claims that are explicitly stated in the text
+- Avoid high-level generalizations (e.g., "has strong capabilities", "is important")
+- Avoid subjective or interpretative language
+- Avoid claims that require interpretation or summarization
+- Avoid vague qualifiers (e.g., "advanced", "significant", "remarkable") unless explicitly defined
+
+- Each claim must be:
+  - concrete
+  - specific
+  - verifiable against text spans
+
+- Rewrite pronouns (e.g., "it", "they") into explicit entities
 
 Text:
 \"\"\"{answer}\"\"\"
 
-Output format:
+Output:
 - Return ONLY a valid JSON array of strings
-- Do not include explanations, comments, or markdown
+- No explanations
+- No markdown
 """
 
     def _fallback_extract(self, answer: str) -> List[str]:

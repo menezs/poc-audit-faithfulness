@@ -18,6 +18,20 @@ class VerificationLabel(Enum):
         return cls.NOT_SUPPORTED
 
 
+class VerificationLabelNew(Enum):
+    EXPLICIT = "EXPLICIT"
+    INFERRED = "INFERRED"
+    NOT_SUPPORTED = "NOT_SUPPORTED"
+
+    @classmethod
+    def from_string(cls, value: str) -> "VerificationLabelNew":
+        normalized = value.strip().upper()
+        for label in cls:
+            if label.value == normalized:
+                return label
+        return cls.NOT_SUPPORTED
+
+
 @dataclass
 class VerificationResult:
     claim: Claim
@@ -39,3 +53,26 @@ class VerificationResult:
 
     def __repr__(self) -> str:
         return f"VerificationResult(claim={self.claim.index}, label={self.label.value})"
+
+
+@dataclass
+class VerificationResultNew:
+    claim: Claim
+    label: VerificationLabelNew
+    justification: str
+    passages: List[str]
+
+    @property
+    def is_explicit(self) -> bool:
+        return self.label == VerificationLabelNew.EXPLICIT
+
+    @property
+    def is_inferred(self) -> bool:
+        return self.label == VerificationLabelNew.INFERRED
+
+    @property
+    def is_not_supported(self) -> bool:
+        return self.label == VerificationLabelNew.NOT_SUPPORTED
+
+    def __repr__(self) -> str:
+        return f"VerificationResultNew(claim={self.claim.index}, label={self.label.value})"
