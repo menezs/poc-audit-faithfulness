@@ -1,0 +1,26 @@
+{
+  "timestamp": "20260427_203226",
+  "score": 0.5,
+  "total_supported": 0,
+  "total_unsupported": 1,
+  "total_contradicted": 0,
+  "is_fully_supported": false,
+  "claims": [
+    {
+      "index": 0,
+      "text": "Revela alto índice de respostas incorretas no ChatGPT (ER ~64.9%)【39†L1-L4】 e complexidade de checagem. Cria pipeline estruturado para análise de falhas factuais e propõe benchmarks (FactBench de 4.835 exemplos ampliando domínios diversos)【41†L329-L337】.",
+      "source_answer": "Revela alto índice de respostas incorretas no ChatGPT (ER ~64.9%)【39†L1-L4】 e complexidade de checagem. Cria pipeline estruturado para análise de falhas factuais e propõe benchmarks (FactBench de 4.835 exemplos ampliando domínios diversos)【41†L329-L337】."
+    }
+  ],
+  "results": [
+    {
+      "claim_index": 0,
+      "claim_text": "Revela alto índice de respostas incorretas no ChatGPT (ER ~64.9%)【39†L1-L4】 e complexidade de checagem. Cria pipeline estruturado para análise de falhas factuais e propõe benchmarks (FactBench de 4.835 exemplos ampliando domínios diversos)【41†L329-L337】.",
+      "label": "UNSUPPORTED",
+      "justification": "The evidence describes the creation of a factuality benchmark for LLMs and mentions preliminary experiments regarding false claims. However, it does not contain the specific statistics (e.g., ER ~64.9% incorrect response rate in ChatGPT) or the detailed description of the benchmark named 'FactBench' with 4,835 examples provided in the claim.",
+      "passages": [
+        "# Computer Science > Computation and Language\n\n[Submitted on 15 Nov 2023 (v1), last revised 16 Apr 2024 (this version, v3)]\n\n# Title:Factcheck-Bench: Fine-Grained Evaluation Benchmark for Automatic Fact-checkers\n\nView PDF HTML (experimental)Abstract:The increased use of large language models (LLMs) across a variety of real-world applications calls for mechanisms to verify the factual accuracy of their outputs. In this work, we present a holistic end-to-end solution for annotating the factuality of LLM-generated responses, which encompasses a multi-stage annotation scheme designed to yield detailed labels concerning the verifiability and factual inconsistencies found in LLM outputs. We further construct an open-domain document-level factuality benchmark in three-level granularity: claim, sentence and document, aiming to facilitate the evaluation of automatic fact-checking systems. Preliminary experiments show that FacTool, FactScore and this http URL are struggling to identify false claims, with the best F1=0.63 by this annotation solution based on GPT-4. Annotation tool, benchmark and code are available at this https URL.\n\n## Submission history\n\nFrom: Yuxia Wang [view email]**[v1]**Wed, 15 Nov 2023 14:41:57 UTC (1,021 KB)\n\n**[v2]**Thu, 16 Nov 2023 04:15:22 UTC (1,021 KB)\n\n**[v3]**Tue, 16 Apr 2024 07:41:43 UTC (836 KB)\n\n### References & Citations\n\nexport BibTeX citation\nLoading...\n\n# Bibliographic and Citation Tools\n\nBibliographic Explorer\n\n*(What is the Explorer?)*\nConnected Papers\n\n*(What is Connected Papers?)*\nLitmaps\n\n*(What is Litmaps?)*\nscite Smart Citations\n\n*(What are Smart Citations?)*# Code, Data and Media Associated with this Article\n\nalphaXiv\n\n*(What is alphaXiv?)*\nCatalyzeX Code Finder for Papers\n\n*(What is CatalyzeX?)*\nDagsHub\n\n*(What is DagsHub?)*\nGotit.pub\n\n*(What is GotitPub?)*\nHugging Face\n\n*(What is Huggingface?)*\nPapers with Code\n\n*(What is Papers with Code?)*\nScienceCast\n\n*(What is ScienceCast?)*# Demos\n\n# Recommenders and Search Tools\n\nInfluence Flower\n\n*(What are Influence Flowers?)*\nCORE Recommender\n\n*(What is CORE?)*# arXivLabs: experimental projects with community collaborators\n\narXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.\n\nBoth individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.\n\nHave an idea for a project that will add value for arXiv's community? **Learn more about arXivLabs**."
+      ]
+    }
+  ]
+}

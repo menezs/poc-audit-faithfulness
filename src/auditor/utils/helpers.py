@@ -19,8 +19,8 @@ def print_result(result: AuditResult) -> None:
     print("=" * 50)
     print(f"\nScore: {result.score:.2f}")
     print(f"Supported: {result.total_supported}")
-    print(f"Partial: {result.total_partial}")
-    print(f"Not Supported: {result.total_not_supported}")
+    print(f"Unsupported: {result.total_unsupported}")
+    print(f"Contradicted: {result.total_contradicted}")
     print("\n" + "-" * 50)
     print("DETAILS")
     print("-" * 50)
@@ -46,8 +46,8 @@ def save_result_json(result: AuditResult, output_dir: str = "./results", answer_
         "timestamp": timestamp,
         "score": result.score,
         "total_supported": result.total_supported,
-        "total_partial": result.total_partial,
-        "total_not_supported": result.total_not_supported,
+        "total_unsupported": result.total_unsupported,
+        "total_contradicted": result.total_contradicted,
         "is_fully_supported": result.is_fully_supported,
         "claims": [
             {

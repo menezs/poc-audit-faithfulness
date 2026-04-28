@@ -30,6 +30,20 @@ class VerificationLabelNew(Enum):
             if label.value == normalized:
                 return label
         return cls.NOT_SUPPORTED
+    
+
+class VerificationLabelNew2(Enum):
+    SUPPORTED = "SUPPORTED"
+    UNSUPPORTED = "UNSUPPORTED"
+    CONTRADICTED = "CONTRADICTED"
+
+    @classmethod
+    def from_string(cls, value: str) -> "VerificationLabelNew2":
+        normalized = value.strip().upper()
+        for label in cls:
+            if label.value == normalized:
+                return label
+        return cls.CONTRADICTED
 
 
 @dataclass
@@ -76,3 +90,26 @@ class VerificationResultNew:
 
     def __repr__(self) -> str:
         return f"VerificationResultNew(claim={self.claim.index}, label={self.label.value})"
+    
+
+@dataclass
+class VerificationResultNew2:
+    claim: Claim
+    label: VerificationLabelNew2
+    justification: str
+    passages: List[str]
+
+    @property
+    def is_supported(self) -> bool:
+        return self.label == VerificationLabelNew2.SUPPORTED
+
+    @property
+    def is_unsupported(self) -> bool:
+        return self.label == VerificationLabelNew2.UNSUPPORTED
+
+    @property
+    def is_contradicted(self) -> bool:
+        return self.label == VerificationLabelNew2.CONTRADICTED
+
+    def __repr__(self) -> str:
+        return f"VerificationResultNew2(claim={self.claim.index}, label={self.label.value})"

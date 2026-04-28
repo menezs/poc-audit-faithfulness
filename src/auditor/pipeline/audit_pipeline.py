@@ -3,7 +3,7 @@ from typing import List, Optional
 from pathlib import Path
 from tqdm import tqdm
 from ..models.claim import Claim
-from ..models.verification_result import VerificationResult, VerificationLabel, VerificationLabelNew, VerificationResultNew
+from ..models.verification_result import VerificationResult, VerificationLabel, VerificationLabelNew, VerificationResultNew, VerificationLabelNew2, VerificationResultNew2
 from ..core import ClaimExtractor, Retriever, Verifier, Scorer
 from ..config.settings import Settings
 from ..services import LLMService, EmbeddingService, VectorStoreService
@@ -12,22 +12,22 @@ from ..services import LLMService, EmbeddingService, VectorStoreService
 @dataclass
 class AuditResult:
     score: float
-    results: List[VerificationResultNew]
+    results: List[VerificationResultNew2]
     claims: List[Claim]
     total_supported: int
-    total_partial: int
-    total_not_supported: int
+    total_unsupported: int
+    total_contradicted: int
 
     @property
     def is_fully_supported(self) -> bool:
-        return self.total_not_supported == 0 and self.total_partial == 0
+        return self.total_contradicted == 0 and self.total_unsupported == 0
 
     def summary(self) -> str:
         lines = [
             f"Score: {self.score:.2f}",
             f"Supported: {self.total_supported}",
-            f"Partial: {self.total_partial}",
-            f"Not Supported: {self.total_not_supported}",
+            f"Unsupported: {self.total_unsupported}",
+            f"Contradicted: {self.total_contradicted}",
         ]
         return "\n".join(lines)
 
@@ -93,7 +93,10 @@ class AuditPipeline:
         answer_text = self._process_answer(answer)
         processed_docs = self._process_documents(documents)
 
-        claims = self._extractor.extract(answer_text)
+        # claims = self._extractor.extract(answer_text)
+        claims = [
+            Claim(text=answer_text, index=0, source_answer=answer_text)
+        ]
 
         retriever = self._ensure_retriever(processed_docs)
         verification_results = []
@@ -110,20 +113,20 @@ class AuditPipeline:
     def _build_result(
         self,
         claims: List[Claim],
-        verification_results: List[VerificationResultNew],
+        verification_results: List[VerificationResultNew2],
         score: float
     ) -> AuditResult:
         total_supported = sum(
             1 for r in verification_results
-            if r.label == VerificationLabelNew.EXPLICIT
+            if r.label == VerificationLabelNew2.SUPPORTED
         )
-        total_partial = sum(
+        total_unsupported = sum(
             1 for r in verification_results
-            if r.label == VerificationLabelNew.INFERRED
+            if r.label == VerificationLabelNew2.UNSUPPORTED
         )
-        total_not_supported = sum(
+        total_contradicted = sum(
             1 for r in verification_results
-            if r.label == VerificationLabelNew.NOT_SUPPORTED
+            if r.label == VerificationLabelNew2.CONTRADICTED
         )
 
         return AuditResult(
@@ -131,8 +134,8 @@ class AuditPipeline:
             results=verification_results,
             claims=claims,
             total_supported=total_supported,
-            total_partial=total_partial,
-            total_not_supported=total_not_supported,
+            total_unsupported=total_unsupported,
+            total_contradicted=total_contradicted,
         )
 
     @property

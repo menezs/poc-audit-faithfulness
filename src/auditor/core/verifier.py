@@ -1,6 +1,6 @@
 from typing import List, Optional
 from ..models.claim import Claim
-from ..models.verification_result import VerificationResult, VerificationLabel, VerificationResultNew, VerificationLabelNew
+from ..models.verification_result import VerificationResult, VerificationLabel, VerificationResultNew, VerificationLabelNew, VerificationResultNew2, VerificationLabelNew2
 from ..services.llm_service import LLMService
 
 
@@ -9,19 +9,19 @@ class Verifier:
         self._llm = llm_service
         self._system_message = system_message or "You are an expert fact-checker."
 
-    def verify(self, claim: Claim, passages: List[str]) -> VerificationResultNew:
+    def verify(self, claim: Claim, passages: List[str]) -> VerificationResultNew2:
         prompt = self._build_prompt(claim.text, passages)
         
         try:
             data = self._llm.complete_json(prompt, self._system_message)
-            label = VerificationLabelNew.from_string(data.get("label", "NOT_SUPPORTED"))
+            label = VerificationLabelNew2.from_string(data.get("label", "CONTRADICTED"))
             justification = data.get("justification", "")
         except Exception as e:
             print(e)
-            label = VerificationLabelNew.NOT_SUPPORTED
+            label = VerificationLabelNew2.CONTRADICTED
             justification = "Parsing error"
         
-        return VerificationResultNew(
+        return VerificationResultNew2(
             claim=claim,
             label=label,
             justification=justification,
@@ -31,9 +31,9 @@ class Verifier:
     def _build_prompt(self, claim: str, passages: List[str]) -> str:
         joined_passages = "\n\n".join(passages)
         return f"""
-You are an expert in evidence-based factual verification.
+You are an expert in evidence-based verification.
 
-Your task is to determine how a claim is supported by the provided evidence.
+Your task is to determine whether the claim is supported by the provided evidence.
 
 Claim:
 \"{claim}\"
@@ -45,30 +45,27 @@ Evidence:
 
 Definitions:
 
-- EXPLICIT:
-  The claim is directly stated in the evidence.
-  The meaning appears clearly without needing interpretation.
+- SUPPORTED:
+  The claim can be justified using ONLY the provided evidence.
+  It may require light reasoning, but no external knowledge.
 
-- INFERRED:
-  The claim can be logically derived from the evidence,
-  but is not explicitly stated.
-  Requires interpretation, generalization, or combining information.
+- UNSUPPORTED:
+  The claim cannot be justified using the provided evidence.
+  Even if it is true in the real world, it is not grounded in the evidence.
 
-- NOT_SUPPORTED:
-  The claim is not supported or is contradicted by the evidence.
+- CONTRADICTED:
+  The evidence contradicts the claim.
 
 Instructions:
-- Be strict.
-- Only use EXPLICIT if the claim is clearly present in the evidence.
-- If any reasoning is required → use INFERRED.
-- Do NOT assume missing information.
-- Do NOT rely on outside knowledge.
+- Respond ONLY with valid JSON
+- Do not include any extra text
+- Do NOT use external knowledge
+- Only rely on the provided evidence
+- If the evidence is insufficient → UNSUPPORTED
 
 Output:
-Return ONLY valid JSON:
-
 {{
-  "label": "EXPLICIT | INFERRED | NOT_SUPPORTED",
+  "label": "SUPPORTED | UNSUPPORTED | CONTRADICTED",
   "justification": "short explanation"
 }}
 """
