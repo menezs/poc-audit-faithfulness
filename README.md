@@ -6,7 +6,7 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 
 - **Extração de Afirmações**: Usa LLM para extrair afirmações factuais atômicas de um texto
 - **Busca por Evidências**: Recupera passagens relevantes usando FAISS + similaridade de cosseno
-- **Verificação**: Classifica afirmações como `SUPPORTED`, `PARTIAL` ou `NOT_SUPPORTED`
+- **Verificação**: Classifica afirmações como `SUPPORTED`, `UNSUPPORTED` ou `CONTRADICTED`
 - **Pontuação**: Calcula score de 0 a 1 baseado nas verificações
 - **Embeddings Locais**: Usa `sentence-transformers/all-MiniLM-L6-v2` via HuggingFace
 - **Extração de Referências**: Extrai URLs de referências de arquivos markdown e baixa conteúdo
@@ -16,6 +16,7 @@ Sistema de auditoria factual que avalia a veracidade de afirmações em um texto
 - **POO**: Código estruturado com classes e serviços separados
 - **Type Hints**: Sistema fortemente tipado
 - **FAISS**: Banco vetorial para persistência e busca de embeddings
+- **Análise de Resultados**: Scripts para somatório e extração de claims por label
 
 ## Requisitos
 
@@ -53,16 +54,23 @@ pip install -r requirements.txt
 
 ```
 AuditorFidelidade/
-├── main.py                                         # Entry point principal (fluxo integrado)
-├── answers/                                        # Arquivos de resposta (.md)
-│   ├── gemini_Factualidade_em_LLMs_Benchmark.md
-│   └── chatGPT_deep_research_report.md
-├── documents/                                      # Documentos de referência baixados (.md)
-├── register/                                       # Registro de downloads e erros
+├── main.py                                          # Entry point principal (fluxo integrado)
+├── mapping_answers_and_reference.py                  # Script alternativo com references LLM
+├── teste.py                                         # Script de análise de resultados
+├── answers/                                         # Arquivos de resposta (.md)
+├── documents/                                       # Documentos de referência baixados (.md)
+├── register/                                        # Registro de downloads e erros
 │   └── register.json
-├── results/                                        # Resultados da auditoria
-│   └── AnswerName/
-│       └── audit_*.json
+├── references/                                      # References extraídas por LLM
+│   └── references_lmStudio_*.json
+├── results/                                         # Resultados da auditoria
+│   ├── claim_for_reference3/                        # Resultados da auditoria
+│   │   └── audit_*.json
+│   ├── result_supported.json                        # Claims SUPPORTED extraídas
+│   └── result_unsupported.json                      # Claims UNSUPPORTED extraídas
+├── diagrams/                                        # Diagramas de fluxo
+│   ├── flowMainFile.png
+│   └── flowMappingFile.png
 ├── requirements.txt
 ├── .env
 ├── .env.example
@@ -80,7 +88,9 @@ AuditorFidelidade/
         │   ├── embedding_service.py
         │   ├── vector_store.py
         │   ├── reference_extractor.py
-        │   └── file_converter.py
+        │   ├── file_converter.py
+        │   ├── perplexity_service.py
+        │   └── openai_service.py
         ├── core/
         │   ├── claim_extractor.py
         │   ├── retriever.py
@@ -92,45 +102,15 @@ AuditorFidelidade/
             └── helpers.py
 ```
 
-## Fluxo de Execução
+## Fluxo de Execução - `main.py`
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                         main.py                                        │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                        │
-│   ┌──────────────┐      ┌──────────────┐      ┌──────────────────┐     │
-│   │ answers/*.md │◀───▶│ register.json│◀───▶│ documents/*.md   │     │
-│   └──────────────┘      └──────────────┘      └──────────────────┘     │
-│         ▲                       │                      ▲               │
-│         │                       │                      │               │
-│         │                       │                      │               │
-│         │                       │                      │               │
-│         ▼                       ▼                      ▼               │
-│   ┌─────────────┐      ┌─────────────────┐      ┌──────────────┐       │
-│   │  Ler todos  │      │ Tem documentos? │      │  Ler todos   │       │
-│   │answers/*.md │      └────────┬────────┘      │documents/*.md│       │
-│   └─────────────┘               │               └──────────────┘       │
-│                                 │                                      │
-│                        ┌───NÃO──┴───SIM──┐                             │
-│                        ▼                 ▼                             │
-│                   ┌─────────────┐      ┌──────────┐                    │
-│                   │ download_   │ ───> │ pipeline │                    │
-│                   │references() │      │.audit()  │                    │
-│                   └─────────────┘      └────┬─────┘                    │
-│                                             │                          │
-│                                             ▼                          │
-│                                  ┌────────────────────┐                │
-│                                  │  Salvar            │                │
-│                                  │ register.json      │                │
-│                                  └────────────────────┘                │
-│                                                                        │
-└────────────────────────────────────────────────────────────────────────┘
-```
+<img src="diagrams/flowMainFile.png" width="700"/>
 
-### Diagrama
+## Fluxo de Execução - `mapping_answers_and_reference.py`
 
-<img src="diagrams/flowAudit.png" width="700"/>
+<img src="diagrams/flowMappingFile.png" width="700"/>
+
+Este script utiliza as references extraídas previamente por LLM (arquivos em `./references/`) para executar a auditoria. Útil quando se tem um conjunto fixo de documents de referência.
 
 ### Detalhes do Fluxo
 
@@ -151,6 +131,23 @@ AuditorFidelidade/
    - Calcula score final
 
 5. **Resultado**: Salva em `./results/AnswerName/audit_TIMESTAMP.json`
+
+## Scripts de Análise
+
+### teste.py - Análise de Resultados
+
+Script para análise dos resultados da auditoria. Gera somatório e extração de claims por label.
+
+```bash
+python teste.py
+```
+
+**Funcionalidades:**
+- Soma os campos `total_supported`, `total_unsupported`, `total_contradicted` de todos os arquivos JSON
+- Extrai claims com label `SUPPORTED` para `result_supported.json`
+- Extrai claims com label `UNSUPPORTED` para `result_unsupported.json`
+
+---
 
 ## Uso
 
@@ -190,7 +187,8 @@ result = pipeline.audit(answer, documents)
 
 print(f"Score: {result.score}")
 print(f"Supported: {result.total_supported}")
-print(f"Not Supported: {result.total_not_supported}")
+print(f"Unsupported: {result.total_unsupported}")
+print(f"Contradicted: {result.total_contradicted}")
 ```
 
 ### Usar com texto direto
@@ -245,8 +243,8 @@ O arquivo `register.json` armazena o estado do processamento:
   "timestamp": "20260421_194319",
   "score": 0.65,
   "total_supported": 4,
-  "total_partial": 2,
-  "total_not_supported": 1,
+  "total_unsupported": 2,
+  "total_contradicted": 1,
   "is_fully_supported": false,
   "claims": [
     {
@@ -272,22 +270,22 @@ O arquivo `register.json` armazena o estado do processamento:
 O score é calculado com base nas verificações das afirmações:
 
 ```
-score = (suportadas + 0.5 * parciais) / total
+score = suportadas / total
 ```
 
 **Exemplo:**
 ```
 10 claims
-5 suportadas
-3 parciais
-2 não suportadas
-score = (5 + 0.5*3) / 10 = 0.65
+7 suportadas
+2 unsupported
+1 contradicted
+score = 7 / 10 = 0.70
 ```
 
 **Interpretação:**
 - `SUPPORTED`: Afirmação validada pelas evidências (peso 1.0)
-- `PARTIAL`: Afirmação parcialmente validada (peso 0.5)
-- `NOT_SUPPORTED`: Afirmação não validada (peso 0.0)
+- `UNSUPPORTED`: Afirmação não sustentada pelas evidências (peso 0.0)
+- `CONTRADICTED`: Afirmação contradita pelas evidências (peso 0.0)
 
 ## Configurações
 

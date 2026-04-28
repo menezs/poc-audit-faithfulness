@@ -132,10 +132,8 @@ def main() -> None:
         output_dir = f"./results/{answer_path.stem}"
         filepath = save_result_json(result, output_dir=output_dir, answer_name=answer_path.name)
         print(f"  Salvo: {filepath}")
-        print(f"  Score: {result.score:.2f} | Supported: {result.total_supported} | Partial: {result.total_partial} | Not Supported: {result.total_not_supported}")
+        print(f"  Score: {result.score:.2f} | Supported: {result.total_supported} | Unsupported: {result.total_unsupported} | Contradicted: {result.total_contradicted}")
 
-    print(f"\n{'=' * 50}")
-    print(f"RESUMO")
     print(f"{'=' * 50}")
     print(f"Processados: {len(processed_answers)}")
     print(f"Pulados: {len(skipped_answers)}")
