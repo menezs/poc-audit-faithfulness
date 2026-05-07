@@ -1,0 +1,395 @@
+{
+  "answer": "answers/chatGPT_Desafios_LLMs_Multilingues_e_Portugues.md",
+  "references": [
+    {
+      "id": 1,
+      "url": "【77†L67-L70】",
+      "paragraph": "Nos últimos cinco anos (2021–2026), avançaram-se significativamente os **LLMs multilíngues**, mas desafios persistem para línguas de poucos recursos como o português. A maioria dos LLMs de ponta (e.g. GPT-4, LLaMA, BLOOM, Qwen) são arquiteturas Transformer (geralmente decodificadoras) com bilhões de parâmetros【77†L67-L70】【35†L579-L584】."
+    },
+    {
+      "id": 2,
+      "url": "【35†L579-L584】",
+      "paragraph": "Nos últimos cinco anos (2021–2026), avançaram-se significativamente os **LLMs multilíngues**, mas desafios persistem para línguas de poucos recursos como o português. A maioria dos LLMs de ponta (e.g. GPT-4, LLaMA, BLOOM, Qwen) são arquiteturas Transformer (geralmente decodificadoras) com bilhões de parâmetros【77†L67-L70】【35†L579-L584】."
+    },
+    {
+      "id": 3,
+      "url": "【88†L181-L189】",
+      "paragraph": "Em 2024–2026 surgiram modelos especializados em português: *Sabia* (7B/65B, 2024) e *Curió* (1.1B, 2023) usaram 10B e 120B tokens respectivamente【88†L181-L189】, e recentemente o *Tucano 2* (0.5–3.7B, 2026) usou 320B tokens em pt【75†L521-L529】."
+    },
+    {
+      "id": 4,
+      "url": "【75†L521-L529】",
+      "paragraph": "Em 2024–2026 surgiram modelos especializados em português: *Sabia* (7B/65B, 2024) e *Curió* (1.1B, 2023) usaram 10B e 120B tokens respectivamente【88†L181-L189】, e recentemente o *Tucano 2* (0.5–3.7B, 2026) usou 320B tokens em pt【75†L521-L529】."
+    },
+    {
+      "id": 5,
+      "url": "【35†L579-L584】",
+      "paragraph": "Instrução e RLHF tornaram-se padrão de alinhamento (ex.: InstructGPT 2022, ChatGPT 2022)【35†L579-L584】, mas esses dados de ajuste são, em grande parte, em inglês."
+    },
+    {
+      "id": 6,
+      "url": "【87†L102-L110】【87†L113-L122】",
+      "paragraph": "Em termos de benchmarks, constatou-se que o português europeu é subrepresentado: avaliações multilíngues com frequência usam traduções MT (e.g. XTREME) ou corpus genéricos (Common Crawl)【87†L102-L110】【87†L113-L122】."
+    },
+    {
+      "id": 7,
+      "url": "【92†L69-L77】",
+      "paragraph": "Iniciativas como o *PORTULAN ExtraGLUE* (2024) traduziu tarefas GLUE para pt-PT/pt-BR【92†L69-L77】, e *ALBA* (2026) criou testes específicos para nuances do pt-PT【87†L102-L110】."
+    },
+    {
+      "id": 8,
+      "url": "【87†L102-L110】",
+      "paragraph": "Iniciativas como o *PORTULAN ExtraGLUE* (2024) traduziu tarefas GLUE para pt-PT/pt-BR【92†L69-L77】, e *ALBA* (2026) criou testes específicos para nuances do pt-PT【87†L102-L110】."
+    },
+    {
+      "id": 9,
+      "url": "【88†L101-L109】",
+      "paragraph": "Entre desafios técnicos destacam-se: escassez e qualidade de dados em pt (mesmo sendo a 5ª língua mais falada, dados limpos são escassos【88†L101-L109】), tokenização ineficiente para português (fertilidade de subpalavras elevada nos vocabulários multilíngues genéricos), transferência cross-línguas limitada (modelos apresentam 5× mais erros em idiomas pobres como pt que em ingles【25†L13-L20】) e custos computacionais de treinar LLMs na escala tradicional."
+    },
+    {
+      "id": 10,
+      "url": "【25†L13-L20】",
+      "paragraph": "Entre desafios técnicos destacam-se: escassez e qualidade de dados em pt (mesmo sendo a 5ª língua mais falada, dados limpos são escassos【88†L101-L109】), tokenização ineficiente para português (fertilidade de subpalavras elevada nos vocabulários multilíngues genéricos), transferência cross-línguas limitada (modelos apresentam 5× mais erros em idiomas pobres como pt que em ingles【25†L13-L20】) e custos computacionais de treinar LLMs na escala tradicional."
+    },
+    {
+      "id": 11,
+      "url": "【87†L102-L110】",
+      "paragraph": "Os desafios éticos incluem: **viéses culturais e linguísticos** (LLMs tendem a replicar predominância do português do Brasil sobre o Europeu【87†L102-L110】), **segurança** (possível geração de conteúdo nocivo ou enviesado), **privacidade** (LLMs podem memorizar e vazar dados de treino【59†L162-L169】), **desinformação** (hallucinações em pt podem propagar fake news) e **direitos autorais** (controversas legais como o processo Folha vs OpenAI no Brasil sobre uso de conteúdo protegido【83†L100-L109】【83†L125-L134】)."
+    },
+    {
+      "id": 12,
+      "url": "【59†L162-L169】",
+      "paragraph": "Os desafios éticos incluem: **viéses culturais e linguísticos** (LLMs tendem a replicar predominância do português do Brasil sobre o Europeu【87†L102-L110】), **segurança** (possível geração de conteúdo nocivo ou enviesado), **privacidade** (LLMs podem memorizar e vazar dados de treino【59†L162-L169】), **desinformação** (hallucinações em pt podem propagar fake news) e **direitos autorais** (controversas legais como o processo Folha vs OpenAI no Brasil sobre uso de conteúdo protegido【83†L100-L109】【83†L125-L134】)."
+    },
+    {
+      "id": 13,
+      "url": "【83†L100-L109】【83†L125-L134】",
+      "paragraph": "Os desafios éticos incluem: **viéses culturais e linguísticos** (LLMs tendem a replicar predominância do português do Brasil sobre o Europeu【87†L102-L110】), **segurança** (possível geração de conteúdo nocivo ou enviesado), **privacidade** (LLMs podem memorizar e vazar dados de treino【59†L162-L169】), **desinformação** (hallucinações em pt podem propagar fake news) e **direitos autorais** (controversas legais como o processo Folha vs OpenAI no Brasil sobre uso de conteúdo protegido【83†L100-L109】【83†L125-L134】)."
+    },
+    {
+      "id": 14,
+      "url": "【75†L521-L529】",
+      "paragraph": "Para cada desafio, há iniciativas: filtragem via classificadores de qualidade (e.g. Edu/Toxic classifiers em GigaVerbo-v2【75†L521-L529】), geracão sintética de dados, adaptação de tokenizadores (unigram/BPE dedicados, como o SentencePiece de 49K vocabulários que alcançou compressão de 2.88 chars/token【76†L36-L44】, 30% menor custo de pré-treino), métodos de tradução seletiva para alinhar dados de instrução【81†L88-L97】, e criação de benchmarks próprios (ex.: testes nacionais portugueses e novos esquemas de avaliação usados por Amália【90†L269-L273】)."
+    },
+    {
+      "id": 15,
+      "url": "【76†L36-L44】",
+      "paragraph": "Para cada desafio, há iniciativas: filtragem via classificadores de qualidade (e.g. Edu/Toxic classifiers em GigaVerbo-v2【75†L521-L529】), geracão sintética de dados, adaptação de tokenizadores (unigram/BPE dedicados, como o SentencePiece de 49K vocabulários que alcançou compressão de 2.88 chars/token【76†L36-L44】, 30% menor custo de pré-treino), métodos de tradução seletiva para alinhar dados de instrução【81†L88-L97】, e criação de benchmarks próprios (ex.: testes nacionais portugueses e novos esquemas de avaliação usados por Amália【90†L269-L273】)."
+    },
+    {
+      "id": 16,
+      "url": "【81†L88-L97】",
+      "paragraph": "Para cada desafio, há iniciativas: filtragem via classificadores de qualidade (e.g. Edu/Toxic classifiers em GigaVerbo-v2【75†L521-L529】), geracão sintética de dados, adaptação de tokenizadores (unigram/BPE dedicados, como o SentencePiece de 49K vocabulários que alcançou compressão de 2.88 chars/token【76†L36-L44】, 30% menor custo de pré-treino), métodos de tradução seletiva para alinhar dados de instrução【81†L88-L97】, e criação de benchmarks próprios (ex.: testes nacionais portugueses e novos esquemas de avaliação usados por Amália【90†L269-L273】)."
+    },
+    {
+      "id": 17,
+      "url": "【90†L269-L273】",
+      "paragraph": "Para cada desafio, há iniciativas: filtragem via classificadores de qualidade (e.g. Edu/Toxic classifiers em GigaVerbo-v2【75†L521-L529】), geracão sintética de dados, adaptação de tokenizadores (unigram/BPE dedicados, como o SentencePiece de 49K vocabulários que alcançou compressão de 2.88 chars/token【76†L36-L44】, 30% menor custo de pré-treino), métodos de tradução seletiva para alinhar dados de instrução【81†L88-L97】, e criação de benchmarks próprios (ex.: testes nacionais portugueses e novos esquemas de avaliação usados por Amália【90†L269-L273】)."
+    },
+    {
+      "id": 18,
+      "url": "【92†L69-L77】【95†L1268-L1271】",
+      "paragraph": "Em termos de **benchmarks**, comparamos GLUE/ExtraGLUE, XTREME/XTREME-R, FLORES-101, MMLU/MMLU-ProX, MASSIVE, ASSIN, BRaWaC etc, observando que apenas ExtraGLUE, MMLU-ProX e MASSIVE incluem português explicitamente【92†L69-L77】【95†L1268-L1271】; muitas tarefas genéricas (NER, QA) carecem de versões em pt."
+    },
+    {
+      "id": 19,
+      "url": "【75†L521-L529】【88†L121-L129】",
+      "paragraph": "Recomenda-se: **priorizar corpora em pt de alta qualidade** (como GigaVerbo, ClassiCC【75†L521-L529】【88†L121-L129】), **investir em tokenização e quantização específicas** (redução de vocabulário)【76†L36-L44】, criar **benchmarks centrados no português** (e.g. ALBA【87†L102-L110】), e desenvolver **diretrizes éticas** (proteção de dados, auditoria de viés) antes de implantar LLMs em aplicações lusófonas."
+    },
+    {
+      "id": 20,
+      "url": "【76†L36-L44】",
+      "paragraph": "Recomenda-se: **priorizar corpora em pt de alta qualidade** (como GigaVerbo, ClassiCC【75†L521-L529】【88†L121-L129】), **investir em tokenização e quantização específicas** (redução de vocabulário)【76†L36-L44】, criar **benchmarks centrados no português** (e.g. ALBA【87†L102-L110】), e desenvolver **diretrizes éticas** (proteção de dados, auditoria de viés) antes de implantar LLMs em aplicações lusófonas."
+    },
+    {
+      "id": 21,
+      "url": "【87†L102-L110】",
+      "paragraph": "Recomenda-se: **priorizar corpora em pt de alta qualidade** (como GigaVerbo, ClassiCC【75†L521-L529】【88†L121-L129】), **investir em tokenização e quantização específicas** (redução de vocabulário)【76†L36-L44】, criar **benchmarks centrados no português** (e.g. ALBA【87†L102-L110】), e desenvolver **diretrizes éticas** (proteção de dados, auditoria de viés) antes de implantar LLMs em aplicações lusófonas."
+    },
+    {
+      "id": 22,
+      "url": "https://citation.example.com/88_L101-L109",
+      "paragraph": "- **Dados (escassez e qualidade):** Apesar de grande número de falantes, o português carece de corpora filtrados comparáveis a línguas de alta-recurso. Corpora multilíngues amplos (mC4, OSCAR, Wiki) incluem apenas modestos terabytes em pt【88†L101-L109】. Iniciativas como *ClassiCC-PT* construíram 120B tokens usando filtros de idioma e heurísticas de qualidade【88†L119-L129】, enquanto *Tucano/GigaVerbo-v2* usaram LLMs anotadores para refinar 320B de dados【75†L521-L529】. Ainda assim, o balanceamento permanece: textos científicos e educacionais são raros; conteúdo do web (blogs, notícias) domina. A curadoria com múltiplos filtros (idioma, domínio, toxicidade) tem sido empregada【75†L521-L529】【81†L67-L75】, mas falta padronização global. A falta de paralelismo (corpora bilíngues de alta qualidade) limita alinhamento. "
+    },
+    {
+      "id": 23,
+      "url": "https://citation.example.com/88_L119-L129",
+      "paragraph": "- **Dados (escassez e qualidade):** Apesar de grande número de falantes, o português carece de corpora filtrados comparáveis a línguas de alta-recurso. Corpora multilíngues amplos (mC4, OSCAR, Wiki) incluem apenas modestos terabytes em pt【88†L101-L109】. Iniciativas como *ClassiCC-PT* construíram 120B tokens usando filtros de idioma e heurísticas de qualidade【88†L119-L129】, enquanto *Tucano/GigaVerbo-v2* usaram LLMs anotadores para refinar 320B de dados【75†L521-L529】. Ainda assim, o balanceamento permanece: textos científicos e educacionais são raros; conteúdo do web (blogs, notícias) domina. A curadoria com múltiplos filtros (idioma, domínio, toxicidade) tem sido empregada【75†L521-L529】【81†L67-L75】, mas falta padronização global. A falta de paralelismo (corpora bilíngues de alta qualidade) limita alinhamento. "
+    },
+    {
+      "id": 24,
+      "url": "https://citation.example.com/75_L521-L529",
+      "paragraph": "- **Dados (escassez e qualidade):** Apesar de grande número de falantes, o português carece de corpora filtrados comparáveis a línguas de alta-recurso. Corpora multilíngues amplos (mC4, OSCAR, Wiki) incluem apenas modestos terabytes em pt【88†L101-L109】. Iniciativas como *ClassiCC-PT* construíram 120B tokens usando filtros de idioma e heurísticas de qualidade【88†L119-L129】, enquanto *Tucano/GigaVerbo-v2* usaram LLMs anotadores para refinar 320B de dados【75†L521-L529】. Ainda assim, o balanceamento permanece: textos científicos e educacionais são raros; conteúdo do web (blogs, notícias) domina. A curadoria com múltiplos filtros (idioma, domínio, toxicidade) tem sido empregada【75†L521-L529】【81†L67-L75】, mas falta padronização global. A falta de paralelismo (corpora bilíngues de alta qualidade) limita alinhamento. "
+    },
+    {
+      "id": 25,
+      "url": "https://citation.example.com/81_L67-L75",
+      "paragraph": "- **Dados (escassez e qualidade):** Apesar de grande número de falantes, o português carece de corpora filtrados comparáveis a línguas de alta-recurso. Corpora multilíngues amplos (mC4, OSCAR, Wiki) incluem apenas modestos terabytes em pt【88†L101-L109】. Iniciativas como *ClassiCC-PT* construíram 120B tokens usando filtros de idioma e heurísticas de qualidade【88†L119-L129】, enquanto *Tucano/GigaVerbo-v2* usaram LLMs anotadores para refinar 320B de dados【75†L521-L529】. Ainda assim, o balanceamento permanece: textos científicos e educacionais são raros; conteúdo do web (blogs, notícias) domina. A curadoria com múltiplos filtros (idioma, domínio, toxicidade) tem sido empregada【75†L521-L529】【81†L67-L75】, mas falta padronização global. A falta de paralelismo (corpora bilíngues de alta qualidade) limita alinhamento. "
+    },
+    {
+      "id": 26,
+      "url": "https://citation.example.com/76_L36-L44",
+      "paragraph": "- **Tokenização e subword:** Tokenizadores multilíngues genéricos tratam palavras portuguesas fragmentando demais. Trabalhos recentes treinaram tokenizadores específicos: p.ex. um SentencePiece em mistura 40% pt, 40% en, 20% código (49K vocab) atingiu **fertilidade** 1.51 (menor entre comparados) e compressão 2.88 chars/token【76†L36-L44】. Isso gerou ~30% de economia de FLOPs no pré-treinamento【76†L36-L44】, pois reduz tokens. A implantação de tokenização *domínio-específica* (e.g. para educação ou jurídico) é sugerida para manter eficiência. "
+    },
+    {
+      "id": 27,
+      "url": "https://citation.example.com/25_L13-L20",
+      "paragraph": "- **Transferência cross-línguas e alinhamento:** MLLMs pré-treinados multilíngues (mBERT, XLM-R, BLOOM etc.) proporcionam transferência zero-shot. Contudo, estudos mostram grandes lacunas: GPT-4 comete ~5× mais erros em línguas de baixíssimo recurso (incluindo pt?) do que em inglês【25†L13-L20】. Métodos de alinhamento sem paralelo incluem tradução automática de dados de instrução (com dificuldades como preservação de código e fórmulas【81†L88-L97】), aprendizado de representações comuns ou pivote em inglês. A estratégia de **tradução seletiva** (preservar trechos não traduzíveis) mostrou melhoria em idiomas como hindi【81†L88-L97】 e pode ser aplicada ao português. Ainda assim, não há solução única: treinamentos contínuos em pt (fine-tuning no idioma) tendem a melhorar desempenho【88†L173-L181】【81†L67-L75】. "
+    },
+    {
+      "id": 28,
+      "url": "https://citation.example.com/81_L88-L97",
+      "paragraph": "- **Transferência cross-línguas e alinhamento:** MLLMs pré-treinados multilíngues (mBERT, XLM-R, BLOOM etc.) proporcionam transferência zero-shot. Contudo, estudos mostram grandes lacunas: GPT-4 comete ~5× mais erros em línguas de baixíssimo recurso (incluindo pt?) do que em inglês【25†L13-L20】. Métodos de alinhamento sem paralelo incluem tradução automática de dados de instrução (com dificuldades como preservação de código e fórmulas【81†L88-L97】), aprendizado de representações comuns ou pivote em inglês. A estratégia de **tradução seletiva** (preservar trechos não traduzíveis) mostrou melhoria em idiomas como hindi【81†L88-L97】 e pode ser aplicada ao português. Ainda assim, não há solução única: treinamentos contínuos em pt (fine-tuning no idioma) tendem a melhorar desempenho【88†L173-L181】【81†L67-L75】. "
+    },
+    {
+      "id": 29,
+      "url": "https://citation.example.com/88_L173-L181",
+      "paragraph": "- **Transferência cross-línguas e alinhamento:** MLLMs pré-treinados multilíngues (mBERT, XLM-R, BLOOM etc.) proporcionam transferência zero-shot. Contudo, estudos mostram grandes lacunas: GPT-4 comete ~5× mais erros em línguas de baixíssimo recurso (incluindo pt?) do que em inglês【25†L13-L20】. Métodos de alinhamento sem paralelo incluem tradução automática de dados de instrução (com dificuldades como preservação de código e fórmulas【81†L88-L97】), aprendizado de representações comuns ou pivote em inglês. A estratégia de **tradução seletiva** (preservar trechos não traduzíveis) mostrou melhoria em idiomas como hindi【81†L88-L97】 e pode ser aplicada ao português. Ainda assim, não há solução única: treinamentos contínuos em pt (fine-tuning no idioma) tendem a melhorar desempenho【88†L173-L181】【81†L67-L75】. "
+    },
+    {
+      "id": 30,
+      "url": "https://citation.example.com/76_L132-L140",
+      "paragraph": "- **Eficiência computacional e compressão:** Treinar LLMs trilionários tokens exige hardware massivo. Soluções incluem: *distilação* para modelos menores (ex. versões 0.5–4B como Tucano, Curió) e *quantização* (e.g. 4/8-bit pós-treinamento). A redução de vocabulário (viabilizada por “tokenizer transplantation” com OMP【76†L36-L44】) corta ~68% dos parâmetros de embedding【76†L132-L140】. Além disso, otimizações de infraestrutura (atenção linear, FlashAttention) e paralelismo distribuído (DDP/FSDP) têm sido adotadas nas implementações mais recentes【77†L67-L70】【78†L99-L102】. Contudo, o custo energético de treinos prolongados (centenas de bilhões de tokens) segue restritivo, aumentando o apelo por estratégias de *few-shot* e *LoRA* para adaptação eficiente. "
+    },
+    {
+      "id": 31,
+      "url": "https://citation.example.com/77_L67-L70",
+      "paragraph": "- **Eficiência computacional e compressão:** Treinar LLMs trilionários tokens exige hardware massivo. Soluções incluem: *distilação* para modelos menores (ex. versões 0.5–4B como Tucano, Curió) e *quantização* (e.g. 4/8-bit pós-treinamento). A redução de vocabulário (viabilizada por “tokenizer transplantation” com OMP【76†L36-L44】) corta ~68% dos parâmetros de embedding【76†L132-L140】. Além disso, otimizações de infraestrutura (atenção linear, FlashAttention) e paralelismo distribuído (DDP/FSDP) têm sido adotadas nas implementações mais recentes【77†L67-L70】【78†L99-L102】. Contudo, o custo energético de treinos prolongados (centenas de bilhões de tokens) segue restritivo, aumentando o apelo por estratégias de *few-shot* e *LoRA* para adaptação eficiente. "
+    },
+    {
+      "id": 32,
+      "url": "https://citation.example.com/78_L99-L102",
+      "paragraph": "- **Eficiência computacional e compressão:** Treinar LLMs trilionários tokens exige hardware massivo. Soluções incluem: *distilação* para modelos menores (ex. versões 0.5–4B como Tucano, Curió) e *quantização* (e.g. 4/8-bit pós-treinamento). A redução de vocabulário (viabilizada por “tokenizer transplantation” com OMP【76†L36-L44】) corta ~68% dos parâmetros de embedding【76†L132-L140】. Além disso, otimizações de infraestrutura (atenção linear, FlashAttention) e paralelismo distribuído (DDP/FSDP) têm sido adotadas nas implementações mais recentes【77†L67-L70】【78†L99-L102】. Contudo, o custo energético de treinos prolongados (centenas de bilhões de tokens) segue restritivo, aumentando o apelo por estratégias de *few-shot* e *LoRA* para adaptação eficiente. "
+    },
+    {
+      "id": 33,
+      "url": "https://citation.example.com/76_L84-L92",
+      "paragraph": "- **Avaliação e benchmarks:** Avaliar LLMs em pt-específico é desafiador. Muitos benchmarks existentes têm ruído estatístico alto. Por exemplo, texto explica que benchmarks gerativos em português precisariam de ~1T tokens de referência para serem estáveis【76†L84-L92】. O PORTULAN ExtraGLUE (2024) criou versões pt-PT/pt-BR de tarefas do GLUE/SuperGLUE【92†L69-L77】, mas não engloba tarefas em profundidade (não cobre Q&A, diálogo). Benchmarks multilíngues como XTREME/XTREME-R incluem português apenas incidentalmente (maior foco em idiomas como espanhol, alemão) e não possuem conjuntos dedicados de pt【87†L102-L110】. Outros benchmarks multilingues de uso geral (MMLU, MASSIVE) incluem pt em suas línguas avaliadas, mas não testam nuances culturais. Em resumo, a ausência de **task-specific** benchmarks nativos em pt (e.g. QA em pt, NER pt-br, diálogo pt-pt) dificulta medição precisa de progresso. "
+    },
+    {
+      "id": 34,
+      "url": "https://citation.example.com/92_L69-L77",
+      "paragraph": "- **Avaliação e benchmarks:** Avaliar LLMs em pt-específico é desafiador. Muitos benchmarks existentes têm ruído estatístico alto. Por exemplo, texto explica que benchmarks gerativos em português precisariam de ~1T tokens de referência para serem estáveis【76†L84-L92】. O PORTULAN ExtraGLUE (2024) criou versões pt-PT/pt-BR de tarefas do GLUE/SuperGLUE【92†L69-L77】, mas não engloba tarefas em profundidade (não cobre Q&A, diálogo). Benchmarks multilíngues como XTREME/XTREME-R incluem português apenas incidentalmente (maior foco em idiomas como espanhol, alemão) e não possuem conjuntos dedicados de pt【87†L102-L110】. Outros benchmarks multilingues de uso geral (MMLU, MASSIVE) incluem pt em suas línguas avaliadas, mas não testam nuances culturais. Em resumo, a ausência de **task-specific** benchmarks nativos em pt (e.g. QA em pt, NER pt-br, diálogo pt-pt) dificulta medição precisa de progresso. "
+    },
+    {
+      "id": 35,
+      "url": "https://citation.example.com/87_L102-L110",
+      "paragraph": "- **Avaliação e benchmarks:** Avaliar LLMs em pt-específico é desafiador. Muitos benchmarks existentes têm ruído estatístico alto. Por exemplo, texto explica que benchmarks gerativos em português precisariam de ~1T tokens de referência para serem estáveis【76†L84-L92】. O PORTULAN ExtraGLUE (2024) criou versões pt-PT/pt-BR de tarefas do GLUE/SuperGLUE【92†L69-L77】, mas não engloba tarefas em profundidade (não cobre Q&A, diálogo). Benchmarks multilíngues como XTREME/XTREME-R incluem português apenas incidentalmente (maior foco em idiomas como espanhol, alemão) e não possuem conjuntos dedicados de pt【87†L102-L110】. Outros benchmarks multilingues de uso geral (MMLU, MASSIVE) incluem pt em suas línguas avaliadas, mas não testam nuances culturais. Em resumo, a ausência de **task-specific** benchmarks nativos em pt (e.g. QA em pt, NER pt-br, diálogo pt-pt) dificulta medição precisa de progresso. "
+    },
+    {
+      "id": 36,
+      "url": "【87†L102-L110】",
+      "paragraph": "Modelos LLM refletem tendências nos dados. Estudos mostram que LLMs tendem a reproduzir predominância do português do Brasil, negligenciando variantes europeias【87†L102-L110】."
+    },
+    {
+      "id": 37,
+      "url": "【25†L13-L20】",
+      "paragraph": "Cadências culturais e valores são mais fielmente captados em línguas com muitos recursos: GPT-4 apresentou 44% de variância em capacidade de refletir valores correlacionada ao volume de recursos digitais da língua【25†L13-L20】."
+    },
+    {
+      "id": 38,
+      "url": "【90†L269-L273】",
+      "paragraph": "Projetos como Amália incorporam testes de segurança e aprendizado por reforço focados em pt【90†L269-L273】, mas ainda há lacuna de metodologias de defesa linguísticas específicas (e.g. detecção de toxicidade em pt)."
+    },
+    {
+      "id": 39,
+      "url": "【76†L36-L44】",
+      "paragraph": "Tokenizadores customizados demonstraram ganhos claros: Treinar um SentencePiece exclusivo pt/en/código reduziu tokens e custo【76†L36-L44】. Esquemas como unigram ou novos vocabulários híbridos podem ser explorados para outras línguas românicas (ex: galego)【76†L36-L44】. Outras técnicas de compressão incluem sub-espaces semânticos compartilhados (OMP) e quantização de embeddings. Transplantar tokenizador de modelo base (i.e. converter modelos multilíngues para vocabulário pt) usando OMP economizou ~68% dos parâmetros de embedding【76†L132-L140】. Tais técnicas tornam possível adaptar modelos “prontos” (e.g. Qwen ou Llama) para português sem retraíno completo."
+    },
+    {
+      "id": 40,
+      "url": "【76†L132-L140】",
+      "paragraph": "Tokenizadores customizados demonstraram ganhos claros: Treinar um SentencePiece exclusivo pt/en/código reduziu tokens e custo【76†L36-L44】. Esquemas como unigram ou novos vocabulários híbridos podem ser explorados para outras línguas românicas (ex: galego)【76†L36-L44】. Outras técnicas de compressão incluem sub-espaces semânticos compartilhados (OMP) e quantização de embeddings. Transplantar tokenizador de modelo base (i.e. converter modelos multilíngues para vocabulário pt) usando OMP economizou ~68% dos parâmetros de embedding【76†L132-L140】. Tais técnicas tornam possível adaptar modelos “prontos” (e.g. Qwen ou Llama) para português sem retraíno completo."
+    },
+    {
+      "id": 41,
+      "url": "【88†L173-L181】",
+      "paragraph": "Estudos indicam ganho ao treinar modelos base (inicialmente em inglês) com dados específicos do idioma alvo【88†L173-L181】【81†L67-L75】. Em alinhamento, além de RLHF, destacam-se métodos como aprendizado de preferência multilingue. Pesquisas recentes criaram *conjuntos de preferências* em pt (GPT-generated comparações, similar ao MELD 2023) para calibrar respostas【75†L521-L529】. Em 2025, modelos de preferência multilíngue (como Mixture-of-Preferences) mostram que incluir pares comparativos traduzidos pode melhorar o alinhamento. Estas técnicas visam tornar respostas mais seguras e culturalmente adequadas em pt."
+    },
+    {
+      "id": 42,
+      "url": "【81†L67-L75】",
+      "paragraph": "Estudos indicam ganho ao treinar modelos base (inicialmente em inglês) com dados específicos do idioma alvo【88†L173-L181】【81†L67-L75】. Em alinhamento, além de RLHF, destacam-se métodos como aprendizado de preferência multilingue. Pesquisas recentes criaram *conjuntos de preferências* em pt (GPT-generated comparações, similar ao MELD 2023) para calibrar respostas【75†L521-L529】. Em 2025, modelos de preferência multilíngue (como Mixture-of-Preferences) mostram que incluir pares comparativos traduzidos pode melhorar o alinhamento. Estas técnicas visam tornar respostas mais seguras e culturalmente adequadas em pt."
+    },
+    {
+      "id": 43,
+      "url": "【75†L521-L529】",
+      "paragraph": "Estudos indicam ganho ao treinar modelos base (inicialmente em inglês) com dados específicos do idioma alvo【88†L173-L181】【81†L67-L75】. Em alinhamento, além de RLHF, destacam-se métodos como aprendizado de preferência multilingue. Pesquisas recentes criaram *conjuntos de preferências* em pt (GPT-generated comparações, similar ao MELD 2023) para calibrar respostas【75†L521-L529】. Em 2025, modelos de preferência multilíngue (como Mixture-of-Preferences) mostram que incluir pares comparativos traduzidos pode melhorar o alinhamento. Estas técnicas visam tornar respostas mais seguras e culturalmente adequadas em pt."
+    },
+    {
+      "id": 44,
+      "url": "【88†L133-L142】",
+      "paragraph": "Propõe-se balancear dados incluindo fontes portuguesas diversas (jornais regionais, comunidades online). Alguns trabalhos sugerem ajustar representações por finetuning adversarial (penalizar saídas enviesadas). Ferramentas de avaliação de viés (ex.: lidar com conteúdo sensível ou estereótipos raciais/sexuais em pt) ainda são rudimentares. Porém, esforços acadêmicos já incluem conjuntos para medir comportamento de gênero/raça em pt e punem outputs problemáticos durante RLHF. Ex.: os filtros de toxicidade em ClassiCC-PT【88†L133-L142】 ajudam a reduzir conteúdo abusivo."
+    },
+    {
+      "id": 45,
+      "url": "https://citation-index.example/92_L69-L77",
+      "paragraph": "Observa-se que benchmarks multilíngues amplos nem sempre contemplam português de forma isolada. O PORTULAN ExtraGLUE【92†L69-L77】 preenche algumas lacunas de NLI/STS em pt, e MASSIVE/MMLU-ProX incluem pt em suas línguas, mas tarefas específicas em português (e.g. QA contextual ou inferência profunda) ainda carecem de benchmarks dedicados."
+    },
+    {
+      "id": 46,
+      "url": "https://citation-index.example/87_L102-L110",
+      "paragraph": "Muitas avaliações de pt são traduzidas a partir do inglês (introduzindo viés【87†L102-L110】). Assim, ainda é necessário expandir recursos de avaliação nativos, como o ALBA (genere texto)【87†L102-L110】, exames escolares, e ferramentas de métrica cultural para PT."
+    },
+    {
+      "id": 47,
+      "url": "https://citation-index.example/87_L102-L110",
+      "paragraph": "Assim, ainda é necessário expandir recursos de avaliação nativos, como o ALBA (genere texto)【87†L102-L110】, exames escolares, e ferramentas de métrica cultural para PT."
+    },
+    {
+      "id": 48,
+      "url": "https://doi.org/placeholder/88",
+      "paragraph": "| **Modelo** | **Ano** | **Parâmetros** | **Corpus PT (tokens)** | **Tipo** | **Observações** |\n|---|---|---|---|---|---|\n| **Curió** (Rodrigues et al.) | 2023 | ~1.1B | ~120B (coletados) | Open-source | Baseado em TinyLlama; obteve ganhos em tarefas pt【88†L181-L189】."
+    },
+    {
+      "id": 49,
+      "url": "https://doi.org/placeholder/88",
+      "paragraph": "| **Modelo** | **Ano** | **Parâmetros** | **Corpus PT (tokens)** | **Tipo** | **Observações** |\n|---|---|---|---|---|---|\n| **Sabia 7B / 65B** | 2024 | 7B / 65B | 10B (CLUWEB-A) | Open-source | Dominó em tarefas PT após continuas no pt【88†L181-L189】."
+    },
+    {
+      "id": 50,
+      "url": "https://doi.org/placeholder/75",
+      "paragraph": "| **Modelo** | **Ano** | **Parâmetros** | **Corpus PT (tokens)** | **Tipo** | **Observações** |\n|---|---|---|---|---|---|\n| **Tucano 2 (0.6B)** | 2026 | 0.6B | 320B (GigaVerbo-v2) | Open-source | Modelo pt puro, 49K vocabs, outperform em benchmarks PT【75†L521-L529】."
+    },
+    {
+      "id": 51,
+      "url": "https://doi.org/placeholder/90",
+      "paragraph": "| **Modelo** | **Ano** | **Parâmetros** | **Corpus PT (tokens)** | **Tipo** | **Observações** |\n|---|---|---|---|---|---|\n| **MALIA/Amália** | 2025 | *não especific.* | Dados PT-PT dedicados | Open-source | Foco em português europeu (criando benchmarks próprios)【90†L269-L273】."
+    },
+    {
+      "id": 52,
+      "url": "https://arxiv.org/html/2603.03543v1",
+      "paragraph": "- Almeida **et al.** (2025) *Building High-Quality Datasets for Portuguese LLMs…* – descrição de ClassiCC-PT e GigaVerbo (120B tokens)【88†L121-L129】【88†L181-L189】."
+    },
+    {
+      "id": 53,
+      "url": "https://arxiv.org/html/2411.11072v1",
+      "paragraph": "- Carvalho **et al.** (2023) *Cerebras-GPT-1.3B…* – LLM galician/portuguese joint (6B palavras)【78†L19-L23】."
+    },
+    {
+      "id": 54,
+      "url": "https://arxiv.org/html/2509.08824v1",
+      "paragraph": "- Corrêa **et al.** (2025) *Tucano: Advancing Neural Text Generation for Portuguese* – intro ao projeto Tucano (modelos pt até 2.4B)【88†L181-L189】."
+    },
+    {
+      "id": 55,
+      "url": "https://arxiv.org/html/2603.26516v1",
+      "paragraph": "- Corrêa **et al.** (2026) *Tucano 2: Better Open Source LLMs for Portuguese* – 320B tokens pt, 9.3B sintéticos, modelos 0.5–3.7B【75†L521-L529】."
+    },
+    {
+      "id": 56,
+      "url": "https://arxiv.org/pdf/2410.10489.pdf",
+      "paragraph": "- Kazemi **et al.** (2024) *Cultural fidelity in LLMs…* – desempenho cultural de GPT-4 varia com recursos da língua【25†L13-L20】【25†L27-L35】."
+    },
+    {
+      "id": 57,
+      "url": "https://arxiv.org/html/2507.14304v1",
+      "paragraph": "- Penedo **et al.** (2025) *FineWeb 2.0: Scaling up Large Language Model Data Curation* – sobre pipelines de filtragem (referências)【75†L521-L529】【81†L88-L97】."
+    },
+    {
+      "id": 58,
+      "url": "https://aclanthology.org/2024.bucc-1.3.pdf",
+      "paragraph": "- Vieira **et al.** (2026) *ALBA: Benchmark para Português Europeu* – novo benchmark pt-PT em 8 dimensões linguísticas【87†L102-L110】【87†L113-L122】."
+    },
+    {
+      "id": 59,
+      "url": "https://aclanthology.org/2025.findings-acl.1174.pdf",
+      "paragraph": ""
+    },
+    {
+      "id": 60,
+      "url": "https://aclanthology.org/2023.acl-long.235.pdf",
+      "paragraph": ""
+    },
+    {
+      "id": 61,
+      "url": "https://eco.sapo.pt/2025/12/29/amalia-com-melhor-desempenho-em-portugues-europeu-face-a-outros-modelos-abertos/",
+      "paragraph": ""
+    },
+    {
+      "id": 62,
+      "url": "https://legalblogs.wolterskluwer.com/copyright-blog/the-first-major-generative-ai-and-copyright-case-in-brazil-first-impressions-and-challenges-ahead/",
+      "paragraph": ""
+    },
+    {
+      "id": 63,
+      "url": "https://legalblogs.wolterskluwer.com/copyright-blog/the-first-major-generative-ai-and-copyright-case-in-brazil-first-impressions-and-challenges-ahead/#:~:text=On%20August%2020%2C%20Folha%20filed,main%20claims%20are%20as%20follows",
+      "paragraph": "On August 20, Folha filed, main claims are as follows"
+    },
+    {
+      "id": 64,
+      "url": "https://arxiv.org/html/2603.03543v1#:~:text=Llama,shazeer2020gluvariantsimprovetransformer",
+      "paragraph": "Llama, shazeer2020gluvariantsimprovetransformer"
+    },
+    {
+      "id": 65,
+      "url": "https://arxiv.org/html/2603.03543v1#:~:text=In%20this%20work%2C%20we%20introduce,thought%20reasoning%2C%20and",
+      "paragraph": "In this work, we introduce, thought reasoning, and"
+    },
+    {
+      "id": 66,
+      "url": "https://arxiv.org/html/2603.03543v1#:~:text=match%20at%20L1221%20Summary%20%2F,88",
+      "paragraph": "match at L1221 Summary / 88"
+    },
+    {
+      "id": 67,
+      "url": "https://arxiv.org/html/2603.03543v1#:~:text=outputs%2C%20mathematical%20problem%20solving%2C%20and,both%20early%20and%20late%20training",
+      "paragraph": "outputs, mathematical problem solving, and, both early and late training"
+    },
+    {
+      "id": 68,
+      "url": "https://arxiv.org/html/2411.11072v1#:~:text=shows%20significant%20gaps%20in%20areas,Consequently",
+      "paragraph": "shows significant gaps in areas, Consequently"
+    },
+    {
+      "id": 69,
+      "url": "https://arxiv.org/html/2411.11072v1#:~:text=Other%20MLLMs%20employ%20different%20architectures,Press%20et%C2%A0al",
+      "paragraph": "Other MLLMs employ different architectures, Press et al"
+    },
+    {
+      "id": 70,
+      "url": "https://arxiv.org/html/2509.08824v1#:~:text=Several%20recent%20studies%20have%20focused,a%20model%20trained%20on%20120",
+      "paragraph": "Several recent studies have focused, a model trained on 120"
+    },
+    {
+      "id": 71,
+      "url": "https://arxiv.org/html/2509.08824v1#:~:text=We%20introduce%20ClassiCC,Overwijk%20et%C2%A0al.%2C%2C%202022",
+      "paragraph": "We introduce ClassiCC, Overwijk et al., 2022"
+    },
+    {
+      "id": 72,
+      "url": "https://arxiv.org/html/2603.26516v1#:~:text=While%20Large%20Language%20Models%20,PT",
+      "paragraph": "While Large Language Models ,PT"
+    },
+    {
+      "id": 73,
+      "url": "https://arxiv.org/html/2507.14304v1#:~:text=A%20common%20and%20seemingly%20straightforward,of%20structured%20or%20logical%20content",
+      "paragraph": "A common and seemingly straightforward, of structured or logical content"
+    },
+    {
+      "id": 74,
+      "url": "https://aclanthology.org/2024.bucc-1.3.pdf#:~:text=In%20this%20paper%2C%20we%20contribute,Portuguese%2C%20which%20altogether%20we%20named",
+      "paragraph": "In this paper, we contribute, Portuguese, which altogether we named"
+    },
+    {
+      "id": 75,
+      "url": "https://aclanthology.org/2025.findings-acl.1174.pdf#:~:text=privacy%20concerns,demonstrated%20that%20the%20LLM%20safety",
+      "paragraph": "privacy concerns, demonstrated that the LLM safety"
+    },
+    {
+      "id": 76,
+      "url": "https://aclanthology.org/2023.acl-long.235.pdf#:~:text=Polish%20pl,special%20imperative",
+      "paragraph": "Polish pl, special imperative"
+    },
+    {
+      "id": 77,
+      "url": "https://aclanthology.org/2023.acl-long.235.pdf",
+      "paragraph": "https://aclanthology.org/2023.acl-long.235.pdf#:~:text=Proceedings%20of%20the%2061st%20Annual,Sanchez1%20Aaron%20Nash1%20Liam%20Urbach1"
+    },
+    {
+      "id": 78,
+      "url": "https://eco.sapo.pt/2025/12/29/amalia-com-melhor-desempenho-em-portugues-europeu-face-a-outros-modelos-abertos/",
+      "paragraph": "https://eco.sapo.pt/2025/12/29/amalia-com-melhor-desempenho-em-portugues-europeu-face-a-outros-modelos-abertos/#:~:text=Para%20mitigar%20esta%20limitação%2C%20“utilizámos,”%2C%20conclui"
+    }
+  ]
+}

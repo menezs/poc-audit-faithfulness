@@ -466,5 +466,514 @@
         "reference_id": 65
       }
     ]
+  },
+  {
+    "answer": "answers/gemini_Desafios_LLMs_Multilingues_e_Portugues.md",
+    "documents": [
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_8.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_9.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_11.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_12.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_15.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_16.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_17.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_18.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_19.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_20.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_21.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_23.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_24.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_25.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_27.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_29.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_32.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_34.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_36.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_37.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_38.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_39.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_40.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_41.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_42.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_44.md",
+      "documents/gemini_Desafios_LLMs_Multilingues_e_Portugues_doc_47.md"
+    ],
+    "errors": [
+      {
+        "url": "[1]",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: [1]",
+        "reference_id": 1
+      },
+      {
+        "url": "[3]",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: [3]",
+        "reference_id": 2
+      },
+      {
+        "url": "[4]",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: [4]",
+        "reference_id": 3
+      },
+      {
+        "url": "https://citation.example/29",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example/29",
+        "reference_id": 4
+      },
+      {
+        "url": "https://citation.example/30",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example/30",
+        "reference_id": 5
+      },
+      {
+        "url": "https://citation.example/31",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example/31",
+        "reference_id": 6
+      },
+      {
+        "url": "https://citation.example/32",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example/32",
+        "reference_id": 7
+      },
+      {
+        "url": "https://doi.org/10.3389/fdgth.2025.1653",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/10.3389/fdgth.2025.1653",
+        "reference_id": 10
+      },
+      {
+        "url": "https://aclanthology.org/2025.acl long.118.pdf",
+        "error_type": "HTTPError",
+        "error_message": "404 Client Error: Not Found for url: https://aclanthology.org/2025.acl%20long.118.pdf",
+        "reference_id": 13
+      },
+      {
+        "url": "https://aclanthology.org/2026.eacl srw.49.pdf",
+        "error_type": "HTTPError",
+        "error_message": "404 Client Error: Not Found for url: https://aclanthology.org/2026.eacl%20srw.49.pdf",
+        "reference_id": 14
+      },
+      {
+        "url": "https://towardsai.net/p/machine-learning/synthetic-data-generation-methods-for-ll ms-a-comprehensive-guide",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://towardsai.net/p/machine-learning/synthetic-data-generation-methods-for-ll ms-a-comprehensive-guide",
+        "reference_id": 22
+      },
+      {
+        "url": "https://www.mdpi.com/2076-3417/15/14/8103",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.mdpi.com/2076-3417/15/14/8103",
+        "reference_id": 26
+      },
+      {
+        "url": "https://www.researchgate.net/publication/403262919_ALBA_A_European_Portug uese_Benchmark_for_Evaluating_Language_and_Linguistic_Dimensions_in_Gen erative_LLMs",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.researchgate.net/publication/403262919_ALBA_A_European_Portug uese_Benchmark_for_Evaluating_Language_and_Linguistic_Dimensions_in_Gen erative_LLMs",
+        "reference_id": 28
+      },
+      {
+        "url": "https://www.pnas.org/doi/10.1073/pnas.2519941123",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.pnas.org/doi/10.1073/pnas.2519941123",
+        "reference_id": 30
+      },
+      {
+        "url": "https://www.musubilabs.ai/post/understanding-and-addressing-bias-in-content-mo deration",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.musubilabs.ai/post/understanding-and-addressing-bias-in-content-mo deration",
+        "reference_id": 31
+      },
+      {
+        "url": "https://www.frontiersin.org/journals/digital health/articles/10.3389/fdgth.2026.1807 664/full",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.frontiersin.org/journals/digital health/articles/10.3389/fdgth.2026.1807 664/full",
+        "reference_id": 33
+      },
+      {
+        "url": "https://www.frontiersin.org/journals/public health/articles/10.3389/fpubh.2025.1717 303/full",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.frontiersin.org/journals/public health/articles/10.3389/fpubh.2025.1717 303/full",
+        "reference_id": 35
+      },
+      {
+        "url": "http://sites.poli.usp.br/p/fabio.cozman/Publications/Article/paschoal-pirozelli-freiredelgado-peres-jose-nakasato-oliveira-brandao-costa-cozman-cikm2021.pdf",
+        "error_type": "HTTPError",
+        "error_message": "404 Client Error: Not Found for url: http://sites.poli.usp.br/p/fabio.cozman/Publications/Article/paschoal-pirozelli-freiredelgado-peres-jose-nakasato-oliveira-brandao-costa-cozman-cikm2021.pdf",
+        "reference_id": 43
+      },
+      {
+        "url": "https://www.meioemensagem.com.br/mwc/consolidacao-da-ia-impulsiona-debatesobre-soberania-digital",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.meioemensagem.com.br/mwc/consolidacao-da-ia-impulsiona-debatesobre-soberania-digital",
+        "reference_id": 45
+      },
+      {
+        "url": "https://www.gov.br/gestao/pt-br/assuntos/noticias/2026/abril/em-evento-do-mgi-es pecialistas-apontam-soberania-digital-como-desafio-da-transicao-digital-no-brasil",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.gov.br/gestao/pt-br/assuntos/noticias/2026/abril/em-evento-do-mgi-es pecialistas-apontam-soberania-digital-como-desafio-da-transicao-digital-no-brasil",
+        "reference_id": 46
+      }
+    ]
+  },
+  {
+    "answer": "answers/chatGPT_Desafios_LLMs_Multilingues_e_Portugues.md",
+    "documents": [
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_52.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_53.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_54.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_55.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_56.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_57.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_58.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_59.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_60.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_61.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_62.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_63.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_64.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_65.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_66.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_67.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_68.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_69.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_70.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_71.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_72.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_73.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_77.md",
+      "documents/chatGPT_Desafios_LLMs_Multilingues_e_Portugues_doc_78.md"
+    ],
+    "errors": [
+      {
+        "url": "【77†L67-L70】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【77†L67-L70】",
+        "reference_id": 1
+      },
+      {
+        "url": "【35†L579-L584】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【35†L579-L584】",
+        "reference_id": 2
+      },
+      {
+        "url": "【88†L181-L189】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【88†L181-L189】",
+        "reference_id": 3
+      },
+      {
+        "url": "【75†L521-L529】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【75†L521-L529】",
+        "reference_id": 4
+      },
+      {
+        "url": "【35†L579-L584】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【35†L579-L584】",
+        "reference_id": 5
+      },
+      {
+        "url": "【87†L102-L110】【87†L113-L122】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【87†L102-L110】【87†L113-L122】",
+        "reference_id": 6
+      },
+      {
+        "url": "【92†L69-L77】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【92†L69-L77】",
+        "reference_id": 7
+      },
+      {
+        "url": "【87†L102-L110】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【87†L102-L110】",
+        "reference_id": 8
+      },
+      {
+        "url": "【88†L101-L109】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【88†L101-L109】",
+        "reference_id": 9
+      },
+      {
+        "url": "【25†L13-L20】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【25†L13-L20】",
+        "reference_id": 10
+      },
+      {
+        "url": "【87†L102-L110】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【87†L102-L110】",
+        "reference_id": 11
+      },
+      {
+        "url": "【59†L162-L169】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【59†L162-L169】",
+        "reference_id": 12
+      },
+      {
+        "url": "【83†L100-L109】【83†L125-L134】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【83†L100-L109】【83†L125-L134】",
+        "reference_id": 13
+      },
+      {
+        "url": "【75†L521-L529】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【75†L521-L529】",
+        "reference_id": 14
+      },
+      {
+        "url": "【76†L36-L44】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【76†L36-L44】",
+        "reference_id": 15
+      },
+      {
+        "url": "【81†L88-L97】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【81†L88-L97】",
+        "reference_id": 16
+      },
+      {
+        "url": "【90†L269-L273】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【90†L269-L273】",
+        "reference_id": 17
+      },
+      {
+        "url": "【92†L69-L77】【95†L1268-L1271】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【92†L69-L77】【95†L1268-L1271】",
+        "reference_id": 18
+      },
+      {
+        "url": "【75†L521-L529】【88†L121-L129】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【75†L521-L529】【88†L121-L129】",
+        "reference_id": 19
+      },
+      {
+        "url": "【76†L36-L44】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【76†L36-L44】",
+        "reference_id": 20
+      },
+      {
+        "url": "【87†L102-L110】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【87†L102-L110】",
+        "reference_id": 21
+      },
+      {
+        "url": "https://citation.example.com/88_L101-L109",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/88_L101-L109",
+        "reference_id": 22
+      },
+      {
+        "url": "https://citation.example.com/88_L119-L129",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/88_L119-L129",
+        "reference_id": 23
+      },
+      {
+        "url": "https://citation.example.com/75_L521-L529",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/75_L521-L529",
+        "reference_id": 24
+      },
+      {
+        "url": "https://citation.example.com/81_L67-L75",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/81_L67-L75",
+        "reference_id": 25
+      },
+      {
+        "url": "https://citation.example.com/76_L36-L44",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/76_L36-L44",
+        "reference_id": 26
+      },
+      {
+        "url": "https://citation.example.com/25_L13-L20",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/25_L13-L20",
+        "reference_id": 27
+      },
+      {
+        "url": "https://citation.example.com/81_L88-L97",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/81_L88-L97",
+        "reference_id": 28
+      },
+      {
+        "url": "https://citation.example.com/88_L173-L181",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/88_L173-L181",
+        "reference_id": 29
+      },
+      {
+        "url": "https://citation.example.com/76_L132-L140",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/76_L132-L140",
+        "reference_id": 30
+      },
+      {
+        "url": "https://citation.example.com/77_L67-L70",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/77_L67-L70",
+        "reference_id": 31
+      },
+      {
+        "url": "https://citation.example.com/78_L99-L102",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/78_L99-L102",
+        "reference_id": 32
+      },
+      {
+        "url": "https://citation.example.com/76_L84-L92",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/76_L84-L92",
+        "reference_id": 33
+      },
+      {
+        "url": "https://citation.example.com/92_L69-L77",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/92_L69-L77",
+        "reference_id": 34
+      },
+      {
+        "url": "https://citation.example.com/87_L102-L110",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation.example.com/87_L102-L110",
+        "reference_id": 35
+      },
+      {
+        "url": "【87†L102-L110】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【87†L102-L110】",
+        "reference_id": 36
+      },
+      {
+        "url": "【25†L13-L20】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【25†L13-L20】",
+        "reference_id": 37
+      },
+      {
+        "url": "【90†L269-L273】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【90†L269-L273】",
+        "reference_id": 38
+      },
+      {
+        "url": "【76†L36-L44】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【76†L36-L44】",
+        "reference_id": 39
+      },
+      {
+        "url": "【76†L132-L140】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【76†L132-L140】",
+        "reference_id": 40
+      },
+      {
+        "url": "【88†L173-L181】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【88†L173-L181】",
+        "reference_id": 41
+      },
+      {
+        "url": "【81†L67-L75】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【81†L67-L75】",
+        "reference_id": 42
+      },
+      {
+        "url": "【75†L521-L529】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【75†L521-L529】",
+        "reference_id": 43
+      },
+      {
+        "url": "【88†L133-L142】",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: 【88†L133-L142】",
+        "reference_id": 44
+      },
+      {
+        "url": "https://citation-index.example/92_L69-L77",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-index.example/92_L69-L77",
+        "reference_id": 45
+      },
+      {
+        "url": "https://citation-index.example/87_L102-L110",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-index.example/87_L102-L110",
+        "reference_id": 46
+      },
+      {
+        "url": "https://citation-index.example/87_L102-L110",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://citation-index.example/87_L102-L110",
+        "reference_id": 47
+      },
+      {
+        "url": "https://doi.org/placeholder/88",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/88",
+        "reference_id": 48
+      },
+      {
+        "url": "https://doi.org/placeholder/88",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/88",
+        "reference_id": 49
+      },
+      {
+        "url": "https://doi.org/placeholder/75",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/75",
+        "reference_id": 50
+      },
+      {
+        "url": "https://doi.org/placeholder/90",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://doi.org/placeholder/90",
+        "reference_id": 51
+      },
+      {
+        "url": "https://aclanthology.org/2024.bucc-1.3.pdf#:~:text=In%20this%20paper%2C%20we%20contribute,Portuguese%2C%20which%20altogether%20we%20named",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://aclanthology.org/2024.bucc-1.3.pdf#:~:text=In%20this%20paper%2C%20we%20contribute,Portuguese%2C%20which%20altogether%20we%20named",
+        "reference_id": 74
+      },
+      {
+        "url": "https://aclanthology.org/2025.findings-acl.1174.pdf#:~:text=privacy%20concerns,demonstrated%20that%20the%20LLM%20safety",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://aclanthology.org/2025.findings-acl.1174.pdf#:~:text=privacy%20concerns,demonstrated%20that%20the%20LLM%20safety",
+        "reference_id": 75
+      },
+      {
+        "url": "https://aclanthology.org/2023.acl-long.235.pdf#:~:text=Polish%20pl,special%20imperative",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://aclanthology.org/2023.acl-long.235.pdf#:~:text=Polish%20pl,special%20imperative",
+        "reference_id": 76
+      }
+    ]
   }
 ]
