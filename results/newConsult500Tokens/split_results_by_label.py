@@ -3,12 +3,11 @@ import os
 from pathlib import Path
 
 INPUT_DIR = Path("results/newConsult500Tokens")
-OUTPUT_DIR = Path("./results/audit_with_chunks")
+OUTPUT_DIR = Path("./results/newConsult500Tokens")
 
 FILES = [
-    # "answers_gemini_Desafios_LLMs_Multilingues_e_Portugues.json",
-    # "answers_chatGPT_Desafios_LLMs_Multilingues_e_Portugues.json"
-    "answers_gemini_Desafios_LLMs_Multilingues_e_Portugues.json"
+    "answers_gemini_Desafios_LLMs_Multilingues_e_Portugues.json",
+    "answers_chatGPT_Desafios_LLMs_Multilingues_e_Portugues.json"
 ]
 
 def process_json_file(filepath, label_filter):
