@@ -1,0 +1,351 @@
+[
+    {
+        "text": "Principais temas tecnológicos e regulatórios \n\n## 1. Inteligência Artificial (IA) \n\n- **Conceitos:** IA engloba sistemas de aprendizado de máquina (ML) e algoritmos capazes de realizar tarefas cognitivas (visão computacional, processamento de linguagem etc.). Destacam-se IA generativa (por exemplo, modelos que criam texto ou imagens) e IA de risco, segundo classificações regulatórias. No Direito, é importante entender técnicas como redes neurais, aprendizado profundo e análise de dados, bem como os princípios de transparencia e auditabilidade dos algoritmos",
+        "references": [
+            "[1]",
+            "[2]"
+        ]
+    },
+    {
+        "text": "Histórico e regulação:** Internacionalmente, surgiu agenda de prôpor \"IA ética\" com prîncipios da OCDE e UNESCO, e em 2024 vigoram leis-marcais: a **AI Act** da UE (Reg. UE 2024/1689) classifica sistemas de IA por risco (inaceitável a baixo",
+        "references": [
+            "[3]"
+        ]
+    },
+    {
+        "text": "Nos EUA não há uma lei federal uniforme de IA até 2026, mas o governo editou executive orders exigindo pesquisa segura e diretrizes da FTC e NIST; vários estados (ex: Illinois, New York) regulam biometria e algoritmos específicos. No Brasil, começam a surgir regulações e marcos: decreto do Poder Executivo (CITDigital) e resoluções como a **Resolução CNJ 615/2025** (que estabelece diretrizes de risco e governança de IA no Judiciário",
+        "references": [
+            "[4]"
+        ]
+    },
+    {
+        "text": "além do **PL 2.338/2023** (Marco Legal da IA) em trâmite. \n\n- **Legislação:** O Brasil não tem ainda lei esgotando o tema. Após o PL 2.338/2023, destaca-se a **Lei Geral de Proteção de Dados (LGPD)** , que já disciplina muitos usos de IA que envolvam dados pessoais. A LGPD (Lei 13.709/2018) garante direitos importantes: o art. 20 assegura ao titular a revisão de decisões automatizadas; o art. 6° impõe os princípios de transparência e finalidade; e o art. 37 obriga a elaboração de Relatório de Impacto de Proteção de Dados (RIPD) em tratamento de alto risco",
+        "references": [
+            "[5]"
+        ]
+    },
+    {
+        "text": "Assim, métodos de IA já devem obedecer à LGPD e suas sanções. Em execução, agências reguladoras brasileiras estão atentas: a ANPD incluiu IA e tecnologias emergentes entre temas prioritários de fiscalização (plano 2026–27) e opera um sandbox regulatório para testes controlados",
+        "references": [
+            "[6]",
+            "[2]"
+        ]
+    },
+    {
+        "text": "Projetos de lei em andamento:** O destaque é o **PL 2.338/2023** , aprovado no Senado (dez/2024) e em exame na Câmara. Ele propõe normas horizontais para IA, inspiradas no AI Act. Prevê classificação de sistemas por risco (excessivo, alto e não alto) e proíbe IA de risco “excessivo",
+        "references": [
+            "[3]"
+        ]
+    },
+    {
+        "text": "Prevê diretrizes de proteção de direitos fundamentais (direito à informação, intervenção humana, não discriminação, correção de vieses) e cria o **Sistema Nacional de Regulação e Governança de IA (SIA)** , coordenado pela ANPD",
+        "references": [
+            "[7]",
+            "[8]"
+        ]
+    },
+    {
+        "text": "Há também projetos setoriais e regionais (ex.: propostas de lei estadual, resoluções municipais). \n\n- **Casos reais/precedentes:** O Judiciário já convive com IA: ex. uso de sistemas de análise preditiva de jurisprudência e de rostos em audiências. Embora ainda não haja precedentes sobre responsabilidade civil de IA no Brasil, no exterior surgem casos de discriminação algorítmica (ex.: recusa de crédito por algoritmo enviesado) e contencioso de direitos autorais de modelos generativos. No Brasil, foi noticiado bloqueio de funcionalidades de apps que treinavam IA com dados de usuários sem base legal (ex.: suspensão de funcionalidades do que vírus de rede social) pela ANPD como medida cautelar. \n\n- **Exemplos práticos:** Sistemas de IA já são usados em escritórios para triagem de documentos, pesquisa jurídica automatizada, jurimetria (estatísticas judiciais) e contratação algorítmica. Tribunais usam IA para distribuir processos ou transcrever áudios. Departamentos jurídicos testam chatbots e assistentes virtuais para atendeção e controle de prazos. Plataformas globais de contenção (YouTube, Meta etc.) aplicam IA para moderar conteúdo e recomendação. No futuro, espera-se IA para resolução de litígios online e memorandos gerados automaticamente. \n\n- **Impactos práticos:** Advogados precisam compreender como a IA funciona (para avaliar proveito e riscos). Escritórios devem orientar clientes sobre contratações de soluções de IA (avaliação de contratos de licenciamento de software de IA, garantias de performance, cláusulas de treinamento de modelo). Em investigações, ferramentas de IA auxiliam na analise de grandes volumes de dados (e-discovery e forense digital). No Judiciário, cresce a discussão sobre validade de provas algorítmicas e imperfeições de sistemas; vídeos deepfake desafiam a prova indiciária e exigem novas perícias. Em consumo e trabalho, contratos podem prever uso de IA (e.g. cláusulas de transparência em apps); riscos de discriminação por IA contratual ou seleção de pessoal com algoritmos podem gerar demandas trabalhistas e consumeristas. \n\n- **Debates doutrinários:** Discussões giram em torno da responsabilidade civil por dano causado por IA (fraude, erro autónomo de algorítmica) – em geral adaptando a teoria civil do risco – e de quem seriam os “criadores”: o programador ou o usuário de um sistema autónomo? Outra questão importante é a proteção de propriedade intelectual: se um texto ou imagem gerados por IA são inéditos, surgem questões sobre titularidade e direito autoral. Debates envolvendo laborais incluem a necessidade de revisão humana de decisões algorítmicas para garantir contradição e devido processo. A influência de vieses implícitos nos dados de treinamento e a necessidade de auditoria de algorítmica também são pontos centrais. \n\n- **Tendências futuras:** Prevêem-se regulações mais detalhadas sobre IA (e.g., eventual marcos setoriais), expansão de usos de IA em massa (assistentes virtuais, tradutores jurídicos) e avanço de padronizações internacionais (ISO/IEC 42001, 42002 de governança de IA). Internacionalmente, espera-se que o AI Act entre em vigor (previsto nos próximos anos na UE) e que outras jurisdições \n\nsigam o modelo. No Brasil, é provável a edição de decretos e resoluções complementares ao PL 2338/23, e possível criação de autoridade especializada ou instâncias de \"governança de IA\". No setor privado, aumentará o investimento em compliance de IA, insurance para riscos algorítmicos e certificações de algoritmos justos. \n\n- **Riscos e desafios jurídicos:** Advogados devem mapear riscos de compliance em IA: privacidade (ex: uso de dados pessoais sem base legal), vieses discriminatórios (proibidos pelo Direito), responsabilidade civil por resultado de algorítmo, e segurança de sistemas para evitar fraudes. No Brasil, preocupação constitucional sobre iniciativa legislativa do Executivo (o projeto do Senado delega normas à ANPD). A inovação veloz do setor faz com que leis possam ficar defasadas ao saírem do Congresso, exigindo flexibilização e reavaliação contínua de normas. \n\n- **Recomendações:** Profissionais do Direito devem estudar os princípios técnicos de IA (como funcionam redes neurais e bases de dados) e também os direitos fundamentais em jogo. Recomenda-se criar checklists de compliance de IA, capacitar equipes (cross training técnico-jurídico) e estruturar governança de IA nas organizações (comitês internos, autorregulamentação, auditorias independentes). É importante acompanhar o andamento legislativo (incluir contribuições públicas no PL 2338/2023) e conhecer tanto a regulação brasileira quanto a estrangeira (ex.: AI Act, Diretrizes O’Regan). Escritórios devem orientar clientes sobre a adequação de sistemas, inclusive sob a LGPD, e sugerir revisões contratuais que reflitam obrigações de IA (pela LGPD, pelo futuro marco de IA, ou por recomendações da ANPD). \n\n## 2. Cibersegurança \n\n- **Conceitos:** Trata-se da proteção de sistemas e dados contra ameaças digitais (malware, hacking, ransomware etc.). Envolve confidecialidade, integridade e disponibilidade da informação. Advogados precisam conhecer elementos técnicos básicos (criptografia, firewalls, planos de resposta a incidentes) e seus fundamentos legais (segurança é exigida pela LGPD). \n\n- **Histórico e regulação:** No Brasil, a segurança da informação recebeu foco no **Marco Civil da Internet** (Lei 12.965/2014, art. 10 exige que provedores guardem logs) e principalmente na LGPD (Lei 13.709/2018, art. 46 obriga adoção de medidas de segurança). Recentemente, o Poder Executivo apresentou a **Estratégia Nacional de Cibersegurança (E-Ciber)** em 2025 (Decreto 12.573/2025",
+        "references": [
+            "[9]",
+            "[10]"
+        ]
+    },
+    {
+        "text": "delineando governança centralizada, soberania técnologica e proteção de infraestruturas críticas. Em trâmite no Congresso está o **PL 4.752/2025** (Marco Legal da Cibersegurança",
+        "references": [
+            "[11]"
+        ]
+    },
+    {
+        "text": "prevendo a cooperação público-privada, capacitação de profissionais, criação de um programa nacional de segurança digital e padrões mínimos para contratos de tecnologia",
+        "references": [
+            "[12]",
+            "[13]"
+        ]
+    },
+    {
+        "text": "Nível internacional, há leis como o regulamento europeu NIS2 (segurança de \n\nredes e sistemas críticos), Cibersecurity Act (certificação técnica) e, nos EUA, normatizações setoriais (HIPAA, GLBA) e ordens executivas de segurança nacional. \n\n- **Legislação relevante:** Destacam-se: LGPD (arts. 46 e 48) – que exige medidas de segurança e notificação de incidentes à ANPD e titulares em caso de vazamento",
+        "references": [
+            "[14]"
+        ]
+    },
+    {
+        "text": "Lei Carolina Dieckmann** (Lei 12.737/2012) – crimes informáticos; **Marco Civil** art. 10 – guarda de logs de acesso. Lei 14.155/2021 alterou tipos penais cyber. Em novembro/2025 foi instituído o decreto da E-Ciber (Decreto 12.573/2025",
+        "references": [
+            "[10]"
+        ]
+    },
+    {
+        "text": "em 2023 a Estratégia previa obrigatoriedade de adesão de setores; e PL 4752/25 (ainda na CCJ) como citado. Destaque internacional: NIS2 (UE), Lei de Notificação de Incidentes (p.ex. Califórnia) e ordenações da ONU e OTAN sobre ciberdefesa. \n\n- **Casos reais/precedentes:** Foram registrados ataques cibernéticos a instituições brasileiras (sistemas de empresas e setor público). O STF e tribunais de diversos países discutem provas obtidas por hacking, a legalidade de interceptação de comunicações eletrônicas (considerando a LGPD e o CPC), e direitos dos trabalhadores em várias jurisdições sobre monitoramento de computadores corporativos. Internac. houve casos famosos de vazamento de dados pessoais de alto volume (como no caso da Cambridge Analytica), que impulsionaram regulações. \n\n- **Exemplos práticos:** Escritórios de advocacia devem aplicar boas práticas de segurança (controlar acesso a documentação, criptografar e-mails, usar antivirus). Departamentos jurídicos precisam colaborar com equipes de TI em resposta a vazamentos (por ex., violação de dados de clientes envolve responsabilidade civil e notificação conforme LGPD",
+        "references": [
+            "[14]"
+        ]
+    },
+    {
+        "text": "Em contratações de TI, é essencial prever punições por incidentes e migalhas de segurança contratuais. Na atuação, peritos forenses digitais usam ferramentas especializadas para recuperar evidências e auditar sistemas. \n\n- **Impactos para empresas e profissionais:** Empresas sofrem riscos reputacionais e prejuízos financeiros com incidentes. Conforme LGPD, vítimas de vazamento podem exigir indenização. Escritórios de advocacia não são imunes: o descumprimento de deveres de segurança pode afetar sigilo profissional e gerar análises de responsabilidade. Em licitações públicas atuais, até requisitos de certificação ISO 27001 é solicitada. Profissionais advogados podem atuar como consultores de compliance cibernético, realizar auditorias, atuar em litígio de incidentes e crimes cibernéticos. \n\n- **Debates doutrinários:** Gira em torno do balanceamento entre segurança e privacidade. Por exemplo, impõe-se distinguir monitoração necessária para segurança e invasão de privacidade. Conflitos surgem também sobre obrigações de informação: vários textos pedem transparência de ataques vs. risco de alarmismo. Na lit&eacutex;giação, discute-se admissibilidade de evidências \n\ndigitais com cadeia de custódia incerta. Outra fronteira é regulação de antivirus e criptografia: controladoria estatal do encripitção (como discutido nos EUA) pode conflitar com direitos. \n\n- **Tendências futuras:** Espera-se expansão de seguros cibernéticos, legislações específicas para proteção de infraestruturas críticas e adoção global de frameworks (ISO 27001, NIST CSF). A regulamentação tende a tratar cadeia de suprimentos de TI (avaliando fornecedores). No Brasil, aguarda-se aprovação do Marco de Cibersegurança (PL 4752/25) e ampliação de recursos das políticas públicas (ex.: expansão do CITDigital e dos comitês interministeriais). Internacionalmente, mecanismos de cooperação e-sharing de intelência cibernética crescerão (e.g., fóruns da ONU/OCDE). \n\n- **Riscos e desafios jurídicos:** Riscos de incidente envolvem sanções do art. 48 da LGPD (CIS) e de Ações civis por negligência. A inexistência de um marco legal coeso obriga judiciários a aplicar leis existentes (por ex., responsabilizando empresas sob a teoria do risco). A protecção de segredos comerciais durante litígios de ciberataques é outro desafio: como conciliar investigações com exclusividade de IP ou confidencialidade bancária? Adicionalmente, a cibersegurança se conecta com sanções penais (Lei 12.737/2012), o que requer conhecimento interdisciplínario (ex.: advogados criminais lidando com crimes informáticos). \n\n- **Recomendações:** Adotar cultura de segurança: realizar treinamentos regulares de TI e privacidade; implementar planos de resposta a incidentes (e.g., simulados de vazamento); avaliar conformidade com LGPD e ISO 27001",
+        "references": [
+            "[15]"
+        ]
+    },
+    {
+        "text": "Estruturar governança de riscos (Nomear encarregado de dados, equipe de cibersegurança). Em contratos, incluir penalidades bem definidas por incidentes e obrigações de segurança. Para advogados, manter-se atualizado em tecnologia legal (ex: certificação em forense digital) e estabelercer parcerias com especialistas de TI. Empresas devem considerar o \"Programa Nacional de Seg. & Resiliência Digital\" proposto (PL 4752/25), alinhando-se a padrões mínimos. \n\n## 3. ECA Digital (Lei nº 15.211/2025) \n\n- **Conceitos:** O “ECA Digital” atualiza o Estatuto da Criança e do Adolescente (Lei 8.069/1990) para o ambiente virtual. Trata-se de um marco específico para **proteção infantojuvenil online** , impondo deveres a plataformas digitais, desenvolvedores e fornecedores de produtos/t  e serviços acessados por menores ou potencialmente atrativos a eles. Abrange desde redes sociais e jogos eletrônicos até aplicativos de loja (Android/iOS) e serviços de streaming. \n\n- **Histórico e regulação:** Enacted em 17 de setembro de 2025, a Lei nº 15.211/2025 entrou em vigor em 17 de março de 2026, fazendo o Brasil pioneiro em legislar diretamente sobre segurança digital de crianças. O debate foi inspirado em leis internacionais (como a **UK Online Safety Act** e normas de \n\ndireitos da criança nas redes). Durante trâmite, houve polêmica sobre equilíbrio de responsabilidades do Estado, Família e empresas. O texto final enfatiza que as medidas não são censura, mas proteção, e além dos provedores de internet prevê obrigação de educadores e família em conscientizar menores. \n\n- **Legislação relevante:** A Lei nº 15.211/2025 (Estatuto Digital da Criança e do Adolescente) passa a valer em 17/03/2026. Ela disciplina: (i) **Verificação de idade confiável** (vedada autodeclaração) para acesso a conteúdos impróprios, com APIs seguras por lojas de aplicativo",
+        "references": [
+            "[16]"
+        ]
+    },
+    {
+        "text": "ii) **Controle parental** : ferramentas de supervisionamento (limite de tempo, controle de contatos, geolocalização",
+        "references": [
+            "[17]"
+        ]
+    },
+    {
+        "text": "iii) **Experiência adequada à idade** : \"design regulatório\" que ajuste funcionalidades conforme faixa etária",
+        "references": [
+            "[18]"
+        ]
+    },
+    {
+        "text": "iv) **Prevenção de riscos** “by design” (avaliação de impacto sobre a segurança e saúde de crianças",
+        "references": [
+            "[19]"
+        ]
+    },
+    {
+        "text": "v) **Classificação indicativa** de todo conteúdo, evidenciada ao acesso",
+        "references": [
+            "[20]"
+        ]
+    },
+    {
+        "text": "vi) **Bloqueio de conteúdo nocivo** : sistemas que impeçam acesso de menores a pornografia, violência e material ilegal",
+        "references": [
+            "[21]"
+        ]
+    },
+    {
+        "text": "vii) **Proibição de loot boxes** em jogos infantojuvenis",
+        "references": [
+            "[22]"
+        ]
+    },
+    {
+        "text": "viii) **Vedação de perfilamento publicitário** e análise emocional visando anunciar a menores",
+        "references": [
+            "[23]"
+        ]
+    },
+    {
+        "text": "ix) **Remoção de conteúdo impróprio** mediante notificação de familiares ou MP, sem ordem judicial",
+        "references": [
+            "[24]"
+        ]
+    },
+    {
+        "text": "x) **Transparência** : relatórios semestrais para provedores com >1M de usuários infanto-juvenis (moderados, denúncias, melhorias",
+        "references": [
+            "[25]"
+        ]
+    },
+    {
+        "text": "Projetos de lei e regulação complementar:** Enquanto o texto previu possíveis regras de execução, não permite vigilância massiva (salvaguardas para liberdade e privacidade). Poderá ser regulamentado por decreto, mas ressaltando limites (sem coleção irrestrita de dados). Não há PLs em trâmite específicos sobre o ECA Digital após sua sanção, mas o tema inspira consultas futuras sobre direitos digitais de menores e interseção com outras leis (por ex., futuras modificações no Código Civil sobre imagem de menores). \n\n- **Casos reais/precedentes:** Como lei recente, ainda sem precedentes judiciais específicos. Mas podem ser exemplos extrajudiciais: emissoras bloqueadas em franja infantil, debates sobre limites de jogos eletrônicos para menores e pedidos de tutela de urgência para remoção de páginas perigosas. A experiência europeia (como o UK’s Age Check laws ou AEPD da Espanha punindo plataformas em casos de grooming) pode servir de comparativo. \n\n- **Exemplos práticos:** Plataformas de redes sociais (Facebook, TikTok etc.) terão que integrar Sistemas de Verificação de Idade privacy-preserving (ex.: SMS, biometria etc.) e restringir quizz de idade falso. Jogos online precisarão desativar loot boxes para público juvenil e exigir autorização parental em chats de menores. Apps devem configurar \"modo infantil\" por padrão e restringir coletas de dados extras. Vídeo-on-demand e lojas de app (App Store/Play Store) deverão exigir sinalização etária no cadastro. Internet provedoras e escolas poderiam usar filtros de rede baseados na faixa etária. \n\n- **Impactos para empresas e profissionais:** Empreendimentos de tecnologia, do entretenimento e serviços online precisam revisar arquitetura de produtos (“privacy by design”) para garantir conformidade, sob pena de multas pesadas (advertência, multa de 10% do faturamento ou R$ 50 mi por infração",
+        "references": [
+            "[26]"
+        ]
+    },
+    {
+        "text": "suspensão de atividades). Escritórios de advocacia e departamentos jurídicos terão novas demandas: consulta a conformidade de jogos e plataformas, assesoria em disputas sobre direito de autoridade dos menores online e defesas administrativas perante a ANPD (que fiscalizará a lei). Departamentos públicos de educação e proteção infantil vão atuar em fiscalização e educação digital em parcerias com empresas. \n\n- **Principais debates doutrinários:** Alguns juristas questionam a amplitude da aplicação (“provavelmente acessado” por menores) e a forma de prova do \"acesso impróprio\". Debates surgem sobre a extensão de responsabilização civil por conteúdos veiculados e moderados pelas plataformas. O direito de bloqueio de conta de maior infrator (perfil fake) vs. liberdade de expressão é objeto de análise. Discussões sobre limitacões à publicidade infantil e necessidades de consentimento do menor versam também sobre direitos fundamentais e proteção da personalidade (art. 227 da CF). \n\n- **Tendências futuras:** Vão surgir normativos específicos para operacionalizar o ECA Digital (como procedimentos de verficação de idade padronizados). A cooperacao internacional nesse tema tende a crescer (o Brasil já dialoga em redes como a Ibero-americana de proteção de dados). É previsível evolução de legislações paralelas (ex.: restrições a IA para diálogos sexuais com menores, banimento de influenciadores predatórios). No mínimo, empresas terão que implementar projetos de compliance tecnológico para crianças, similar ao que fazem na Europa (ex.: Age Verification no Reino Unido). O setor educativo e de consumo terá de reforçar cumprimento dessas regras em contratos com escolas, eventos juvenis e produtos de consumo digital (vide recentes direitos do consumidor sobre assinatura de jogos). \n\n- **Riscos e desafios jurídicos:** O ECA Digital cria muitas obrigações desconhecidas. O risco reputacional para empresas é alto se houver ataque a menores (por ex. caso de suicídio associado a cyberbullying). As sanções administrativas pelo descumprimento, previstas na lei, podem levar a penalidades severas (incluindo proibição de operações",
+        "references": [
+            "[26]"
+        ]
+    },
+    {
+        "text": "No Direito, há desafios práticos: como provar o “verdadeiro” interesse de uma plataforma por menores? Questões de jurisdicao surgem se plataforma estrangeira viola a lei brasileira. Para advogados, oferecerá novas causas cíveis (família contra provedores) e criminais (os dispositivos ainda prevêm crimes de negligência na proteção de menores). A compatibilização com LGPD é também delicada (uso de dados de menores requer consentimento parental segundo LGPD). \n\n- **Recomendações:** Profissionais já devem mapear quais produtos/serviços da empresa se enquadram no escopo (considerando “acesso provável",
+        "references": [
+            "[27]"
+        ]
+    },
+    {
+        "text": "Recomenda-se revisar arquiteturas de produto (remover loot boxes, revisar algorítmica de recomendação",
+        "references": [
+            "[28]"
+        ]
+    },
+    {
+        "text": "e implementar sistemas confiáveis de verificação de idade (sem base apenas em autodeclaração",
+        "references": [
+            "[16]"
+        ]
+    },
+    {
+        "text": "Devem ser criadas políticas de resposta a notificações de violação dos direitos infantojuvenis (remover conteúdo impróprio sob demanda",
+        "references": [
+            "[24]"
+        ]
+    },
+    {
+        "text": "Em contratos de software, prever obrigações de conformidade e auditoria com ECA Digital. Escritórios devem orientar clientes sobre os novos direitos (v.g. direito de remediação por violação de conteúdo pelo minor), assessorando tanto no cumprimento proativo quanto em contestações de multas ou demandas administrativas perante a ANPD",
+        "references": [
+            "[26]"
+        ]
+    },
+    {
+        "text": "4. Governança de IA \n\n- **Conceitos principais:** Refere-se à estrutura de políticas, controles e processos internos que garantem uso responsável da IA. Inclui definições claras de responsabilidades (quem audita, quem aprova), mapeamento de risco, avaliação de impacto algorítmico (semelhante ao DPIA da LGPD) e mecanismos de prestação de contas. Normas internacionais (e.g. ISO/IEC 42001) propõem frameworks de governança de IA com regras de escalonamento e comitês de ética. \n\n- **Contexto histórico e regulatório:** Governança de IA tem sido abordada por entes como OECD (princípios de IA confiável) e pela UNESCO (2021 Recomendações globais). No Brasil, a ANPD defendeu públicamente legislação transparente como base para boa governança",
+        "references": [
+            "[29]"
+        ]
+    },
+    {
+        "text": "Em 2025, ela destacou princípios da regulação de IA: segurança, transparência e explicabilidade, direitos fundamentais e não discriminação",
+        "references": [
+            "[2]"
+        ]
+    },
+    {
+        "text": "A Resolução CNJ 615/2025 (Judiciário) impõe governança interna: comitês, avaliações de risco, diretrizes de aquisição. No âmbito privado, surgem iniciativas voluntárias (códigos de ética algorítmica, certificação de sistemas, políticas de IA responsáveis). \n\n- **Políticas internas e normas:** Organizações devem estabelecer diretrizes claras: comitê de governança de IA, com especialistas multidisciplinares; regras de documentação de projetos de IA; avaliações de risco e impactos (p.ex. análise de vieses e segurança). Empresas podem adotar frameworks internacionais (como o \"AI Principles\" da IEEE) ou nacionais. A ANPD permitiu que agentes criem seus próprios códigos de boas práticas de IA, reconhecidos pela autoridade",
+        "references": [
+            "[30]",
+            "[31]"
+        ]
+    },
+    {
+        "text": "A existência de registros detalhados e auditorias internas cresce. Em linhas gerais, trata-se de aplicar a \"segunda linha de defesa\" de governança corporativa (comitês de riso, auditores independentes, gestão de compliance). \n\n- **Legislação/Regulamentação:** No Brasil, o PL 2.338/2023 cria o Sistema Nacional de Regulação e Governança de IA (SIA) sob a ANPD",
+        "references": [
+            "[7]"
+        ]
+    },
+    {
+        "text": "A ANPD já assumiu papel central de coordenação (art.45 do PL",
+        "references": [
+            "[8]"
+        ]
+    },
+    {
+        "text": "A Resolução CNJ 615/2025 estabelece governança específica para IA no Judiciário (comitês e \n\navaliações). Existem também portarias que designam grupos de trabalho (ex.: GT-PBIA sob o CITDigital). Ainda faltam leis que definam governança para o setor privado, mas \"soft law\" como a **Estratégia Brasileira de IA (EBIA)** fornece princípios orientadores. \n\n- **Casos reais/precedentes:** Em relação à governança, a Fundação Getulio Vargas (FGV) e institutos de pesquisa têm publicados estudos de boas práticas. Alguns projetos de lei estrangeiros previam órgãos de supervisão de IA (o brasileiro inclinou-se pela ANPD). Precedentes práticos incluem sanções da ANPD por violação da governança de dados (que se estende ao campo de IA) – empresas sendo orientadas a construir governança de dados integradas. \n\n- **Exemplos práticos:** Uma grande empresa que implementa IA (por ex., banco usando algoritmos de crédito) deve formalizar planos de governança: quem audita e periodicamente revisa o algoritmo? Quem responde por vieses detectados? Como garantir explicabilidade (explicações automáticas vs. humanas)? Escritórios de advocacia de Direito Digital já são contratados para elaborar regras internas de governança, checklists de compliance e planos de resposta a incidentes de IA (vírus de rede neural, desvios). \n\n- **Impactos para empresas e profissionais:** Uma governança fraca de IA eleva o risco de sanções legais e danos reputacionais (imagine um caso de algorítmica enviesada causando discriminação). Por outro lado, empresas com governança robusta podem usar isso como diferencial competitivo (certificação social e de mercado, atraindo clientes preocupados com ética). Advogados específicos em governança de TI (este é um nicho recente) estão em alta, assessorando em contratos de licenciamento de IA e em políticas internas de compliance tecnológico. \n\n- **Debates doutrinários:** Refletem em questões de autonomia corporativa vs. controle regulatório. Alguns autores sugerem que o Estado deveria exigir auditorias independentes de algoritmos (levando debate de governança no setor privado ao legislativo). Outros pregam o risco de overregulamentação sufocando inovação. Discute-se a idoneidade das certificações privadas (como ISO) para substituir regulação mais estrita. A prevenção de viés exige envolvimento multidisciplinar (dirigentes, TI, Direito). \n\n- **Tendências futuras:** Espera-se consolidação de normas de governança (como ISO/IEC 42001 em IA) e agendas de auditoria de algorítmica. Poderá surgir no Brasil requisitos oficiais de compliance de IA (como exisão na UE para datacenters com certificados de segurança). Cada vez mais, inclusive, entidades setoriais (ex.: bancos, saúde) desenvolverão códigos específicos de ética em IA para seus contextos (conforme previsto no PL 2338). A governança de IA deve integrar a governança corporativa geral, elevando níveis de risco e contingência de TI em compliance corporativo. \n\n   - **Riscos e desafios jurídicos:** O principal risco é a lacuna regulatória: sem lei clara, as empresas podem seguir padrões desiguais de qualidade de governança, dificultando aplicação uniforme de sanções. O desafio é garantir que autorregulação (códigos de conduta) não substitua salva guardas necessárias – por exemplo, as certificações voluntárias podem ser qualificadas como evidências em litígio de negligência por falta de governança. Outro risco é que governança ineficaz da IA em órgãos públicos leve a erros graves (ex: algorítmica jusitificativa de sentenças). \n\n   - **Recomendações:** Para advogados, recomenda-se estudar frameworks (como ISO 42001 e orientações da OECD) e introduzir em contratos cláusulas de verificação de governança (p.e., auditoria de terceiros, compliance com LGPD/PL de IA). Incentiva-se a elaboração de políticas de governança em comitês internos de empresas – e escritórios devem oferecer serviços para isso. A participação em grupos de trabalho regulatórios (via ABI, RGB, etc.) é estratégica para antecipar mudanças. Informações e sancionamentos da ANPD devem ser monitorados para calibrar controles (ex.: revisitar relatórios de impacto de TI conforme casos administrados). \n\n5. Futuro Marco Legal da IA no Brasil (PL 2338/2023) \n\n   - **Conceitos principais:** Trata-se do projeto de lei que busca estabelecer o “marco regulatório” geral para IA no Brasil. O objetivo é institucionalizar um regime horizontal baseado em riscos, similar ao AI Act da UE, mas com foco nos direitos fundamentais e na proteção ao consumidor. Prevê noções como sistema de “alto risco” e “risco excessivo”, direitos dos afetados (como explicado acima), exigência de relatório de impacto e avaliação algorítmica, e a criação de órgãos para governança (o SIA). Um principípio chave é proteger o ser humano de danos causados por IA, assegurando transparência e fairness. \n\n   - **Histórico e regulação:** Iniciado em 2023 pelo Senado (coordenado pelo jurista Ricardo Cuevas e pelo presidente do Senado), o projeto foi aprovado em Plenário no Senado em 10/12/2024",
+        "references": [
+            "[32]"
+        ]
+    },
+    {
+        "text": "e agora analisa em comissões da Câmara. O substitutivo principal incorporou sugestões de diversos parlamentares e já alinhou texto ao modelo da UE (explorado abaixo). Durante a tramitação, destacou-se um impasse sobre iniciativa legislativa (o Executivo apontou inconstitucionalidade por delegar máteria privativa da Presidência à ANPD) – busca-se resolver apensando projeto complementar que formaliza o SIA e o papel da ANPD",
+        "references": [
+            "[33]"
+        ]
+    },
+    {
+        "text": "Conteúdo e inovações:** O PL 2338/2023 propõe categorizar sistemas de IA por risco: excessivo (proibidos, como uso de vigilância social automatizada que viola direitos), alto (sujeitos a regulação estrita) e não alto (menos onerados). O art. 14 define exemplos de alto risco (recrutamento, educação, crédito, serviços públicos",
+        "references": [
+            "[3]"
+        ]
+    },
+    {
+        "text": "Insiste-se na conformidade obrigatória com a LGPD (Tratamento de dados pessoais em IA já deve obedecêla",
+        "references": [
+            "[34]"
+        ]
+    },
+    {
+        "text": "O texto do PL ainda reconhece a \n\npossibilidade de códigos de conduta elaborados pelos setores, reforçando intervenção humana e obriga notificar incidentes às autoridades",
+        "references": [
+            "[34]"
+        ]
+    },
+    {
+        "text": "Em termos de governança, cria o **Sistema Nacional de Regulação e Governança de IA (SIA)** coordenado pela ANPD",
+        "references": [
+            "[7]",
+            "[8]"
+        ]
+    },
+    {
+        "text": "visando integrar órgãos setoriais e acompanhar evolução tecnológica. Prevê ainda regras sobre licitude de uso de dados protegidos (autores podiam vetar treinamento de IA) – em debate na Câmara. \n\n- **Projetos relacionados:** Além do PL principal, tramita projeto de lei complementar criando formalmente o SIA/ANPD, e outras propostas isoladas abordam temas específicos (automação no trabalho, fomento à pesquisa etc.). O governo e alguns órgãos como o CNMP e tribunais editam até resoluções para suprir lacunas. \n\n- **Casos reais/precedentes:** Ainda não existem aplicações diretas do PL (ele não está em vigor). Entretanto, como antecedente prático, destacam-se casos administrativos em que a ANPD teve de julgar usos de IA sob a LGPD (ex.: suspensão de uso de dados de usuário por plataforma global) – indicando que, mesmo na vigência do PL, já se aplica LGPD a IA comercial. Fora do Brasil, a decisão do Tribunal de Justiça da União Europeia que invalidou algoritmo de reconhecimento facial (Schrems II, analogamente) serve de guia analógico para direitos fundamentais. \n\n- **Exemplos práticos:** Uma grande plataforma que usa IA para moderar conteúdo deverá, no futuro, classificar seu algorítmica segundo risco e possivelmente submeter-se a auditoria obrigatória se for “alto risco” (por exemplo, se influencia decisões de contratação). Empresas de crédito que usem scoring algorítmico deverão documentar seus modelos e permitir revisão humana em negativas automáticas (isto já é direito do titular pela LGPD e reforçado no PL). Organismos públicos usando IA terão àrea reguladores próprios sob o SIA (como PAD no estado). Consultores jurídicos orientarão clientes a elaborar “políticas de IA” internas e registrar relatórios de impacto sempre que o àmbito de uso se enquadrar nos critérios de alto risco do PL. \n\n- **Impactos para empresas e profissionais:** O marco legal de IA, quando aprovado, imporá obrigações de compliance semelhantes a leis de proteção de dados: dever de documentar fluxos algorítmicos, relatórios de transparência e auditorias peródicas. Escritórios e departamentos jurídicos deverão ajudar empresas a classificar seus sistemas, realizar DPIAs específicos de IA e elaborar políticas internas de governança. Tendem a surgir litígios sobre interpretação do que é “risco excessivo” e contestadores de vícios automatizados (direito de revisão pelo TI). As mulas extrangeiras de sanções (multas equivalentes às da GDPR) também atigem subsidiárias e filiais no Brasil. \n\n- **Principais debates:** Entre especialistas, discute-se o nível de rigidez do texto: setores de tecnologia criticam obrigações ex ante rigorosas (compliance antes \n\ndo uso), enquanto entidades de direitos questionam a retirada de proteções trabalhistas e de direitos autorais na versão aprovada. A regulação de direitos autorais em IA generativa (quem é autor de obras treinadas) é tema espinhoso – o texto permite uso de obra protegida para pesquisa, jornalismo e educação, mas traz debätes se o escopo é demasiado aberto",
+        "references": [
+            "[35]",
+            "[36]"
+        ]
+    },
+    {
+        "text": "Outro debate é sobre a abrangência geográfica de “efeitos” da lei – projetos cuidam da extraterritorialidade (como o AI Act faz) para assegurar que multinacionais cumpram as normas no Brasil. \n\n- **Tendências futuras:** O PL 2.338/23 se tornará lei provavelmente em breve (após discussões parlamentares em 2025/2026). A influência do **AI Act** europeu (vigente desde 2024) é marcante: o modelo de classificação de risco brasileiro foi desenhado a partir dele",
+        "references": [
+            "[3]"
+        ]
+    },
+    {
+        "text": "Espera-se que, assim como a GDPR trouxe normas extras alemãs e portuguesas, o Brasil possa complementar o PL com normas específicas (ex.: indicações sobre biometria e IA). Haverá, portanto, exigências progressivas de relatórios de “adequabilidade de IA”, e legislações futuras abordarão específico mindsets emergentes (e.g., impactos sociais da IA generativa). \n\n- **Riscos e desafios jurídicos:** O cumprimento do PL acarretará custos altos de adequação para startups e PMEs, gerando críticas quanto a barreiras ao desenvolvimento. Se mantida a amplitude ex ante, pode haver insegurança jurídica (o que é prática aceitável vs. penalidade futura?). A inconstitucionalidade apontada sobre iniciativa dosigos restringe a força do texto – havendo questionamento no STF se parte do PL for promulgado fora de ámbito legal. Outro desafio é a defasagem tecnológica: um marco aprovado hoje pode não prever futuras IA disruptivas (algo que os reguladores tentam mitigar com clausula de revisão periódica das listas de alto risco). \n\n- **Recomendações:** Advogados e gestores jurídicos devem acompanhar a tramitação do PL, incluindo debates públicos, para orientar seus clientes desde cedo. Recomenda-se benchmarking com empresas internacionais (ex.: europeias sob AI Act, americanas sob guidelines do NIST) para antecipar obrigações. Profissionais de compliance precisarão atualizar due diligence de fornecedores de IA (e.g., exigir relatórios de testes e auditorias do software) e promover treinamentos específicos nas áreas de dados e técnico. Recomenda-se também colaborar em escriturações de “Códigos de conduta” setoriais, aproveitando o mecanismo voluntário do PL. E, sobretudo, usar a LGPD como guia provisório: qualquer IA que trate dados pessoais já obriga a transparência e revisão automatizada (Art. 20 da LGPD",
+        "references": [
+            "[5]"
+        ]
+    },
+    {
+        "text": "servindo de base de compliance até a lei de IA sair. \n\n## 6. Tecnologia e Direito (Law & Technology) \n\n- **Conceitos principais:** Esta área abrange a interseção entre inovação tecnológica e atividades jurídicas. Inclui legaltech (tecnologias que facilitam a \n\nprática do Direito, como automatização de documentos, sistemas de busca jurídica e jurimetria), assim como estudos sobre regulação de novos setores tecnológicos (blockchain, IoT, gamedev etc.). Em termos profissionais, envolve o uso de ferramentas como IA para redação de contratos, gerenciamento de escritório e resolução alternativa online. \n\n- **Histórico e evolução:** O Direito tem sido afetado pela revolução digital há anos: processuais eletrônicos e tribunais virtuais já estão consolidados no Brasil (ejud e eproc do STJ/CNJ). A internet abriu novas áreas (direito do e-commerce, privacidade e dados, crimes cibernéticos). Cresceu também a educação à distância e plataformas de tribunais. Mais recentemente, softwares de IA para o setor jurídico dispararam, transformando rotinas de escritório. \n\n- **Legislação relevante:** Inclui tanto leis tradicionais que ganharam interpretações tecnológicas (ex.: Código Civil aplicável a contratos eletrônicos, Marco Civil da Internet) quanto novas normas: LGPD (cria obrigações para dados digitais), registro e autenticidade eletrônica (MP 2.200-2/2001, Lei do Processo Eletrônico), assinaturas eletrônicas etc. Há ainda projetos de lei sobre temas específicos, como regulação de criptomoedas e blockchain (por exemplo, PL 3.725/2024 sobre ativos virtuais) e algoritmos em seleções de emprego (alguns estados estudam proibição de algoritmos de recrutamento enviesados). \n\n- **Casos reais/precedentes:** Jurisprudências recentes versam sobre provas digitais (admissibilidade de e-mails, mensagens de WhatsApp como prova, cadeia de custódia eletrônica) e crimes contra sistemas. No Brasil, há precedentes sobre responsabilidade de redes sociais em divulgação de fake news, e sobre os deveres de colaboração dos provedores (Marco Civil, art. 19). Em negócios, tribunais reconhecem validade de contratos eletrônicos, blockchain para titularidade de ativos digitais e execuções por certificado digital. \n\n- **Exemplos práticos:** Legaltechs oferecem automação de contratos, pesquisa jurisprudencial inteligente, plataformas de e-discovery, gestão de firmas, etc. No Brasil, a associação AB2L indica o mercado de legaltech crescendo rapidamente (estimado em US$30 bi em 2024",
+        "references": [
+            "[37]"
+        ]
+    },
+    {
+        "text": "Escritórios usam sistemas de jurimetria que analisam prazos e resultados de cortes para orientar estratégia processual. Tribunais implementam audiências por videoconferência e inteligência artificial para distribuir processos equitativamente. Ferramentas de IA generativa (como ChatGPT) são testadas para resumos de petições e assistente de prazos, sempre com ressalva de revisor humano. \n\n- **Impactos para empresas e profissionais:** A tecnologia facilita o dia-a-dia advocatício: advogados economizam tempo com documentos padronizados e dossiês eletrônicos. Ao mesmo tempo, disputas passam a envolver especialistas em tecnologia (ex.: litígios sobre aplicação de algoritmos, autorias de obras criadas por IA). Surgem novas carreiras jurídicas: analista de compliance tecnológico, especialista em privacidade, perito de cibersegurança, advogado de \n\nlegaltech etc. Em contratações e licitações, termos técnicos (como “blockchain”, “Smart Contract”) entram no vocabulário legal. \n\n- **Debates doutrinários:** Há discussões sobre como manter o valor da advocacia tradicional frente ao impacto da automação e do acesso fácil a informação (ex.: jurisprudentices, contratos prontos online). Outro debate é a regulação de plataformas legais: alguns defendem autorização específica para prestar serviços jurídicos online (além do registro da OAB), a fim de garantir qualidade. Questões éticas também surgem: por exemplo, até que ponto é ético usar IA generativa para redigir petições sem revisão? A doutrina discute o dever de informar o cliente sobre o uso de ferramentas automáticas. \n\n- **Tendências futuras:** Espera-se ampliação de solucões de resolução online (Juizados Virtuais, mediação por IA). Startups continuarão explorando contratos inteligentes em blockchain, identidades digitais (gov.br) e regulação de NFTs. Tendências incluem maior segurança da informação (criptografia de ponta a ponta), aplicativos de IA de apoio à advocacia e portais integrados de processos. Outro campo crescente é o regtech, tecnologias para compliance. No ensino jurídico, escolas e faculdades devem incorporar formações em tecnologia (como sugerido pela USP) para preparar novos profissonais. \n\n- **Riscos e desafios jurídicos:** O avanço tecnológico pode deixar brechas: por exemplo, documentos do processo em nuvem podem ser alvo de hacking, exigindo cautela. A falta de regulamentação específica de novas tecnologi as (ex.: blockchain) gera incerteza judiciária (como lidar com próprios carros digitais em contratos). Riscos também são reputacionais: advogados precisam ter cuidado no uso de IA, pois erros de inteligencia artificial podem causar danos ao cliente e litígio por negligência. \n\n- **Recomendações:** Profissionais devem buscar aquisição de data literacy (capacidade de entender dados e sistemas básicos), participando de cursos de governança de dados e privacidade. Exploração de ferramentas legais emergentes (ex.: assistir tribunais em IA) e suporte a clientes na transição digital serão diferenciais. Avaliar possi bilidades de criar ou investir em startups legaltech pode abrir níveis de carreira. Advogados devem tambem preparar-se para atuar em níveis consultivos sobre inovações (e.g., aconselhar empresa sobre tokenização de ativos). \n\nPerspectivas Internacionais e Temas Transversais \n\n- **Comparação Brasil × UE × EUA:** A UE avança com legislações abrangentes (GDPR em dados, AI Act em IA, DSA em plataformas, NIS2 em cibersegurança), que têm efeito extraterritorial (empresas brasileiras que operam na UE devem cumpri-las",
+        "references": [
+            "[38]"
+        ]
+    },
+    {
+        "text": "Os EUA seguem modelo setorial/por estado (ex.: FTC fiscaliza uso fraudulento de IA como pr´tica comercial). O Brasil vem adotando um meio-termo: recentemente promulgou leis nacionais (LGPD, ECA Digital) que \n\nrefletem princícpios globais, prepara PLs inspirados em normas internacionais (como o PL de IA baseado no AI Act",
+        "references": [
+            "[3]"
+        ]
+    },
+    {
+        "text": "e integraci com iniciativas multilaterais (cooperação Ibero-americana de dados, OCDE). Em cibersegurança, o Brasil passou a instituir estratégias nacionais (E-Ciber) e projeta marcos legais (PL cibersegurança), acompanhando EU (NIS2) e EUA (cibercomando do Pentágono, CISA). Uma das diferenças é que EUA priorizam competitividade no setor tech, enquanto a UE/BR são mais precautelosos. Outro ponto comparativo é a implementação: o AI Act já válido na UE em 2024, enquanto Brasil ainda discute o seu PL até 2026. \n\n- **Influência do AI Act Europeu:** O AI Act (Reg. UE 2024/1689, em vigor desde ago/2024) serviu de modelo: classificação de risco, proibições gerais (ex.: score social, manipulação de comportamento) e multas elevadas (até 7% do faturamento global",
+        "references": [
+            "[38]"
+        ]
+    },
+    {
+        "text": "O PL brasileiro incorpora essa estratégia de riscos e até iniciou discussões semelhantes (categorizando, por ex., algorítmos sociais como de risco). Empresas brasileiras já devem analisar a conformidade tanto com o AI Act (para operar na UE) quanto com o futuro marco nacional",
+        "references": [
+            "[39]"
+        ]
+    },
+    {
+        "text": "Em termos práticos, advogados transnacionais devem domínio das convergências/divergências: por exemplo, em direitos autorais de IA generativa, a UE deu veto total (os autores do EU Act podem vetar usos de suas obras), enquanto o Brasil está discutindo foco parecido",
+        "references": [
+            "[36]"
+        ]
+    },
+    {
+        "text": "Ética, transparência algorítmica e accountability:** Esses temas são centrais. A regulação emergente (incluindo o PL brasileiro) reforça princípios de explicabilidade e não discriminação",
+        "references": [
+            "[2]",
+            "[1]"
+        ]
+    },
+    {
+        "text": "O direito comparado (OECD, UNESCO) recomenda que decisões automatizadas devem ser passíveis de revisão humana e auditória. Em vís legal, prevê-se que sujeitos afetados por algorítmica tenham direito de conhecer fundamentos e corrigir erros (leis de IA do PL incluem isso, espelhando art. 20 da LGPD). Debates éticos envolvem também a responsabili dade pelo viés incorporado – a governança de IA busca minimizar vieses algorítmicos com auditorias independentes. A transparência algorítmica é discutida: deve-se encontrar equílibrio entre segredos comerciais e dever de justificar deci svoes (direito ao acesso à informação). Escritórios já orientam para relatórios de impacto e contratos com garantias de “explicação” de \"caixa preta\". \n\n- **Impacto da IA generativa no setor jurídico:** A IA generativa (ChatGPT, Dall-E, etc.) está transformando a advocacia. Ferramentas assim podem redigir rascunhos de pareceres e contr atos em minutos, aumentando a produtividade (até 10x segundo estimativa",
+        "references": [
+            "[37]"
+        ]
+    },
+    {
+        "text": "Jurimetria e análise preditiva também se beneficiam (algoritmos identificam tendências de sentenças e sugerem estratégias baseadas em dados pas sad os",
+        "references": [
+            "[40]"
+        ]
+    },
+    {
+        "text": "No entanto, em termos jurídicos surgem questões: quem é responsável por erros ou plágio involuntário da IA? Isso exige que advogados reafiram seu papel de validadores finais. Debates recentes incluem a precisão de modelos de linguagem (garantir \n\nconfiabilidade) e diretrizes internas (empresas proíbem seus juízes de usar IA sem supervisão). A regulação brasileira para IA de já foca em princípios que afetam IA generativa – como exigir licenciamento de obras protegidas usadas em treinamento (um tema em discussão no PL 2338",
+        "references": [
+            "[35]"
+        ]
+    },
+    {
+        "text": "Papel da cibersegurança na proteção de dados:** A segurança cibernética é fundamento para implementação eficaz de todas as outras políticas tecnológicas. Dados protegidos pela LGPD, por exemplo, precisam de controles robustos (criptografia, backups, resposta a incidentes) para evitar invasões. Ataques cibernéticos podem produzir violações de dados pessoais em larga escala, levando a multas altas e a enquadramentos em crimes. Assim, a cibersegurança é “a primeira linha de defesa” na proteção de direitos. No contexto de IA, um sistema inseguro pode vazar informações sensíveis usadas em treinamento (impactando segredos comerciais e privacidade). A LGPD obriga a notificar incidentes graves tanto à ANPD quanto às pessoas afetadas",
+        "references": [
+            "[14]"
+        ]
+    },
+    {
+        "text": "o que exige que qualquer organi zação tenha plano para ciberataques. Em relação à investigação, profissionais do Direito se beneficiam do uso de técnicas de forense digital, colaborando com perícias para identificar responsabilida des de hackers ou insiders mal-intencionados. A cultura de segurança (conscientização, treinamento) também é recomendação estratégica: tanto advogado quanto empresas devem estar preparados para detectar fraudes eletrônicas, praticar due diligence de parceiros de TI (avaliar ciber proteção de fornecedores) e subs crição de políticas corporativas de seguranca da informacao",
+        "references": []
+    }
+]

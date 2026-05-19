@@ -1,0 +1,11 @@
+# Inteligência artificial
+
+## Plataforma Sinapses / Inteligência Artificial
+
+O conceito de inteligência artificial (IA) é aplicado em especial para soluções tecnológicas que se mostram capazes de realizar atividades de um modo considerado similar às capacidades cognitivas humanas. Uma solução de IA envolve um agrupamento de várias tecnologias – redes neurais artificiais, algoritmos, sistemas de aprendizado, grande volume de dados (*Big Data)*, entre outros – que fornecem os insumos e técnicas capazes de simular essas capacidades, como o raciocínio, a percepção de ambiente e a habilidade de análise para a tomada de decisão.
+
+Há uma divisão entre dois tipos de IA: a Inteligência Artificial Geral, também chamada de “IA forte”, e a “IA fraca”. A “IA forte” é aquela comum às discussões ainda no âmbito da ficção científica. Nas soluções atuais de IA, apesar de terem a possibilidade de aprendizagem, raciocínio e adaptação, faltam elementos para poderem ser consideradas como Inteligência Artificial Geral.
+
+A “IA fraca” é que tem sido amplamente difundida, utilizada para fins específicos, em casos de uso restritos. Ainda que a expressão possa parecer depreciativa, esses casos de uso estão entregando importantes resultados no processamento de informações e na sua transformação em resultados para as organizações. Nesse grupo, temos assistentes virtuais, consultores inteligentes, gerenciamento de vendas e, nos últimos anos, os meios autônomos de transporte.
+
+No Judiciário, o uso da IA tem por foco dar maior agilidade e qualidade na prestação jurisdicional, contribuindo para a redução do acervo de processos. As soluções de Aprendizado de Máquina (*machine learning*) têm se destacado ao envolve um método de avaliação de dados que permite descobrir padrões e aperfeiçoar as tomadas de decisão. Elas são capazes de fornecer capacidade computacional, bem como dados, algoritmos, APIs, entre outras soluções para se projetar, treinar e aplicar modelos da área em máquinas, aplicativos, processos etc.

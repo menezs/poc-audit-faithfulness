@@ -1,0 +1,11 @@
+O Superior Tribunal de Justiça passou a exigir que candidatos à magistratura tenham conhecimento sobre criptomoedas, blockchain e contratos inteligentes. A mudança consta no edital do Exame Nacional da Magistratura, ENAM, 2026.1, publicado na segunda, 9/3.
+
+De acordo com o edital, a Enfam — Escola Nacional de Formação e Aperfeiçoamento de Magistrados — incluiu de forma expressa, no artigo 7º do conteúdo programático, temas como “Criptomoedas e Lavagem de dinheiro” e “Noções gerais de contratos inteligentes, Blockchain e Algoritmos”, dentro do bloco de Direito Digital. O mesmo eixo contempla ainda inteligência artificial, jurimetria, provas digitais, cibersegurança, deepweb, darkweb e proteção de dados pessoais — sinal de que a tecnologia passou a ser tratada como parte concreta da atividade judicial contemporânea.
+
+O ENAM não é o concurso para juiz em si, mas funciona como etapa prévia e obrigatória para quem deseja disputar seleções nos tribunais federais, do trabalho, militares e estaduais em todo o país. Na prática, isso significa que bacharéis em Direito que almejam a carreira na magistratura precisarão, já nessa fase de habilitação, demonstrar conhecimento mínimo sobre o universo dos ativos digitais.
+
+O ENAM 2026.1 terá etapa única, com prova objetiva de caráter eliminatório — e não classificatório —, marcada para 7 de junho de 2026, das 13h às 18h (horário de Brasília). O exame será aplicado em 27 capitais, entre elas São Paulo, Rio de Janeiro, Brasília, Salvador, Belo Horizonte, Curitiba, Recife, Fortaleza, Porto Alegre e Manaus.
+
+A prova contará com 80 questões de múltipla escolha, cada uma com cinco alternativas e apenas uma resposta correta. Para ser habilitado, o candidato deverá acertar ao menos 56 questões — equivalente a 70% do total. Para candidatos autodeclarados negros, indígenas, quilombolas ou com deficiência, o mínimo exigido cai para 40 acertos, ou 50%.
+
+As inscrições devem ser realizadas pelo site da FGV, com taxa de R$ 120, entre as 16h do dia 9 de março e as 16h do dia 9 de abril de 2026. O certificado de habilitação terá validade de dois anos, com possibilidade de prorrogação automática por igual período, e será requisito obrigatório para a inscrição em futuros concursos da magistratura em todo o país.

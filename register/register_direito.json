@@ -1,0 +1,156 @@
+[
+  {
+    "answer": "answers/Gemini_Direito_e_Tecnologia_Regulação_e_IA.md",
+    "documents": [
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_3.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_4.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_5.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_6.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_8.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_9.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_10.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_11.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_12.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_13.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_14.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_16.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_17.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_18.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_19.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_21.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_22.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_23.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_24.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_25.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_26.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_27.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_29.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_30.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_31.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_33.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_34.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_35.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_36.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_37.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_38.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_39.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_40.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_41.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_42.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_43.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_44.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_45.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_46.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_47.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_48.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_49.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_50.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_51.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_52.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_53.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_54.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_57.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_58.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_60.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_61.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_62.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_63.md",
+      "documents/direito/references_gemini_direito_e_tecnologia_regulações_e_IA_doc_64.md"
+    ],
+    "errors": [
+      {
+        "url": "https://www.mattosfilho.com.br/en/unico/technology-law-brazil-trends/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.mattosfilho.com.br/en/unico/technology-law-brazil-trends/",
+        "reference_id": 1
+      },
+      {
+        "url": "https://lbca.com.br/governanca-da-inteligencia-artificial-em-2026/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://lbca.com.br/governanca-da-inteligencia-artificial-em-2026/",
+        "reference_id": 2
+      },
+      {
+        "url": "https://legis.senado.leg.br/sdleg-getter/documento?dm=9347622&disposition=inline",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://legis.senado.leg.br/sdleg-getter/documento?dm=9347622&disposition=inline",
+        "reference_id": 7
+      },
+      {
+        "url": "https://www.ropesgray.com/en/insights/alerts/2026/03/examining-the-landscape-and-limitations-of-the-federal-push-to-override-state-ai-regulation",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.ropesgray.com/en/insights/alerts/2026/03/examining-the-landscape-and-limitations-of-the-federal-push-to-override-state-ai-regulation",
+        "reference_id": 15
+      },
+      {
+        "url": "https://www.mattosfilho.com.br/unico/protecao-dados-perspectivas/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.mattosfilho.com.br/unico/protecao-dados-perspectivas/",
+        "reference_id": 20
+      },
+      {
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm",
+        "reference_id": 28
+      },
+      {
+        "url": "https://www.faseh.edu.br/blog/estudar-direito-inovacao-tecnologia-faseh/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://www.faseh.edu.br/blog/estudar-direito-inovacao-tecnologia-faseh/",
+        "reference_id": 32
+      },
+      {
+        "url": "https://fedsoc.org/events/ai-meets-copyright-understanding-new-york-times-v-openai",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://fedsoc.org/events/ai-meets-copyright-understanding-new-york-times-v-openai",
+        "reference_id": 55
+      },
+      {
+        "url": "https://medium.com/@patentailab/nyt-vs-openai-lawsuit-update-2026-did-regurgitation-kill-the-fair-use-defense-d63ff021b805",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://medium.com/@patentailab/nyt-vs-openai-lawsuit-update-2026-did-regurgitation-kill-the-fair-use-defense-d63ff021b805",
+        "reference_id": 56
+      },
+      {
+        "url": "https://www.mcampos.br/blog/carreira-juridica-areas-mais-rentaveis-2026/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível extrair conteúdo de: https://www.mcampos.br/blog/carreira-juridica-areas-mais-rentaveis-2026/",
+        "reference_id": 59
+      }
+    ]
+  },
+  {
+    "answer": "answers/ChatGPT_Direito_e_Tecnologia_Regulação_e_IA.md",
+    "documents": [
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_1.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_2.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_3.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_4.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_5.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_7.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_8.md",
+      "documents/direito/references_chatgpt_direito_e_tecnologia_regulações_e_IA_doc_11.md"
+    ],
+    "errors": [
+      {
+        "url": "https://www.in.gov.br/web/dou/-/decreto-n-12.573-de-4-de-agosto-de-2025-646200784",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.in.gov.br/web/dou/-/decreto-n-12.573-de-4-de-agosto-de-2025-646200784",
+        "reference_id": 6
+      },
+      {
+        "url": "https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/direito-digital/estatuto-digital-da-crianca-e-do-adolescente-lei-n-15-211-2025-entra-em-vigor-em-17-de-marco-de-2026",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/direito-digital/estatuto-digital-da-crianca-e-do-adolescente-lei-n-15-211-2025-entra-em-vigor-em-17-de-marco-de-2026",
+        "reference_id": 9
+      },
+      {
+        "url": "https://www.mattosfilho.com.br/unico/ia-popularizacao-legaltechs-brasil/",
+        "error_type": "ValueError",
+        "error_message": "Não foi possível acessar a URL: https://www.mattosfilho.com.br/unico/ia-popularizacao-legaltechs-brasil/",
+        "reference_id": 10
+      }
+    ]
+  }
+]
