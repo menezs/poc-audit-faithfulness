@@ -12,6 +12,21 @@ class OpenAIService:
             raise ValueError("OPEN_AI_TOKEN or OPENAI_API_KEY not set")
         self._client = OpenAI(api_key=self._api_key, timeout=3600)
 
+    def generate(
+        self,
+        prompt: str,
+        model: str = "gpt-5",
+    ) -> str:
+        try:
+            response = self._client.responses.create(
+                model=model,
+                input=prompt,
+            )
+            return response.output_text
+        except Exception as e:
+            print(f"Error generating response: {e}")
+            return ""
+
     def deep_research(
         self,
         query: str,

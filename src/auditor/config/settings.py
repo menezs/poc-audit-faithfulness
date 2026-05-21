@@ -22,6 +22,8 @@ class Settings:
         provider = os.getenv("LLM_PROVIDER", "openai")
         base_url = os.getenv("LLM_BASE_URL")
         llm_model = os.getenv("LLM_MODEL", "google/gemma-4-e4b")
+
+        print(base_url)
         
         if not api_key and provider != "ollama":
             raise ValueError("OPENAI_API_KEY environment variable not set (or use LLM_PROVIDER=ollama)")

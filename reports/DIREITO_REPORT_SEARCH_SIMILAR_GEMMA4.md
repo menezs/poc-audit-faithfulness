@@ -78,16 +78,16 @@ UNSUPPORTED ██████████████████████�
 
 | Indicador | Valor |
 |-----------|-------|
-| **Total de Chunks Originais Usados** | 64 |
-| **Chunks com SUPPORTED** | 45 (70,3%) |
-| **Chunks com UNSUPPORTED** | 19 (29,7%) |
+| **Total de Chunks Originais Usados** | 65 |
+| **Chunks com SUPPORTED** | 45 (69,3%) |
+| **Chunks com UNSUPPORTED** | 20 (30,7%) |
 | **Chunks com CONTRADICTED** | 0 (0,0%) |
 
 ### Gemini - Distribuição por Chunk
 
 ```
-SUPPORTED   ████████████████████████████████████████████████████████████████████████ 45 (70.3%)
-UNSUPPORTED ████████████████████████                                              19 (29.7%)
+SUPPORTED   ████████████████████████████████████████████████████████████████████████ 45 (69.3%)
+UNSUPPORTED ████████████████████████                                              20 (30.7%)
 ```
 
 ### Gemini - Exemplos de Chunks SUPPORTED
@@ -116,13 +116,13 @@ UNSUPPORTED ██████████████████████�
 | Métrica | ChatGPT | Gemini |
 |---------|---------|--------|
 | Total de chunks originais usados | 57 | 64 |
-| Chunks SUPPORTED | 29 (50,9%) | 45 (70,3%) |
-| Chunks UNSUPPORTED | 28 (49,1%) | 19 (29,7%) |
+| Chunks SUPPORTED | 29 (50,9%) | 45 (69,3%) |
+| Chunks UNSUPPORTED | 28 (49,1%) | 20 (30,7%) |
 | Chunks CONTRADICTED | 0 (0,0%) | 0 (0,0%) |
 
 ### Observações
 
-1. **Gemini apresenta taxa significativamente maior de SUPPORTED** (70,3% vs 50,9%)
+1. **Gemini apresenta taxa significativamente maior de SUPPORTED** (69,3% vs 50,9%)
 2. **ChatGPT tem taxa equilibrada entre SUPPORTED e UNSUPPORTED** (~50-50%)
 3. **Ambos os modelos não apresentam casos de CONTRADICTED** - nenhum documento contradiz as claims analisadas
 4. **Chunks UNSUPPORTED tendem a conter**: estatísticas específicas, detalhes legislativos não mencionados, ou afirmações muito específicas sobre datas e números

@@ -31,12 +31,23 @@ class Verifier:
     def _build_prompt(self, claim: str, passages: List[str]) -> str:
         joined_passages = "\n\n".join(passages)
         return f"""
-You are an expert in evidence-based verification.
+You are a strict evidence-grounded verification system.
 
-Your task is to determine whether the claim is supported by the provided evidence.
+Your task is to classify the relationship between the CLAIM and the PROVIDED EVIDENCE.
+
+You **MUST** evaluate the claim using **ONLY** the provided evidence.
+You MUST completely ignore:
+- prior conversation context
+- chat history
+- world knowledge
+- assumptions
+- common sense not explicitly supported by the evidence
+- information outside the evidence block
 
 Claim:
-\"{claim}\"
+\"\"\"
+{claim}
+\"\"\"
 
 Evidence:
 \"\"\"
@@ -46,26 +57,38 @@ Evidence:
 Definitions:
 
 - SUPPORTED:
-  The claim can be justified using ONLY the provided evidence.
-  It may require light reasoning, but no external knowledge.
+  The claim is explicitly stated or can be directly inferred ONLY from the provided evidence.
 
 - UNSUPPORTED:
-  The claim cannot be justified using the provided evidence.
-  Even if it is true in the real world, it is not grounded in the evidence.
+  The evidence does not contain enough information to verify the claim.
+  This includes cases where:
+  - the claim may be true in reality, but is not grounded in the evidence
+  - the evidence is incomplete, vague, or insufficient
+  - verification would require external knowledge or assumptions
 
 - CONTRADICTED:
-  The evidence contradicts the claim.
+  The evidence explicitly conflicts with or disproves the claim.
+
+Critical Rules:
+- Treat the evidence as the ONLY source of truth
+- Never use external knowledge
+- Never use information from previous messages or conversation history
+- Never infer missing facts unless they are directly supported by the evidence
+- If the evidence is ambiguous or incomplete, return UNSUPPORTED
+- Prefer UNSUPPORTED over SUPPORTED when uncertain
+- Only classify as CONTRADICTED when the evidence clearly conflicts with the claim
 
 Instructions:
 - Respond ONLY with valid JSON
-- Do not include any extra text
-- Do NOT use external knowledge
-- Only rely on the provided evidence
-- If the evidence is insufficient → UNSUPPORTED
+- Do not include markdown
+- Do not include explanations outside the JSON
+- The JSON must contain exactly these fields:
+  - "label"
+  - "justification"
 
-Output:
+Output format:
 {{
   "label": "SUPPORTED | UNSUPPORTED | CONTRADICTED",
-  "justification": "short explanation"
+  "justification": "brief evidence-grounded explanation"
 }}
 """
