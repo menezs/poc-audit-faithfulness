@@ -22,7 +22,7 @@ Será instituída ainda uma autoridade administrativa autônoma de proteção do
 
 Vários pontos da lei ainda dependem de regulamentação para surtir efeito prático. O Poder Executivo terá, por exemplo, de regulamentar os requisitos mínimos de transparência, segurança e compartilhamento de informações de forma automática para os mecanismos de aferição de idade e de supervisão parental adotados pelos sistemas operacionais e pelas lojas de aplicativos.
 
-**Penalidades **
+**Penalidades**
 
 Além do que já está previsto no Código Penal, o ECA Digital também estabelece punições aos infratores. Caso a norma seja descumprida, as empresas ficarão sujeitas a advertência, pagamento de multas, suspensão temporária e até proibição do exercício das atividades.
 
